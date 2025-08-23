@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(cmd /c mklink:*)",
+      "Bash(cmd /c \"mklink CLAUDE.md AGENT.md\")",
+      "Bash(powershell:*)",
+      "WebFetch(domain:www.cbh.az)",
+      "WebFetch(domain:www.fourseasons.com)",
+      "WebFetch(domain:www.ritzcarlton.com)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(timeout 10 npm run dev)",
+      "Bash(find:*)"
+    ],
+    "deny": []
+  }
+}
