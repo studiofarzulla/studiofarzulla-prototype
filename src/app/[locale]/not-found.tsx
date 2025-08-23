@@ -2,10 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { IoHome, IoCall, IoSearch, IoArrowBack } from 'react-icons/io5';
 import { CONTACT_INFO, NAVIGATION_ITEMS } from '@/constants';
 
 export default function NotFoundPage() {
+  const params = useParams();
+  const locale = params.locale as string;
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -51,7 +54,7 @@ export default function NotFoundPage() {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
             <Link
-              href="/"
+              href={`/${locale}`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
             >
               <IoHome className="w-5 h-5" />

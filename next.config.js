@@ -6,7 +6,7 @@ const withNextIntl = require('next-intl/plugin')(
 const nextConfig = {
   // Enable experimental features
   experimental: {
-    typedRoutes: true,
+    typedRoutes: false, // Temporarily disabled due to locale routing changes
   },
   
   // Image optimization configuration
