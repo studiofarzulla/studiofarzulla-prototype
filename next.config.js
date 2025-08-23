@@ -97,8 +97,8 @@ const nextConfig = {
   //   ];
   // },
   
-  // Static export only if no dynamic routes
-  output: 'export',
+  // Static export only if no dynamic routes - temporarily disabled for testing
+  // output: 'export',
   trailingSlash: true,
 };
 
