@@ -1,5 +1,18 @@
 import { Metadata } from 'next';
 
+// Generate static paths for all available rooms
+export async function generateStaticParams() {
+  return [
+    { roomType: 'standard-single' },
+    { roomType: 'standard-twin' },
+    { roomType: 'deluxe-sea' },
+    { roomType: 'family-connected' },
+    { roomType: 'executive-suite' },
+    { roomType: 'presidential-suite' },
+    { roomType: 'corporate-building' },
+  ];
+}
+
 // Room metadata mapping
 const roomMetadata = {
   'standard-single': {

@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: 'The Crescent Beach Hotel',
   description: 'Experience luxury on the shores of the Caspian Sea',
-  url: 'https://crescentbeachhotel.com',
+  url: 'https://farzulla.org',
   ogImage: '/images/og-image.jpg',
   links: {
     twitter: 'https://twitter.com/crescentbeach',

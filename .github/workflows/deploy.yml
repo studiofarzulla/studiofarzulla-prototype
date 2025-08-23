@@ -43,7 +43,7 @@ jobs:
       run: npm run build
       env:
         NODE_ENV: production
-        SITE_URL: ${{ vars.SITE_URL || 'https://studiofarzulla.github.io/crescent-beach-hotel' }}
+        SITE_URL: ${{ vars.SITE_URL || 'https://farzulla.org' }}
         
     - name: Setup Pages
       uses: actions/configure-pages@v4

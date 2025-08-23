@@ -1,23 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+// import { Inter, Playfair_Display } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { SITE_CONFIG } from '@/constants';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
+// Fallback font configuration for testing
+const inter = {
   variable: '--font-inter',
-});
+};
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
+const playfair = {
   variable: '--font-playfair',
-});
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -97,6 +94,9 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  // Enable static rendering with setRequestLocale
+  setRequestLocale(locale);
+  
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
