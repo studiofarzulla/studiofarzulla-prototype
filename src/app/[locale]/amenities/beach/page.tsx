@@ -1,10 +1,11 @@
+import React from 'react';
 import { Metadata } from 'next';
 import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import BeachSection from '@/components/amenities/BeachSection';
 import { Button } from '@/components/ui/Button';
-import Link from 'next/link';
+import LocaleLink from '@/lib/locale-link';
 import { ArrowLeft, Waves, Umbrella, Volleyball, Ship } from 'lucide-react';
 
 // Force static generation for this page
@@ -28,13 +29,13 @@ export default function BeachPage({ params }: PageProps) {
       {/* Navigation */}
       <section className='bg-white border-b'>
         <div className='container mx-auto px-4 py-4'>
-          <Link
+          <LocaleLink
             href='/amenities'
             className='inline-flex items-center text-gray-600 hover:text-primary-600'
           >
             <ArrowLeft className='h-4 w-4 mr-2' />
             Back to Amenities
-          </Link>
+          </LocaleLink>
         </div>
       </section>
 
