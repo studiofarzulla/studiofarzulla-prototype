@@ -25,7 +25,8 @@
       "WebFetch(domain:farzulla.org)",
       "Bash(gh run list:*)",
       "Bash(npx next build:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }
