@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -114,14 +114,15 @@ const config: Config = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'ocean-gradient': 'linear-gradient(135deg, #006994 0%, #0084B4 100%)',
         'sand-gradient': 'linear-gradient(135deg, #F5E6D3 0%, #D4B5A0 100%)',
       },
       boxShadow: {
-        'soft': '0 2px 15px 0 rgba(0, 0, 0, 0.1)',
-        'medium': '0 4px 25px 0 rgba(0, 0, 0, 0.15)',
-        'hard': '0 10px 40px 0 rgba(0, 0, 0, 0.2)',
+        soft: '0 2px 15px 0 rgba(0, 0, 0, 0.1)',
+        medium: '0 4px 25px 0 rgba(0, 0, 0, 0.15)',
+        hard: '0 10px 40px 0 rgba(0, 0, 0, 0.2)',
       },
     },
   },
@@ -130,6 +131,6 @@ const config: Config = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
   ],
-}
+};
 
-export default config
+export default config;

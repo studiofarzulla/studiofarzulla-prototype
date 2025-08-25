@@ -7,11 +7,14 @@ interface LoadingSpinnerProps {
   className?: string;
 }
 
-export default function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerProps) {
+export default function LoadingSpinner({
+  size = 'md',
+  className = '',
+}: LoadingSpinnerProps) {
   const sizeClasses = {
     sm: 'w-4 h-4',
     md: 'w-8 h-8',
-    lg: 'w-12 h-12'
+    lg: 'w-12 h-12',
   };
 
   return (
@@ -22,7 +25,7 @@ export default function LoadingSpinner({ size = 'md', className = '' }: LoadingS
         transition={{
           duration: 1,
           repeat: Infinity,
-          ease: 'linear'
+          ease: 'linear',
         }}
       />
     </div>
@@ -32,10 +35,10 @@ export default function LoadingSpinner({ size = 'md', className = '' }: LoadingS
 export function LoadingCard({ className = '' }: { className?: string }) {
   return (
     <div className={`animate-pulse bg-gray-200 rounded-lg ${className}`}>
-      <div className="p-6 space-y-4">
-        <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-        <div className="h-3 bg-gray-300 rounded w-1/2"></div>
-        <div className="h-3 bg-gray-300 rounded w-5/6"></div>
+      <div className='p-6 space-y-4'>
+        <div className='h-4 bg-gray-300 rounded w-3/4'></div>
+        <div className='h-3 bg-gray-300 rounded w-1/2'></div>
+        <div className='h-3 bg-gray-300 rounded w-5/6'></div>
       </div>
     </div>
   );
@@ -43,10 +46,10 @@ export function LoadingCard({ className = '' }: { className?: string }) {
 
 export function LoadingPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center space-y-4">
-        <LoadingSpinner size="lg" />
-        <p className="text-gray-600 font-medium">Loading...</p>
+    <div className='min-h-screen flex items-center justify-center bg-gray-50'>
+      <div className='text-center space-y-4'>
+        <LoadingSpinner size='lg' />
+        <p className='text-gray-600 font-medium'>Loading...</p>
       </div>
     </div>
   );

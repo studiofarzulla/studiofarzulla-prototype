@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import AmenityCard from '@/components/amenities/AmenityCard';
 import BeachSection from '@/components/amenities/BeachSection';
@@ -7,17 +8,17 @@ import WellnessFeatures from '@/components/amenities/WellnessFeatures';
 import PoolInfo from '@/components/amenities/PoolInfo';
 import ActivitySchedule from '@/components/amenities/ActivitySchedule';
 import { Button } from '@/components/ui/Button';
-import { 
-  Waves, 
-  Dumbbell, 
-  Baby, 
-  Music, 
+import {
+  Waves,
+  Dumbbell,
+  Baby,
+  Music,
   Umbrella,
   Sparkles,
   Users,
   Star,
   MapPin,
-  Clock
+  Clock,
 } from 'lucide-react';
 
 // Force static generation for this page
@@ -25,7 +26,8 @@ export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: 'Luxury Hotel Amenities & Facilities | The Crescent Beach Hotel',
-  description: 'Discover world-class amenities at The Crescent Beach Hotel: private Caspian Sea beach, infinity pools, wellness center with saunas, kids club, entertainment stage, and premium facilities.',
+  description:
+    'Discover world-class amenities at The Crescent Beach Hotel: private Caspian Sea beach, infinity pools, wellness center with saunas, kids club, entertainment stage, and premium facilities.',
 };
 
 export default function AmenitiesPage() {
@@ -43,9 +45,9 @@ export default function AmenitiesPage() {
         'Beach volleyball court',
         'Water sports equipment',
         'Beachside service',
-        'Private cabanas available'
+        'Private cabanas available',
       ],
-      href: '/amenities/beach'
+      href: '/amenities/beach',
     },
     {
       title: 'Infinity & Indoor Pools',
@@ -58,9 +60,9 @@ export default function AmenitiesPage() {
         'Dedicated kids pool',
         'Pool bar service',
         'Premium loungers',
-        'Year-round access'
+        'Year-round access',
       ],
-      href: '/amenities/pools'
+      href: '/amenities/pools',
     },
     {
       title: 'Wellness Center',
@@ -73,9 +75,9 @@ export default function AmenitiesPage() {
         'Dry Finnish sauna',
         'Spa treatment rooms',
         'Yoga & meditation space',
-        'Personal training available'
+        'Personal training available',
       ],
-      href: '/amenities/wellness'
+      href: '/amenities/wellness',
     },
     {
       title: 'Kids Club & Family Area',
@@ -88,9 +90,9 @@ export default function AmenitiesPage() {
         'Educational programs',
         'Arts and crafts',
         'Mini water park',
-        'Babysitting services'
+        'Babysitting services',
       ],
-      href: '/amenities/kids-club'
+      href: '/amenities/kids-club',
     },
     {
       title: 'The Shade Bar',
@@ -103,8 +105,8 @@ export default function AmenitiesPage() {
         'Signature cocktails',
         'Light meals & snacks',
         'Sunset viewing spot',
-        'Live DJ sessions'
-      ]
+        'Live DJ sessions',
+      ],
     },
     {
       title: 'Entertainment Stage',
@@ -117,10 +119,10 @@ export default function AmenitiesPage() {
         'Live music events',
         'Cultural shows',
         'Guest entertainment',
-        'Private event hosting'
+        'Private event hosting',
       ],
-      href: '/amenities/entertainment'
-    }
+      href: '/amenities/entertainment',
+    },
   ];
 
   const poolData = [
@@ -136,9 +138,9 @@ export default function AmenitiesPage() {
         'Panoramic Caspian Sea views',
         'Underwater lighting',
         'Pool bar service',
-        'Premium loungers included'
+        'Premium loungers included',
       ],
-      image: '/images/amenities/infinity-pool.jpg'
+      image: '/images/amenities/infinity-pool.jpg',
     },
     {
       name: 'Indoor Heated Pool',
@@ -153,45 +155,45 @@ export default function AmenitiesPage() {
         'Spa jets and features',
         'Natural lighting',
         'Relaxation area',
-        'Towel service included'
+        'Towel service included',
       ],
-      image: '/images/amenities/indoor-pool.jpg'
-    }
+      image: '/images/amenities/indoor-pool.jpg',
+    },
   ];
 
   return (
     <div className='min-h-screen'>
       {/* Hero Section */}
       <FacilityHero
-        title="World-Class Amenities"
-        subtitle="Experience luxury at every turn"
-        description="From our private Caspian Sea beach to our comprehensive wellness facilities, every amenity is designed to create unforgettable experiences for our guests."
-        backgroundImage="/images/amenities/amenities-hero.jpg"
-        ctaText="Explore All Facilities"
+        title='World-Class Amenities'
+        subtitle='Experience luxury at every turn'
+        description='From our private Caspian Sea beach to our comprehensive wellness facilities, every amenity is designed to create unforgettable experiences for our guests.'
+        backgroundImage='/images/amenities/amenities-hero.jpg'
+        ctaText='Explore All Facilities'
         ctaAction={() => console.log('Scroll to amenities')}
       />
 
       {/* Quick Access Navigation */}
-      <section className="py-12 bg-white border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
+      <section className='py-12 bg-white border-b'>
+        <div className='container mx-auto px-4'>
+          <div className='flex flex-wrap justify-center gap-4'>
             {[
               { name: 'Private Beach', icon: Waves, href: '#beach' },
               { name: 'Pools', icon: Waves, href: '#pools' },
               { name: 'Wellness', icon: Dumbbell, href: '#wellness' },
               { name: 'Kids Club', icon: Baby, href: '#kids' },
               { name: 'Entertainment', icon: Music, href: '#entertainment' },
-              { name: 'Activities', icon: Sparkles, href: '#activities' }
+              { name: 'Activities', icon: Sparkles, href: '#activities' },
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <a
                   key={index}
                   href={item.href}
-                  className="flex items-center bg-gray-50 hover:bg-primary-50 px-4 py-2 rounded-full transition-colors"
+                  className='flex items-center bg-gray-50 hover:bg-primary-50 px-4 py-2 rounded-full transition-colors'
                 >
-                  <IconComponent className="h-5 w-5 text-primary-600 mr-2" />
-                  <span className="text-sm font-medium">{item.name}</span>
+                  <IconComponent className='h-5 w-5 text-primary-600 mr-2' />
+                  <span className='text-sm font-medium'>{item.name}</span>
                 </a>
               );
             })}
@@ -200,17 +202,20 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Amenities Overview */}
-      <section className="section-padding bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="heading-secondary mb-4">Premium Facilities & Services</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover our comprehensive collection of luxury amenities, each carefully designed 
-              to enhance your stay and create memorable experiences on the Caspian Sea shore.
+      <section className='section-padding bg-gray-50'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-12'>
+            <h2 className='heading-secondary mb-4'>
+              Premium Facilities & Services
+            </h2>
+            <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
+              Discover our comprehensive collection of luxury amenities, each
+              carefully designed to enhance your stay and create memorable
+              experiences on the Caspian Sea shore.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {amenities.map((amenity, index) => (
               <AmenityCard
                 key={index}
@@ -227,71 +232,80 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Private Beach Section */}
-      <div id="beach">
+      <div id='beach'>
         <BeachSection />
       </div>
 
       {/* Pool Facilities */}
-      <div id="pools">
+      <div id='pools'>
         <PoolInfo pools={poolData} />
       </div>
 
       {/* Wellness Center */}
-      <div id="wellness">
+      <div id='wellness'>
         <WellnessFeatures />
       </div>
 
       {/* Kids & Family Features */}
-      <section id="kids" className="section-padding bg-gradient-to-r from-orange-50 to-yellow-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section
+        id='kids'
+        className='section-padding bg-gradient-to-r from-orange-50 to-yellow-50'
+      >
+        <div className='container mx-auto px-4'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div>
-              <h2 className="heading-secondary mb-6">Kids Club & Family Area</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Our dedicated kids area provides a safe, fun, and educational environment where 
-                children can play, learn, and make new friends while parents enjoy peace of mind.
+              <h2 className='heading-secondary mb-6'>
+                Kids Club & Family Area
+              </h2>
+              <p className='text-lg text-gray-600 mb-6 leading-relaxed'>
+                Our dedicated kids area provides a safe, fun, and educational
+                environment where children can play, learn, and make new friends
+                while parents enjoy peace of mind.
               </p>
-              
-              <div className="grid grid-cols-2 gap-6 mb-8">
+
+              <div className='grid grid-cols-2 gap-6 mb-8'>
                 <div>
-                  <div className="bg-white p-4 rounded-lg shadow-soft mb-4">
-                    <Baby className="h-8 w-8 text-orange-600 mb-2" />
-                    <h4 className="font-semibold">Supervised Play</h4>
-                    <p className="text-sm text-gray-600">Professional childcare staff</p>
+                  <div className='bg-white p-4 rounded-lg shadow-soft mb-4'>
+                    <Baby className='h-8 w-8 text-orange-600 mb-2' />
+                    <h4 className='font-semibold'>Supervised Play</h4>
+                    <p className='text-sm text-gray-600'>
+                      Professional childcare staff
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <div className="bg-white p-4 rounded-lg shadow-soft mb-4">
-                    <Users className="h-8 w-8 text-orange-600 mb-2" />
-                    <h4 className="font-semibold">Age Groups</h4>
-                    <p className="text-sm text-gray-600">3-12 years programs</p>
+                  <div className='bg-white p-4 rounded-lg shadow-soft mb-4'>
+                    <Users className='h-8 w-8 text-orange-600 mb-2' />
+                    <h4 className='font-semibold'>Age Groups</h4>
+                    <p className='text-sm text-gray-600'>3-12 years programs</p>
                   </div>
                 </div>
                 <div>
-                  <div className="bg-white p-4 rounded-lg shadow-soft mb-4">
-                    <Clock className="h-8 w-8 text-orange-600 mb-2" />
-                    <h4 className="font-semibold">Operating Hours</h4>
-                    <p className="text-sm text-gray-600">9:00 AM - 8:00 PM</p>
+                  <div className='bg-white p-4 rounded-lg shadow-soft mb-4'>
+                    <Clock className='h-8 w-8 text-orange-600 mb-2' />
+                    <h4 className='font-semibold'>Operating Hours</h4>
+                    <p className='text-sm text-gray-600'>9:00 AM - 8:00 PM</p>
                   </div>
                 </div>
                 <div>
-                  <div className="bg-white p-4 rounded-lg shadow-soft mb-4">
-                    <Star className="h-8 w-8 text-orange-600 mb-2" />
-                    <h4 className="font-semibold">Activities</h4>
-                    <p className="text-sm text-gray-600">Daily programs</p>
+                  <div className='bg-white p-4 rounded-lg shadow-soft mb-4'>
+                    <Star className='h-8 w-8 text-orange-600 mb-2' />
+                    <h4 className='font-semibold'>Activities</h4>
+                    <p className='text-sm text-gray-600'>Daily programs</p>
                   </div>
                 </div>
               </div>
-              
-              <Button size="lg">Learn More About Kids Programs</Button>
+
+              <Button size='lg'>Learn More About Kids Programs</Button>
             </div>
-            
-            <div className="relative">
-              <div className="aspect-w-16 aspect-h-12 rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="/images/amenities/kids-area.jpg" 
-                  alt="Kids Club"
-                  className="w-full h-full object-cover"
+
+            <div className='relative'>
+              <div className='aspect-w-16 aspect-h-12 rounded-lg overflow-hidden shadow-lg relative h-96'>
+                <Image
+                  src='/images/amenities/kids-area.jpg'
+                  alt='Kids Club'
+                  fill
+                  className='object-cover'
                 />
               </div>
             </div>
@@ -300,54 +314,66 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Entertainment & Events */}
-      <section id="entertainment" className="section-padding">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="heading-secondary mb-4">Entertainment & Special Events</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Experience vibrant entertainment and cultural performances at our professional stage venue, 
-              featuring regular shows, live music, and special celebrations.
+      <section id='entertainment' className='section-padding'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-12'>
+            <h2 className='heading-secondary mb-4'>
+              Entertainment & Special Events
+            </h2>
+            <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
+              Experience vibrant entertainment and cultural performances at our
+              professional stage venue, featuring regular shows, live music, and
+              special celebrations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="/images/amenities/entertainment-stage-night.jpg" 
-                  alt="Entertainment Stage"
-                  className="w-full h-full object-cover"
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+            <div className='lg:col-span-2'>
+              <div className='relative h-96 rounded-lg overflow-hidden shadow-lg'>
+                <Image
+                  src='/images/amenities/entertainment-stage-night.jpg'
+                  alt='Entertainment Stage'
+                  fill
+                  className='object-cover'
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-3xl font-bold mb-2">Professional Entertainment Stage</h3>
-                  <p className="text-lg text-gray-200">Hosting world-class performances and events</p>
+                <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent' />
+                <div className='absolute bottom-6 left-6 text-white'>
+                  <h3 className='text-3xl font-bold mb-2'>
+                    Professional Entertainment Stage
+                  </h3>
+                  <p className='text-lg text-gray-200'>
+                    Hosting world-class performances and events
+                  </p>
                 </div>
               </div>
             </div>
-            
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-soft">
-                <Music className="h-8 w-8 text-primary-600 mb-3" />
-                <h4 className="text-xl font-semibold mb-2">Live Performances</h4>
-                <p className="text-gray-600 text-sm mb-4">
-                  Regular live music, cultural shows, and guest performances featuring local and international artists.
+
+            <div className='space-y-6'>
+              <div className='bg-white p-6 rounded-lg shadow-soft'>
+                <Music className='h-8 w-8 text-primary-600 mb-3' />
+                <h4 className='text-xl font-semibold mb-2'>
+                  Live Performances
+                </h4>
+                <p className='text-gray-600 text-sm mb-4'>
+                  Regular live music, cultural shows, and guest performances
+                  featuring local and international artists.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <ul className='text-sm text-gray-600 space-y-1'>
                   <li>• Nightly entertainment programs</li>
                   <li>• Cultural dance performances</li>
                   <li>• Live jazz and acoustic sessions</li>
                   <li>• Guest DJ nights</li>
                 </ul>
               </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-soft">
-                <Sparkles className="h-8 w-8 text-primary-600 mb-3" />
-                <h4 className="text-xl font-semibold mb-2">Special Events</h4>
-                <p className="text-gray-600 text-sm mb-4">
-                  Seasonal celebrations, themed parties, and exclusive events for our guests.
+
+              <div className='bg-white p-6 rounded-lg shadow-soft'>
+                <Sparkles className='h-8 w-8 text-primary-600 mb-3' />
+                <h4 className='text-xl font-semibold mb-2'>Special Events</h4>
+                <p className='text-gray-600 text-sm mb-4'>
+                  Seasonal celebrations, themed parties, and exclusive events
+                  for our guests.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <ul className='text-sm text-gray-600 space-y-1'>
                   <li>• Holiday celebrations</li>
                   <li>• Beach party nights</li>
                   <li>• Wine tasting events</li>
@@ -360,67 +386,71 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Daily Activities Schedule */}
-      <div id="activities">
+      <div id='activities'>
         <ActivitySchedule />
       </div>
 
       {/* Additional Services */}
-      <section className="section-padding bg-gradient-to-r from-primary-50 to-secondary-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="heading-secondary mb-4">Additional Services</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Enhance your stay with our comprehensive range of premium services and facilities
+      <section className='section-padding bg-gradient-to-r from-primary-50 to-secondary-50'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-12'>
+            <h2 className='heading-secondary mb-4'>Additional Services</h2>
+            <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
+              Enhance your stay with our comprehensive range of premium services
+              and facilities
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             {[
               {
                 title: 'Business Center',
                 description: 'Complete office facilities and meeting rooms',
-                icon: '💼'
+                icon: '💼',
               },
               {
                 title: '24/7 Concierge',
                 description: 'Personalized assistance and local expertise',
-                icon: '🏨'
+                icon: '🏨',
               },
               {
                 title: 'Laundry Service',
                 description: 'Professional cleaning and pressing services',
-                icon: '👔'
+                icon: '👔',
               },
               {
                 title: 'Transportation',
                 description: 'Airport transfers and local transport',
-                icon: '🚗'
+                icon: '🚗',
               },
               {
                 title: 'Medical Services',
                 description: 'On-call medical assistance and first aid',
-                icon: '🏥'
+                icon: '🏥',
               },
               {
                 title: 'Shopping Service',
                 description: 'Personal shopping and delivery assistance',
-                icon: '🛍️'
+                icon: '🛍️',
               },
               {
                 title: 'Pet Care',
                 description: 'Pet-friendly accommodations and services',
-                icon: '🐕'
+                icon: '🐕',
               },
               {
                 title: 'Currency Exchange',
                 description: 'On-site currency exchange services',
-                icon: '💱'
-              }
+                icon: '💱',
+              },
             ].map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-soft text-center hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-3">{service.icon}</div>
-                <h4 className="font-semibold mb-2">{service.title}</h4>
-                <p className="text-gray-600 text-sm">{service.description}</p>
+              <div
+                key={index}
+                className='bg-white p-6 rounded-lg shadow-soft text-center hover:shadow-lg transition-shadow'
+              >
+                <div className='text-4xl mb-3'>{service.icon}</div>
+                <h4 className='font-semibold mb-2'>{service.title}</h4>
+                <p className='text-gray-600 text-sm'>{service.description}</p>
               </div>
             ))}
           </div>
@@ -428,25 +458,27 @@ export default function AmenitiesPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="section-padding bg-white">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-12 text-center text-white">
-            <h2 className="text-4xl font-bold mb-4">Ready to Experience Luxury?</h2>
-            <p className="text-xl mb-8 text-primary-100 max-w-2xl mx-auto">
-              Book your stay now and enjoy access to all our world-class amenities and facilities 
-              on the beautiful Caspian Sea shore.
+      <section className='section-padding bg-white'>
+        <div className='container mx-auto px-4'>
+          <div className='bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-12 text-center text-white'>
+            <h2 className='text-4xl font-bold mb-4'>
+              Ready to Experience Luxury?
+            </h2>
+            <p className='text-xl mb-8 text-primary-100 max-w-2xl mx-auto'>
+              Book your stay now and enjoy access to all our world-class
+              amenities and facilities on the beautiful Caspian Sea shore.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-primary-600 hover:bg-gray-100"
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+              <Button
+                size='lg'
+                className='bg-white text-primary-600 hover:bg-gray-100'
               >
                 Book Your Stay Now
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-primary-600"
+              <Button
+                variant='outline'
+                size='lg'
+                className='border-white text-white hover:bg-white hover:text-primary-600'
               >
                 Schedule a Tour
               </Button>

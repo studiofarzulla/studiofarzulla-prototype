@@ -1,14 +1,12 @@
 /** @type {import('next').NextConfig} */
-const withNextIntl = require('next-intl/plugin')(
-  './src/i18n.ts'
-);
+const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 
 const nextConfig = {
   // Enable experimental features
   experimental: {
     typedRoutes: false, // Temporarily disabled due to locale routing changes
   },
-  
+
   // Image optimization configuration
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -23,18 +21,18 @@ const nextConfig = {
       },
     ],
   },
-  
+
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
   swcMinify: true,
-  
+
   // Environment variables
   env: {
     SITE_NAME: 'The Crescent Beach Hotel',
     SITE_URL: process.env.SITE_URL || 'https://farzulla.org',
   },
-  
+
   // Headers for security and performance - disabled for static export
   // async headers() {
   //   return [
@@ -96,7 +94,7 @@ const nextConfig = {
   //     },
   //   ];
   // },
-  
+
   // Static export for GitHub Pages
   output: 'export',
   trailingSlash: true,

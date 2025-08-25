@@ -170,37 +170,121 @@
       "standard_single": {
         "name": "Standart Tək Otaq",
         "description": "Queen çarpayı və müasir imkanlarla rahat yaşayış",
-        "features": ["Queen ölçülü çarpayı", "Şəhər/Bağ mənzərəsi", "İş masası", "Pulsuz WiFi", "Kondisioner", "Seyf", "Minibar", "Düz ekran TV", "Şəxsi hamam", "Otaq xidməti"]
+        "features": [
+          "Queen ölçülü çarpayı",
+          "Şəhər/Bağ mənzərəsi",
+          "İş masası",
+          "Pulsuz WiFi",
+          "Kondisioner",
+          "Seyf",
+          "Minibar",
+          "Düz ekran TV",
+          "Şəxsi hamam",
+          "Otaq xidməti"
+        ]
       },
       "standard_twin": {
         "name": "Standart İkili Otaq",
         "description": "İki ikili çarpayı ilə geniş otaq, ailələr və ya həmkarlar üçün mükəmməl",
-        "features": ["İki ikili çarpayı", "Bağ/Hovuz mənzərəsi", "Oturma sahəsi", "Pulsuz WiFi", "Kondisioner", "Seyf", "Minibar", "Düz ekran TV", "Şəxsi hamam", "Otaq xidməti"]
+        "features": [
+          "İki ikili çarpayı",
+          "Bağ/Hovuz mənzərəsi",
+          "Oturma sahəsi",
+          "Pulsuz WiFi",
+          "Kondisioner",
+          "Seyf",
+          "Minibar",
+          "Düz ekran TV",
+          "Şəxsi hamam",
+          "Otaq xidməti"
+        ]
       },
       "deluxe_sea": {
         "name": "Dəniz Mənzərəli Delüks Otaq",
         "description": "Heyrətamiz Xəzər dənizi mənzərəsi və təkmilləşdirilmiş imkanlarla premium yaşayış",
-        "features": ["King ölçülü çarpayı", "Şəxsi balkon", "Dəniz mənzərəsi", "Premium imkanlar", "Pulsuz WiFi", "Kondisioner", "Seyf", "Minibar", "Ağıllı TV", "Mərmər hamam", "Xalat və başmaq"]
+        "features": [
+          "King ölçülü çarpayı",
+          "Şəxsi balkon",
+          "Dəniz mənzərəsi",
+          "Premium imkanlar",
+          "Pulsuz WiFi",
+          "Kondisioner",
+          "Seyf",
+          "Minibar",
+          "Ağıllı TV",
+          "Mərmər hamam",
+          "Xalat və başmaq"
+        ]
       },
       "family_connected": {
         "name": "Birləşdirilmiş Ailə Otaqları",
         "description": "Birləşdirici qapı ilə iki qonşu otaq, uşaqlı ailələr üçün ideal",
-        "features": ["İki ayrı otaq", "Birləşdirici qapı", "Çoxsaylı çarpayı variantları", "Ailə üçün uyğun", "Pulsuz WiFi", "Kondisioner", "Seyf", "Minibar", "Uşaq imkanları", "Əlavə məkan", "Otaq xidməti"]
+        "features": [
+          "İki ayrı otaq",
+          "Birləşdirici qapı",
+          "Çoxsaylı çarpayı variantları",
+          "Ailə üçün uyğun",
+          "Pulsuz WiFi",
+          "Kondisioner",
+          "Seyf",
+          "Minibar",
+          "Uşaq imkanları",
+          "Əlavə məkan",
+          "Otaq xidməti"
+        ]
       },
       "executive_suite": {
         "name": "İcraçı Süiti",
         "description": "Ayrı oturma sahəsi və premium biznes imkanları ilə dəbdəbəli süit",
-        "features": ["Ayrı yataq otağı", "Oturma otağı", "İş sahəsi", "Premium yer", "Dəniz mənzərəsi", "Pulsuz WiFi", "Kondisioner", "Seyf", "Premium minibar", "Ağıllı TV", "Lüks hamam", "Konsierj xidməti"]
+        "features": [
+          "Ayrı yataq otağı",
+          "Oturma otağı",
+          "İş sahəsi",
+          "Premium yer",
+          "Dəniz mənzərəsi",
+          "Pulsuz WiFi",
+          "Kondisioner",
+          "Seyf",
+          "Premium minibar",
+          "Ağıllı TV",
+          "Lüks hamam",
+          "Konsierj xidməti"
+        ]
       },
       "presidential_suite": {
         "name": "Prezident Süiti",
         "description": "Panoramik mənzərələr və eksklüziv xidmətlərlə son dərəcə dəbdəbəli yaşayış",
-        "features": ["Ana yataq otağı", "Ayrı oturma otağı", "Yemək sahəsi", "Şəxsi teras", "Panoramik dəniz mənzərəsi", "Premium WiFi", "İqlim nəzarəti", "Seyf", "Premium bar", "Əyləncə sistemi", "Spa hamamı", "Butler xidməti"]
+        "features": [
+          "Ana yataq otağı",
+          "Ayrı oturma otağı",
+          "Yemək sahəsi",
+          "Şəxsi teras",
+          "Panoramik dəniz mənzərəsi",
+          "Premium WiFi",
+          "İqlim nəzarəti",
+          "Seyf",
+          "Premium bar",
+          "Əyləncə sistemi",
+          "Spa hamamı",
+          "Butler xidməti"
+        ]
       },
       "corporate_building": {
         "name": "Korporativ Bina Vahidləri",
         "description": "Korporativ tədbirlər və uzun müddətli qalmalar üçün tam bina icarəsi",
-        "features": ["Hər binada 20 otaq", "İki mərtəbəli tərtibat", "İclas imkanları", "Xüsusi giriş", "Qrup imkanları", "Biznes mərkəzi", "Konfrans otağı", "Yemək xidmətləri", "Parkinq", "24/7 dəstək", "Xüsusi xidmətlər"]
+        "features": [
+          "Hər binada 20 otaq",
+          "İki mərtəbəli tərtibat",
+          "İclas imkanları",
+          "Xüsusi giriş",
+          "Qrup imkanları",
+          "Biznes mərkəzi",
+          "Konfrans otağı",
+          "Yemək xidmətləri",
+          "Parkinq",
+          "24/7 dəstək",
+          "Xüsusi xidmətlər"
+        ]
       }
     }
   },

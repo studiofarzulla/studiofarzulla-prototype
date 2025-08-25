@@ -22,5 +22,5 @@ export const mockMessages = {
   rooms: {
     title: 'Our Rooms',
     subtitle: 'Discover luxury accommodations',
-  }
+  },
 };

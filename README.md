@@ -10,18 +10,21 @@
 ## 🌟 Features
 
 ### 🏨 Hotel Management
+
 - **Room Showcase**: Multiple room types with detailed information, amenities, and pricing
 - **Interactive Galleries**: High-quality image galleries with lightbox functionality
 - **Booking Integration**: Ready-to-integrate booking system with form validation
 - **Multilingual Support**: English, Azerbaijani, and Russian language support
 
 ### 🍽️ Dining Experience
+
 - **Restaurant Menus**: Dynamic menu displays with dietary information
 - **Reservation System**: Table booking functionality with time slot management
 - **Special Events**: Showcase of culinary events and experiences
 - **Chef Profiles**: Meet the culinary team behind exceptional dining
 
 ### 🏊‍♀️ Amenities & Services
+
 - **Beach Access**: Information about private beach and water sports
 - **Wellness Center**: Spa services, treatments, and wellness programs
 - **Pool Areas**: Multiple pool facilities with poolside service
@@ -29,11 +32,13 @@
 - **Entertainment**: Live shows, cultural events, and recreational activities
 
 ### 💼 Business Services
+
 - **Conference Facilities**: Meeting rooms and event spaces
 - **Corporate Packages**: Business travel and group booking options
 - **Event Planning**: Wedding and special event coordination
 
 ### 📱 Technical Excellence
+
 - **Responsive Design**: Perfect experience across all devices
 - **Performance Optimized**: Fast loading times and smooth animations
 - **SEO Friendly**: Comprehensive meta tags and structured data
@@ -43,7 +48,8 @@
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm 9+
 
 ### Installation
@@ -134,17 +140,20 @@ npm run preview         # Build and start for preview
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary**: Blue tones (`primary-50` to `primary-900`)
 - **Accent**: Complementary accent colors
 - **Neutral**: Grays for typography and backgrounds
 - **Semantic**: Success, warning, error, and info colors
 
 ### Typography
+
 - **Headings**: Inter font family
 - **Body**: System font stack for optimal performance
 - **Serif**: Playfair Display for elegant headings
 
 ### Components
+
 - Consistent spacing using Tailwind's spacing scale
 - Shadow system for depth and elevation
 - Animation system using Framer Motion
@@ -159,6 +168,7 @@ The application supports multiple languages:
 - **Russian (ru)**: Regional language
 
 Language switching is handled through the URL structure:
+
 - `/` - English (default)
 - `/az/` - Azerbaijani
 - `/ru/` - Russian
@@ -166,6 +176,7 @@ Language switching is handled through the URL structure:
 ## 📈 SEO & Performance
 
 ### SEO Features
+
 - Dynamic meta tags and Open Graph
 - Structured data (Schema.org)
 - XML sitemap generation
@@ -174,6 +185,7 @@ Language switching is handled through the URL structure:
 - Language alternate links
 
 ### Performance Optimizations
+
 - Image optimization with WebP/AVIF support
 - Lazy loading for images and components
 - Code splitting and bundle optimization
@@ -181,7 +193,9 @@ Language switching is handled through the URL structure:
 - Service worker for offline functionality
 
 ### Core Web Vitals
+
 The application is optimized for:
+
 - **LCP (Largest Contentful Paint)**: < 2.5s
 - **FID (First Input Delay)**: < 100ms
 - **CLS (Cumulative Layout Shift)**: < 0.1
@@ -213,6 +227,7 @@ NODE_ENV=production
 ## 🔧 Configuration
 
 ### Next.js Configuration
+
 - Image optimization settings
 - Security headers
 - Compression and performance
@@ -220,6 +235,7 @@ NODE_ENV=production
 - Internationalization setup
 
 ### Tailwind CSS
+
 - Custom color palette
 - Extended typography
 - Component utilities
@@ -234,6 +250,7 @@ NODE_ENV=production
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Follow TypeScript strict mode
 - Use semantic commit messages
 - Ensure responsive design
@@ -247,9 +264,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🏆 Credits
 
 ### Design & Development
+
 - **Studio Farzulla**: Design and development team
 
 ### Technologies
+
 - **Next.js**: React framework for production
 - **TypeScript**: Type-safe JavaScript
 - **Tailwind CSS**: Utility-first CSS framework
@@ -259,6 +278,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Zod**: Schema validation
 
 ### Assets
+
 - **Images**: High-quality hotel photography
 - **Icons**: Custom hotel-themed icon set
 - **Fonts**: Inter and Playfair Display
@@ -266,6 +286,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support and inquiries:
+
 - **Email**: support@crescentbeachhotel.com
 - **Phone**: +994-12-123-4567
 - **Website**: [crescentbeachhotel.com](https://crescentbeachhotel.com)

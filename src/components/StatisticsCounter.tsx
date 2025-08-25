@@ -18,7 +18,7 @@ export default function StatisticsCounter({
   label,
   suffix = '',
   prefix = '',
-  index = 0
+  index = 0,
 }: StatisticCounterProps) {
   const [count, setCount] = useState(0);
   const [isInView, setIsInView] = useState(false);
@@ -64,25 +64,22 @@ export default function StatisticsCounter({
   }, [isInView, value]);
 
   return (
-    <div
-      ref={ref}
-      className="text-center group"
-    >
-      <div className="mb-4 flex justify-center">
-        <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-accent-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <Icon className="w-8 h-8 text-primary-600" />
+    <div ref={ref} className='text-center group'>
+      <div className='mb-4 flex justify-center'>
+        <div className='w-16 h-16 bg-gradient-to-br from-primary-100 to-accent-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300'>
+          <Icon className='w-8 h-8 text-primary-600' />
         </div>
       </div>
-      
-      <div className="mb-2">
-        <span className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
-          {prefix}{count.toLocaleString()}{suffix}
+
+      <div className='mb-2'>
+        <span className='text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent'>
+          {prefix}
+          {count.toLocaleString()}
+          {suffix}
         </span>
       </div>
-      
-      <p className="text-gray-600 font-medium">
-        {label}
-      </p>
+
+      <p className='text-gray-600 font-medium'>{label}</p>
     </div>
   );
 }

@@ -4,15 +4,15 @@ import { locales, defaultLocale } from './i18n';
 export default createMiddleware({
   // A list of all locales that are supported
   locales,
-  
+
   // Used when no locale matches
   defaultLocale,
-  
+
   // Always use the default locale for the root path
-  localePrefix: 'always'
+  localePrefix: 'always',
 });
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ['/', '/(en|az|ru)/:path*']
+  matcher: ['/', '/(en|az|ru)/:path*'],
 };

@@ -2,16 +2,16 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  IoClose, 
-  IoChevronBack, 
-  IoChevronForward, 
-  IoDownload, 
-  IoShare, 
+import {
+  IoClose,
+  IoChevronBack,
+  IoChevronForward,
+  IoDownload,
+  IoShare,
   IoHeart,
   IoHeartOutline,
   IoPlay,
-  IoPause
+  IoPause,
 } from 'react-icons/io5';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -42,7 +42,7 @@ export default function ImageLightbox({
   isOpen,
   onClose,
   onNext,
-  onPrevious
+  onPrevious,
 }: ImageLightboxProps) {
   const [isZoomed, setIsZoomed] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -100,14 +100,14 @@ export default function ImageLightbox({
       const response = await fetch(currentImage.src);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      
+
       const link = document.createElement('a');
       link.href = url;
       link.download = `${currentImage.title.replace(/\s+/g, '-').toLowerCase()}.jpg`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Download failed:', error);
@@ -146,8 +146,8 @@ export default function ImageLightbox({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-        onClick={(e) => {
+        className='fixed inset-0 z-50 bg-black/95 flex items-center justify-center'
+        onClick={e => {
           if (e.target === e.currentTarget) onClose();
         }}
         onMouseMove={() => setShowControls(true)}
@@ -159,55 +159,55 @@ export default function ImageLightbox({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 pointer-events-none"
+              className='absolute inset-0 pointer-events-none'
             >
               {/* Header Controls */}
-              <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/50 to-transparent p-4 pointer-events-auto">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <span className="text-white text-sm">
+              <div className='absolute top-0 left-0 right-0 bg-gradient-to-b from-black/50 to-transparent p-4 pointer-events-auto'>
+                <div className='flex items-center justify-between'>
+                  <div className='flex items-center gap-4'>
+                    <span className='text-white text-sm'>
                       {currentIndex + 1} / {images.length}
                     </span>
-                    <span className="text-white/70 text-sm">
+                    <span className='text-white/70 text-sm'>
                       {currentImage.category}
                     </span>
                   </div>
-                  
-                  <div className="flex items-center gap-2">
+
+                  <div className='flex items-center gap-2'>
                     <button
                       onClick={() => setIsLiked(!isLiked)}
-                      className="p-2 text-white hover:bg-white/20 rounded-full transition-colors"
-                      aria-label="Like photo"
+                      className='p-2 text-white hover:bg-white/20 rounded-full transition-colors'
+                      aria-label='Like photo'
                     >
                       {isLiked ? (
-                        <IoHeart className="w-6 h-6 text-red-500" />
+                        <IoHeart className='w-6 h-6 text-red-500' />
                       ) : (
-                        <IoHeartOutline className="w-6 h-6" />
+                        <IoHeartOutline className='w-6 h-6' />
                       )}
                     </button>
-                    
+
                     <button
                       onClick={handleShare}
-                      className="p-2 text-white hover:bg-white/20 rounded-full transition-colors"
-                      aria-label="Share photo"
+                      className='p-2 text-white hover:bg-white/20 rounded-full transition-colors'
+                      aria-label='Share photo'
                     >
-                      <IoShare className="w-6 h-6" />
+                      <IoShare className='w-6 h-6' />
                     </button>
-                    
+
                     <button
                       onClick={handleDownload}
-                      className="p-2 text-white hover:bg-white/20 rounded-full transition-colors"
-                      aria-label="Download photo"
+                      className='p-2 text-white hover:bg-white/20 rounded-full transition-colors'
+                      aria-label='Download photo'
                     >
-                      <IoDownload className="w-6 h-6" />
+                      <IoDownload className='w-6 h-6' />
                     </button>
-                    
+
                     <button
                       onClick={onClose}
-                      className="p-2 text-white hover:bg-white/20 rounded-full transition-colors"
-                      aria-label="Close lightbox"
+                      className='p-2 text-white hover:bg-white/20 rounded-full transition-colors'
+                      aria-label='Close lightbox'
                     >
-                      <IoClose className="w-6 h-6" />
+                      <IoClose className='w-6 h-6' />
                     </button>
                   </div>
                 </div>
@@ -218,39 +218,39 @@ export default function ImageLightbox({
                 <>
                   <button
                     onClick={onPrevious}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white hover:bg-white/20 rounded-full transition-colors pointer-events-auto"
-                    aria-label="Previous image"
+                    className='absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white hover:bg-white/20 rounded-full transition-colors pointer-events-auto'
+                    aria-label='Previous image'
                   >
-                    <IoChevronBack className="w-8 h-8" />
+                    <IoChevronBack className='w-8 h-8' />
                   </button>
-                  
+
                   <button
                     onClick={onNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white hover:bg-white/20 rounded-full transition-colors pointer-events-auto"
-                    aria-label="Next image"
+                    className='absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white hover:bg-white/20 rounded-full transition-colors pointer-events-auto'
+                    aria-label='Next image'
                   >
-                    <IoChevronForward className="w-8 h-8" />
+                    <IoChevronForward className='w-8 h-8' />
                   </button>
                 </>
               )}
 
               {/* Bottom Info */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6 pointer-events-auto">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-white text-2xl font-bold mb-2">
+              <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6 pointer-events-auto'>
+                <div className='max-w-4xl mx-auto'>
+                  <h2 className='text-white text-2xl font-bold mb-2'>
                     {currentImage.title}
                   </h2>
                   {currentImage.description && (
-                    <p className="text-white/80 text-lg mb-4">
+                    <p className='text-white/80 text-lg mb-4'>
                       {currentImage.description}
                     </p>
                   )}
                   {currentImage.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {currentImage.tags.map((tag) => (
+                    <div className='flex flex-wrap gap-2'>
+                      {currentImage.tags.map(tag => (
                         <span
                           key={tag}
-                          className="px-3 py-1 bg-white/20 text-white text-sm rounded-full"
+                          className='px-3 py-1 bg-white/20 text-white text-sm rounded-full'
                         >
                           {tag}
                         </span>
@@ -264,9 +264,9 @@ export default function ImageLightbox({
         </AnimatePresence>
 
         {/* Main Content */}
-        <div className="relative max-w-full max-h-full flex items-center justify-center">
+        <div className='relative max-w-full max-h-full flex items-center justify-center'>
           {currentImage.isVideo ? (
-            <div className="relative">
+            <div className='relative'>
               <video
                 src={currentImage.src}
                 className={cn(
@@ -277,17 +277,17 @@ export default function ImageLightbox({
                 autoPlay={isPlaying}
                 onClick={() => setIsZoomed(!isZoomed)}
               />
-              
+
               {/* Video Play Button */}
               {!showControls && (
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+                  className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors'
                 >
                   {isPlaying ? (
-                    <IoPause className="w-8 h-8" />
+                    <IoPause className='w-8 h-8' />
                   ) : (
-                    <IoPlay className="w-8 h-8 ml-1" />
+                    <IoPlay className='w-8 h-8 ml-1' />
                   )}
                 </button>
               )}
@@ -310,7 +310,7 @@ export default function ImageLightbox({
 
         {/* Thumbnail Navigation */}
         {images.length > 1 && (
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 max-w-full overflow-x-auto px-4">
+          <div className='absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 max-w-full overflow-x-auto px-4'>
             {images.map((image, index) => (
               <button
                 key={image.id}
@@ -334,7 +334,7 @@ export default function ImageLightbox({
                   alt={image.alt}
                   width={64}
                   height={64}
-                  className="w-full h-full object-cover"
+                  className='w-full h-full object-cover'
                 />
               </button>
             ))}
@@ -342,7 +342,7 @@ export default function ImageLightbox({
         )}
 
         {/* Keyboard Shortcuts Help */}
-        <div className="absolute bottom-4 right-4 text-white/60 text-xs space-y-1">
+        <div className='absolute bottom-4 right-4 text-white/60 text-xs space-y-1'>
           <div>← → Navigate</div>
           <div>Esc Close</div>
           <div>Z Zoom</div>

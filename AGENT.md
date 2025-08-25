@@ -1,4 +1,5 @@
 # AGENT.md
+
 This file provides guidance to AI coding assistants working in this repository.
 
 **Note:** CLAUDE.md, .clinerules, .cursorrules, .windsurfrules, GEMINI.md, .github/copilot-instructions.md, .idx/airules.md, and .replit.md are symlinks to AGENT.md in this project.
@@ -10,9 +11,11 @@ This is a prototype web development repository for a private business. The proje
 ## Build & Commands
 
 ### Current Status
+
 ⚠️ **Project Setup Required**: This repository needs initial configuration before development can begin.
 
 ### Recommended Initial Setup
+
 ```bash
 # Initialize Node.js project
 npm init -y
@@ -29,7 +32,9 @@ npm install --save-dev jest @testing-library/react  # For testing
 ```
 
 ### Future Commands (to be configured in package.json)
+
 Once the project is initialized, configure these standard scripts:
+
 - **Development**: `npm run dev` - Start development server
 - **Build**: `npm run build` - Build for production
 - **Test**: `npm test` - Run test suite
@@ -38,8 +43,10 @@ Once the project is initialized, configure these standard scripts:
 - **Type Check**: `npm run typecheck` - Run TypeScript compiler checks
 
 ### Script Command Consistency
+
 **Important**: When adding npm scripts to package.json, ensure all references are updated:
-- GitHub Actions workflows (.github/workflows/*.yml)
+
+- GitHub Actions workflows (.github/workflows/\*.yml)
 - README.md documentation
 - This AGENT.md file
 - Any Docker configuration files
@@ -48,6 +55,7 @@ Once the project is initialized, configure these standard scripts:
 ## Code Style
 
 ### General Guidelines
+
 - **Language**: JavaScript/TypeScript for web development
 - **Framework**: To be determined (React, Vue, or vanilla JS)
 - **Module System**: ES6 modules (import/export)
@@ -56,6 +64,7 @@ Once the project is initialized, configure these standard scripts:
 - **Variable Naming**: Use camelCase for variables and functions
 
 ### Import Conventions
+
 ```javascript
 // Third-party imports first
 import React from 'react';
@@ -70,6 +79,7 @@ import './styles.css';
 ```
 
 ### Best Practices
+
 - Use async/await over promises when possible
 - Implement proper error handling with try/catch blocks
 - Add meaningful variable and function names
@@ -79,9 +89,11 @@ import './styles.css';
 ## Testing
 
 ### Testing Philosophy
+
 **When tests fail, fix the code, not the test.**
 
 Key principles:
+
 - **Tests should be meaningful** - Avoid tests that always pass regardless of behavior
 - **Test actual functionality** - Call the functions being tested, don't just check side effects
 - **Failing tests are valuable** - They reveal bugs or missing features
@@ -90,6 +102,7 @@ Key principles:
 - **Document test purpose** - Each test should include a comment explaining why it exists and what it validates
 
 ### Future Testing Setup
+
 - **Framework**: Jest (recommended for JavaScript projects)
 - **Testing Library**: @testing-library/react (for React) or @testing-library/vue (for Vue)
 - **Test File Pattern**: `*.test.js` or `*.spec.js`
@@ -98,6 +111,7 @@ Key principles:
 ## Security
 
 ### Data Protection Guidelines
+
 - Never commit sensitive data (API keys, passwords, tokens)
 - Use environment variables for configuration
 - Validate all user inputs
@@ -106,7 +120,9 @@ Key principles:
 - Keep dependencies updated regularly
 
 ### Environment Variables
+
 Create a `.env.example` file documenting required variables:
+
 ```
 API_URL=https://api.example.com
 NODE_ENV=development
@@ -115,6 +131,7 @@ NODE_ENV=development
 ## Directory Structure & File Organization
 
 ### Reports Directory
+
 ALL project reports and documentation should be saved to the `reports/` directory:
 
 ```
@@ -126,46 +143,55 @@ studiofarzulla.github.cbh/
 ```
 
 ### Report Generation Guidelines
+
 **Important**: ALL reports should be saved to the `reports/` directory with descriptive names:
 
 **Implementation Reports:**
+
 - Phase validation: `PHASE_X_VALIDATION_REPORT.md`
 - Implementation summaries: `IMPLEMENTATION_SUMMARY_[FEATURE].md`
 - Feature completion: `FEATURE_[NAME]_REPORT.md`
 
 **Testing & Analysis Reports:**
+
 - Test results: `TEST_RESULTS_[DATE].md`
 - Coverage reports: `COVERAGE_REPORT_[DATE].md`
 - Performance analysis: `PERFORMANCE_ANALYSIS_[SCENARIO].md`
 - Security scans: `SECURITY_SCAN_[DATE].md`
 
 **Quality & Validation:**
+
 - Code quality: `CODE_QUALITY_REPORT.md`
 - Dependency analysis: `DEPENDENCY_REPORT.md`
 - API compatibility: `API_COMPATIBILITY_REPORT.md`
 
 **Report Naming Conventions:**
+
 - Use descriptive names: `[TYPE]_[SCOPE]_[DATE].md`
 - Include dates: `YYYY-MM-DD` format
 - Group with prefixes: `TEST_`, `PERFORMANCE_`, `SECURITY_`
 - Markdown format: All reports end in `.md`
 
 ### Temporary Files & Debugging
+
 All temporary files, debugging scripts, and test artifacts should be organized in a `/temp` folder:
 
 **Temporary File Organization:**
+
 - **Debug scripts**: `temp/debug-*.js`, `temp/analyze-*.py`
 - **Test artifacts**: `temp/test-results/`, `temp/coverage/`
 - **Generated files**: `temp/generated/`, `temp/build-artifacts/`
 - **Logs**: `temp/logs/debug.log`, `temp/logs/error.log`
 
 **Guidelines:**
+
 - Never commit files from `/temp` directory
 - Use `/temp` for all debugging and analysis scripts created during development
 - Clean up `/temp` directory regularly or use automated cleanup
 - Include `/temp/` in `.gitignore` to prevent accidental commits
 
 ### Example `.gitignore` patterns
+
 ```
 # Temporary files and debugging
 /temp/
@@ -190,15 +216,18 @@ analyze-*.sh
 The `.claude` directory contains Claude Code configuration files with specific version control rules:
 
 #### Version Controlled Files (commit these):
+
 - `.claude/settings.json` - Shared team settings for hooks, tools, and environment
 - `.claude/commands/*.md` - Custom slash commands available to all team members
 - `.claude/hooks/*.sh` - Hook scripts for automated validations and actions
 
 #### Ignored Files (do NOT commit):
+
 - `.claude/settings.local.json` - Personal preferences and local overrides
 - Any `*.local.json` files - Personal configuration not meant for sharing
 
 **Important Notes:**
+
 - Claude Code automatically adds `.claude/settings.local.json` to `.gitignore`
 - The shared `settings.json` should contain team-wide standards (linting, type checking, etc.)
 - Personal preferences or experimental settings belong in `settings.local.json`
@@ -207,12 +236,14 @@ The `.claude` directory contains Claude Code configuration files with specific v
 ## Configuration
 
 ### Development Environment Setup
+
 1. **Node.js**: Install Node.js 18+ and npm
 2. **Git**: Ensure Git is configured with proper user credentials
 3. **IDE**: Use VS Code or similar with appropriate extensions
 4. **Claude Code**: Already configured via GitHub Actions
 
 ### Recommended VS Code Extensions
+
 - ESLint
 - Prettier
 - JavaScript/TypeScript language support
@@ -221,12 +252,15 @@ The `.claude` directory contains Claude Code configuration files with specific v
 ## GitHub Integration
 
 ### Claude Code GitHub Action
+
 This repository has Claude Code integration configured:
+
 - **Trigger**: Use "@claude-code" in issues, comments, or pull requests
 - **Capabilities**: Can read, write, and modify repository content
 - **Workflow File**: `.github/workflows/claude-code.yml`
 
 ### Git Workflow
+
 1. Create feature branches from main
 2. Make changes and test locally
 3. Create pull request with clear description
@@ -242,18 +276,21 @@ This repository has Claude Code integration configured:
 Specialized agents provide deep expertise in specific domains. They have been trained on best practices, common pitfalls, and advanced patterns that general-purpose assistants might miss.
 
 **Key Principles:**
+
 - Always check if a specialized agent exists for your task domain
 - Delegate complex technical problems to domain experts
 - Use diagnostic agents first when the problem scope is unclear
 - Leverage specialists for architecture decisions and optimizations
 
 **Why This Matters:**
+
 - Specialists have deeper, more focused knowledge
 - They're aware of edge cases and subtle bugs
 - They follow established patterns and best practices
 - They can provide more comprehensive solutions
 
 **Discovering Available Agents:**
+
 ```bash
 # Quick check: List agents if claudekit is installed
 command -v claudekit >/dev/null 2>&1 && claudekit list agents || echo "claudekit not installed"

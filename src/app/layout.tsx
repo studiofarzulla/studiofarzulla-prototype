@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return locales.map(locale => ({ locale }));
 }
 
 export default function RootLayout({
@@ -28,7 +28,9 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} min-h-screen bg-white antialiased scroll-smooth`}>
+      <body
+        className={`${inter.variable} ${playfair.variable} min-h-screen bg-white antialiased scroll-smooth`}
+      >
         {children}
       </body>
     </html>

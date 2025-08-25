@@ -170,37 +170,121 @@
       "standard_single": {
         "name": "Standard Single Room",
         "description": "Comfortable accommodation with queen bed and modern amenities",
-        "features": ["Queen size bed", "City/Garden view", "Work desk", "Free WiFi", "Air conditioning", "Safe", "Minibar", "Flat-screen TV", "Private bathroom", "Room service"]
+        "features": [
+          "Queen size bed",
+          "City/Garden view",
+          "Work desk",
+          "Free WiFi",
+          "Air conditioning",
+          "Safe",
+          "Minibar",
+          "Flat-screen TV",
+          "Private bathroom",
+          "Room service"
+        ]
       },
       "standard_twin": {
         "name": "Standard Twin Room",
         "description": "Spacious room with two double beds, perfect for families or colleagues",
-        "features": ["Two double beds", "Garden/Pool view", "Sitting area", "Free WiFi", "Air conditioning", "Safe", "Minibar", "Flat-screen TV", "Private bathroom", "Room service"]
+        "features": [
+          "Two double beds",
+          "Garden/Pool view",
+          "Sitting area",
+          "Free WiFi",
+          "Air conditioning",
+          "Safe",
+          "Minibar",
+          "Flat-screen TV",
+          "Private bathroom",
+          "Room service"
+        ]
       },
       "deluxe_sea": {
         "name": "Deluxe Room with Sea View",
         "description": "Premium accommodation with stunning Caspian Sea views and upgraded amenities",
-        "features": ["King size bed", "Private balcony", "Sea view", "Premium amenities", "Free WiFi", "Air conditioning", "Safe", "Minibar", "Smart TV", "Marble bathroom", "Bathrobes & slippers"]
+        "features": [
+          "King size bed",
+          "Private balcony",
+          "Sea view",
+          "Premium amenities",
+          "Free WiFi",
+          "Air conditioning",
+          "Safe",
+          "Minibar",
+          "Smart TV",
+          "Marble bathroom",
+          "Bathrobes & slippers"
+        ]
       },
       "family_connected": {
         "name": "Connected Family Rooms",
         "description": "Two adjoining rooms with connecting door, ideal for families with children",
-        "features": ["Two separate rooms", "Connecting door", "Multiple bed options", "Family-friendly", "Free WiFi", "Air conditioning", "Safe", "Minibar", "Children amenities", "Extra space", "Room service"]
+        "features": [
+          "Two separate rooms",
+          "Connecting door",
+          "Multiple bed options",
+          "Family-friendly",
+          "Free WiFi",
+          "Air conditioning",
+          "Safe",
+          "Minibar",
+          "Children amenities",
+          "Extra space",
+          "Room service"
+        ]
       },
       "executive_suite": {
         "name": "Executive Suite",
         "description": "Luxurious suite with separate living area and premium business amenities",
-        "features": ["Separate bedroom", "Living room", "Work area", "Premium location", "Sea view", "Free WiFi", "Air conditioning", "Safe", "Premium minibar", "Smart TV", "Luxury bathroom", "Concierge service"]
+        "features": [
+          "Separate bedroom",
+          "Living room",
+          "Work area",
+          "Premium location",
+          "Sea view",
+          "Free WiFi",
+          "Air conditioning",
+          "Safe",
+          "Premium minibar",
+          "Smart TV",
+          "Luxury bathroom",
+          "Concierge service"
+        ]
       },
       "presidential_suite": {
         "name": "Presidential Suite",
         "description": "Ultimate luxury accommodation with panoramic views and exclusive services",
-        "features": ["Master bedroom", "Separate living room", "Dining area", "Private terrace", "Panoramic sea view", "Premium WiFi", "Climate control", "Safe", "Premium bar", "Entertainment system", "Spa bathroom", "Butler service"]
+        "features": [
+          "Master bedroom",
+          "Separate living room",
+          "Dining area",
+          "Private terrace",
+          "Panoramic sea view",
+          "Premium WiFi",
+          "Climate control",
+          "Safe",
+          "Premium bar",
+          "Entertainment system",
+          "Spa bathroom",
+          "Butler service"
+        ]
       },
       "corporate_building": {
         "name": "Corporate Building Units",
         "description": "Entire building rental for corporate events and long-term stays",
-        "features": ["20 rooms per building", "Two-floor layout", "Meeting facilities", "Dedicated entrance", "Group amenities", "Business center", "Conference room", "Catering services", "Parking", "24/7 support", "Custom services"]
+        "features": [
+          "20 rooms per building",
+          "Two-floor layout",
+          "Meeting facilities",
+          "Dedicated entrance",
+          "Group amenities",
+          "Business center",
+          "Conference room",
+          "Catering services",
+          "Parking",
+          "24/7 support",
+          "Custom services"
+        ]
       }
     }
   },
@@ -247,7 +331,7 @@
     "page_subtitle": "Discover luxury amenities designed for your ultimate comfort and enjoyment",
     "private_beach_title": "Private Caspian Beach",
     "private_beach_description": "Exclusive 500m private beach with premium services and water sports",
-    "pools_title": "Infinity & Indoor Pools", 
+    "pools_title": "Infinity & Indoor Pools",
     "pools_description": "Multiple pools for every preference and season",
     "wellness_title": "Wellness Center",
     "wellness_description": "Complete wellness facilities for body and mind",
@@ -281,7 +365,7 @@
     "dj_nights": "DJ Nights & Entertainment"
   },
   "conferences": {
-    "page_title": "Professional Conference & Event Facilities", 
+    "page_title": "Professional Conference & Event Facilities",
     "page_subtitle": "State-of-the-art venues for successful corporate events and meetings",
     "grand_hall_title": "Grand Conference Hall",
     "grand_hall_description": "Main conference facility for up to 300 guests",
@@ -302,7 +386,7 @@
     "corporate_building_title": "Corporate Building Rental",
     "corporate_building_description": "Entire buildings for extended corporate programs",
     "team_building_title": "Team Building & Recreation",
-    "beach_activities": "Beach Team Building Activities", 
+    "beach_activities": "Beach Team Building Activities",
     "indoor_programs": "Indoor Workshop Programs",
     "wellness_programs": "Corporate Wellness Programs",
     "av_equipment": "Professional AV Equipment",

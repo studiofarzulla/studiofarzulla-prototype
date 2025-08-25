@@ -9,7 +9,6 @@ import ImageLightbox from '@/components/gallery/ImageLightbox';
 import InstagramWidget from '@/components/gallery/InstagramWidget';
 import VideoGallery from '@/components/gallery/VideoGallery';
 
-
 // Mock gallery data - In production, this would come from a CMS or API
 const GALLERY_IMAGES = [
   {
@@ -18,8 +17,9 @@ const GALLERY_IMAGES = [
     alt: 'Hotel exterior with beautiful architecture',
     category: 'hotel',
     title: 'Grand Hotel Entrance',
-    description: 'The impressive entrance of The Crescent Beach Hotel welcomes guests with luxury and elegance.',
-    tags: ['architecture', 'entrance', 'luxury', 'exterior']
+    description:
+      'The impressive entrance of The Crescent Beach Hotel welcomes guests with luxury and elegance.',
+    tags: ['architecture', 'entrance', 'luxury', 'exterior'],
   },
   {
     id: '2',
@@ -27,8 +27,9 @@ const GALLERY_IMAGES = [
     alt: 'Luxury hotel room with ocean view',
     category: 'rooms',
     title: 'Ocean View Suite',
-    description: 'Spacious suite with panoramic views of the Caspian Sea and modern amenities.',
-    tags: ['suite', 'ocean view', 'luxury', 'bedroom']
+    description:
+      'Spacious suite with panoramic views of the Caspian Sea and modern amenities.',
+    tags: ['suite', 'ocean view', 'luxury', 'bedroom'],
   },
   {
     id: '3',
@@ -36,8 +37,9 @@ const GALLERY_IMAGES = [
     alt: 'Fine dining restaurant interior',
     category: 'dining',
     title: 'The Terrace Restaurant',
-    description: 'Elegant dining experience with breathtaking sunset views over the sea.',
-    tags: ['restaurant', 'fine dining', 'terrace', 'sunset']
+    description:
+      'Elegant dining experience with breathtaking sunset views over the sea.',
+    tags: ['restaurant', 'fine dining', 'terrace', 'sunset'],
   },
   {
     id: '4',
@@ -45,8 +47,9 @@ const GALLERY_IMAGES = [
     alt: 'Infinity pool overlooking the sea',
     category: 'amenities',
     title: 'Infinity Pool',
-    description: 'Our stunning infinity pool creates the illusion of water extending to the horizon.',
-    tags: ['pool', 'infinity', 'swimming', 'relaxation']
+    description:
+      'Our stunning infinity pool creates the illusion of water extending to the horizon.',
+    tags: ['pool', 'infinity', 'swimming', 'relaxation'],
   },
   {
     id: '5',
@@ -54,8 +57,9 @@ const GALLERY_IMAGES = [
     alt: 'Beach wedding ceremony setup',
     category: 'events',
     title: 'Beach Wedding',
-    description: 'Create unforgettable memories with a romantic beachfront wedding ceremony.',
-    tags: ['wedding', 'beach', 'ceremony', 'romantic']
+    description:
+      'Create unforgettable memories with a romantic beachfront wedding ceremony.',
+    tags: ['wedding', 'beach', 'ceremony', 'romantic'],
   },
   {
     id: '6',
@@ -63,8 +67,9 @@ const GALLERY_IMAGES = [
     alt: 'Spa treatment room with ocean view',
     category: 'amenities',
     title: 'Spa Sanctuary',
-    description: 'Relax and rejuvenate in our tranquil spa with panoramic sea views.',
-    tags: ['spa', 'wellness', 'relaxation', 'treatment']
+    description:
+      'Relax and rejuvenate in our tranquil spa with panoramic sea views.',
+    tags: ['spa', 'wellness', 'relaxation', 'treatment'],
   },
   {
     id: '7',
@@ -72,8 +77,9 @@ const GALLERY_IMAGES = [
     alt: 'Private beach with crystal clear water',
     category: 'beach',
     title: 'Private Beach',
-    description: 'Exclusive access to pristine beach with crystal clear Caspian Sea waters.',
-    tags: ['beach', 'private', 'crystal clear', 'exclusive']
+    description:
+      'Exclusive access to pristine beach with crystal clear Caspian Sea waters.',
+    tags: ['beach', 'private', 'crystal clear', 'exclusive'],
   },
   {
     id: '8',
@@ -81,18 +87,23 @@ const GALLERY_IMAGES = [
     alt: 'Hotel lobby with modern design',
     category: 'hotel',
     title: 'Luxury Lobby',
-    description: 'Grand lobby featuring contemporary design and traditional Azerbaijani elements.',
-    tags: ['lobby', 'interior', 'design', 'luxury']
-  }
+    description:
+      'Grand lobby featuring contemporary design and traditional Azerbaijani elements.',
+    tags: ['lobby', 'interior', 'design', 'luxury'],
+  },
 ];
 
 // Metadata will be handled by parent layout
 
 export default function GalleryPageContent() {
   const t = useTranslations('common');
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'photos' | 'videos' | 'instagram'>('photos');
+  const [activeTab, setActiveTab] = useState<'photos' | 'videos' | 'instagram'>(
+    'photos'
+  );
 
   const handleImageClick = (image: any, index: number) => {
     setSelectedImageIndex(index);
@@ -112,7 +123,9 @@ export default function GalleryPageContent() {
 
   const handlePreviousImage = () => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+      setSelectedImageIndex(
+        (selectedImageIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+      );
     }
   };
 
@@ -128,11 +141,10 @@ export default function GalleryPageContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className='heading-primary text-white mb-4'>
-              {t('gallery')}
-            </h1>
+            <h1 className='heading-primary text-white mb-4'>{t('gallery')}</h1>
             <p className='text-xl mb-6 text-white/90'>
-              Discover the beauty and luxury of The Crescent Beach Hotel through our curated collection of photos and videos
+              Discover the beauty and luxury of The Crescent Beach Hotel through
+              our curated collection of photos and videos
             </p>
             <div className='flex items-center justify-center gap-6 text-white/80'>
               <div className='flex items-center gap-2'>
@@ -198,7 +210,7 @@ export default function GalleryPageContent() {
           <div className='space-y-12'>
             {activeTab === 'photos' && (
               <motion.div
-                key="photos"
+                key='photos'
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -213,7 +225,7 @@ export default function GalleryPageContent() {
 
             {activeTab === 'videos' && (
               <motion.div
-                key="videos"
+                key='videos'
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -225,14 +237,17 @@ export default function GalleryPageContent() {
 
             {activeTab === 'instagram' && (
               <motion.div
-                key="instagram"
+                key='instagram'
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
                 className='max-w-4xl mx-auto'
               >
-                <InstagramWidget username="crescentbeachhotel" hashtag="CrescentBeachHotel" />
+                <InstagramWidget
+                  username='crescentbeachhotel'
+                  hashtag='CrescentBeachHotel'
+                />
               </motion.div>
             )}
           </div>
@@ -240,9 +255,13 @@ export default function GalleryPageContent() {
           {/* Press & Media Section */}
           <div className='mt-16'>
             <div className='bg-white rounded-2xl shadow-lg p-8 text-center'>
-              <h2 className='text-2xl font-bold text-gray-900 mb-4'>Press & Media</h2>
+              <h2 className='text-2xl font-bold text-gray-900 mb-4'>
+                Press & Media
+              </h2>
               <p className='text-gray-600 mb-6 max-w-2xl mx-auto'>
-                High-resolution images available for press and media use. Contact our marketing team for access to our complete media library.
+                High-resolution images available for press and media use.
+                Contact our marketing team for access to our complete media
+                library.
               </p>
               <div className='flex flex-col sm:flex-row gap-4 justify-center'>
                 <button className='flex items-center gap-2 px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium'>

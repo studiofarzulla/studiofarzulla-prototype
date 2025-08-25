@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.SITE_URL || 'https://crescentbeachhotel.com';
   const currentDate = new Date();
-  
+
   // Static pages with high priority
   const staticPages = [
     {
@@ -51,31 +51,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Room pages
-  const roomPages = [
-    'standard',
-    'deluxe',
-    'suite',
-    'family',
-    'corporate'
-  ].map(roomType => ({
-    url: `${baseUrl}/rooms/${roomType}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const roomPages = ['standard', 'deluxe', 'suite', 'family', 'corporate'].map(
+    roomType => ({
+      url: `${baseUrl}/rooms/${roomType}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })
+  );
 
   // Dining pages
-  const diningPages = [
-    'the-terrace',
-    'wild-west',
-    'shade-bar',
-    'pool-bar'
-  ].map(restaurant => ({
-    url: `${baseUrl}/dining/${restaurant}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
+  const diningPages = ['the-terrace', 'wild-west', 'shade-bar', 'pool-bar'].map(
+    restaurant => ({
+      url: `${baseUrl}/dining/${restaurant}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })
+  );
 
   // Amenity pages
   const amenityPages = [
@@ -83,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pools',
     'wellness',
     'kids-club',
-    'entertainment'
+    'entertainment',
   ].map(amenity => ({
     url: `${baseUrl}/amenities/${amenity}`,
     lastModified: currentDate,
@@ -92,10 +85,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Combine all pages
-  return [
-    ...staticPages,
-    ...roomPages,
-    ...diningPages,
-    ...amenityPages,
-  ];
+  return [...staticPages, ...roomPages, ...diningPages, ...amenityPages];
 }

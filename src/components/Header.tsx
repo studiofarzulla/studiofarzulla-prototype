@@ -46,12 +46,21 @@ export default function Header() {
 
   const isActiveLink = (href: string) => {
     if (href === '/') {
-      return pathname === '/' || pathname === '/en' || pathname === '/az' || pathname === '/ru';
+      return (
+        pathname === '/' ||
+        pathname === '/en' ||
+        pathname === '/az' ||
+        pathname === '/ru'
+      );
     }
     return pathname.includes(href);
   };
 
-  const isHomePage = pathname === '/' || pathname === '/en' || pathname === '/az' || pathname === '/ru';
+  const isHomePage =
+    pathname === '/' ||
+    pathname === '/en' ||
+    pathname === '/az' ||
+    pathname === '/ru';
 
   return (
     <header
@@ -59,32 +68,33 @@ export default function Header() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100'
-          : isHomePage 
-          ? 'bg-transparent' 
-          : 'bg-white/95 backdrop-blur-md shadow-soft'
+          : isHomePage
+            ? 'bg-transparent'
+            : 'bg-white/95 backdrop-blur-md shadow-soft'
       )}
     >
       <nav className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16 lg:h-20'>
           {/* Logo */}
-          <Link
-            href='/'
-            className='flex items-center space-x-2 z-50'
-          >
+          <Link href='/' className='flex items-center space-x-2 z-50'>
             <div className='w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center'>
               <span className='text-white font-bold text-xl'>C</span>
             </div>
             <div className='hidden sm:block'>
-              <h1 className={cn(
-                'text-lg font-serif font-bold transition-colors duration-300',
-                isScrolled || !isHomePage ? 'text-gray-900' : 'text-white'
-              )}>
+              <h1
+                className={cn(
+                  'text-lg font-serif font-bold transition-colors duration-300',
+                  isScrolled || !isHomePage ? 'text-gray-900' : 'text-white'
+                )}
+              >
                 {SITE_CONFIG.name}
               </h1>
-              <p className={cn(
-                'text-xs -mt-1 transition-colors duration-300',
-                isScrolled || !isHomePage ? 'text-gray-600' : 'text-gray-200'
-              )}>
+              <p
+                className={cn(
+                  'text-xs -mt-1 transition-colors duration-300',
+                  isScrolled || !isHomePage ? 'text-gray-600' : 'text-gray-200'
+                )}
+              >
                 Luxury Beach Resort
               </p>
             </div>
@@ -92,7 +102,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className='hidden lg:flex items-center space-x-8'>
-            {NAVIGATION_ITEMS.map((item) => (
+            {NAVIGATION_ITEMS.map(item => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -101,8 +111,8 @@ export default function Header() {
                   isActiveLink(item.href)
                     ? 'text-primary-600'
                     : isScrolled || !isHomePage
-                    ? 'text-gray-700'
-                    : 'text-white hover:text-primary-200'
+                      ? 'text-gray-700'
+                      : 'text-white hover:text-primary-200'
                 )}
               >
                 {t(item.key)}
@@ -116,17 +126,17 @@ export default function Header() {
               href={`tel:${CONTACT_INFO.phone}`}
               className={cn(
                 'flex items-center gap-2 text-sm font-medium transition-colors duration-300',
-                isScrolled || !isHomePage 
-                  ? 'text-gray-700 hover:text-primary-600' 
+                isScrolled || !isHomePage
+                  ? 'text-gray-700 hover:text-primary-600'
                   : 'text-white hover:text-primary-200'
               )}
             >
               <IoCall className='w-4 h-4' />
               <span className='hidden xl:inline'>{CONTACT_INFO.phone}</span>
             </Link>
-            
+
             <LanguageSwitcher />
-            
+
             <Link
               href='/contact'
               className={cn(
@@ -143,7 +153,7 @@ export default function Header() {
           {/* Mobile Actions */}
           <div className='flex lg:hidden items-center space-x-4'>
             <LanguageSwitcher />
-            
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={cn(
@@ -176,7 +186,7 @@ export default function Header() {
           >
             <div className='container mx-auto px-4 py-6'>
               <div className='flex flex-col space-y-4'>
-                {NAVIGATION_ITEMS.map((item) => (
+                {NAVIGATION_ITEMS.map(item => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -190,7 +200,7 @@ export default function Header() {
                     {t(item.key)}
                   </Link>
                 ))}
-                
+
                 <div className='pt-4 border-t border-gray-200'>
                   <Link
                     href={`tel:${CONTACT_INFO.phone}`}
@@ -200,7 +210,7 @@ export default function Header() {
                     {CONTACT_INFO.phone}
                   </Link>
                 </div>
-                
+
                 <div className='pt-2'>
                   <Link
                     href='/contact'

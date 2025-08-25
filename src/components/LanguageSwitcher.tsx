@@ -16,7 +16,7 @@ export default function LanguageSwitcher() {
   const locale = useLocale() as Locale;
   const t = useTranslations('navigation');
 
-  const currentLanguage = LANGUAGES.find((lang) => lang.code === locale);
+  const currentLanguage = LANGUAGES.find(lang => lang.code === locale);
 
   const handleLanguageChange = (newLocale: Locale) => {
     const segments = pathname.split('/');
@@ -67,7 +67,7 @@ export default function LanguageSwitcher() {
                 'py-1 max-h-60 overflow-auto'
               )}
             >
-              {LANGUAGES.map((language) => (
+              {LANGUAGES.map(language => (
                 <button
                   key={language.code}
                   onClick={() => handleLanguageChange(language.code as Locale)}

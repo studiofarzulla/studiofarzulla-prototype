@@ -71,29 +71,31 @@
   * {
     @apply border-gray-200;
   }
-  
+
   body {
     @apply bg-white text-gray-900 font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     @apply bg-gray-100;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     @apply bg-primary-300 rounded-full;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary-500;
   }
@@ -103,55 +105,55 @@
   .container {
     @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
-  
+
   .btn {
     @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
   }
-  
+
   .btn-primary {
     @apply btn bg-primary-500 text-white hover:bg-primary-600 px-6 py-3;
   }
-  
+
   .btn-secondary {
     @apply btn bg-secondary-200 text-secondary-800 hover:bg-secondary-300 px-6 py-3;
   }
-  
+
   .btn-accent {
     @apply btn bg-accent-500 text-white hover:bg-accent-600 px-6 py-3;
   }
-  
+
   .btn-outline {
     @apply btn border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-6 py-3;
   }
-  
+
   .section-padding {
     @apply py-16 md:py-24;
   }
-  
+
   .heading-primary {
     @apply text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900;
   }
-  
+
   .heading-secondary {
     @apply text-2xl md:text-3xl lg:text-4xl font-serif font-semibold text-gray-800;
   }
-  
+
   .text-gradient {
     @apply bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent;
   }
-  
+
   .glass-effect {
     @apply bg-white/20 backdrop-blur-md border border-white/30;
   }
-  
+
   .shadow-soft {
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
   }
-  
+
   .shadow-medium {
     box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.15);
   }
-  
+
   .shadow-hard {
     box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
   }
@@ -161,19 +163,19 @@
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-  
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
-  
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }
-  
+
   .animation-delay-800 {
     animation-delay: 800ms;
   }
-  
+
   .animation-delay-1000 {
     animation-delay: 1000ms;
   }
