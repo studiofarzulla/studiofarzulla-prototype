@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import { SITE_CONFIG } from '@/constants';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -87,12 +87,8 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Enable static rendering with setRequestLocale
-  setRequestLocale(locale);
-  
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
+  // Load messages for the specific locale
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
     <NextIntlClientProvider messages={messages}>

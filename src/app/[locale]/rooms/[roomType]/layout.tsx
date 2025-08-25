@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
 
 // Generate static paths for all available rooms
 export async function generateStaticParams() {
@@ -95,9 +94,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function RoomLayout({ children, params: { locale } }: Props) {
-  // Enable static rendering with setRequestLocale
-  setRequestLocale(locale);
-  
+export default function RoomLayout({ children }: Props) {
   return children;
 }
