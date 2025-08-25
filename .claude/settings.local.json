@@ -65,7 +65,8 @@
       "mcp__filesystem__write_file",
       "mcp__filesystem__edit_file",
       "Bash(git config:*)",
-      "Bash(gh run watch:*)"
+      "Bash(gh run watch:*)",
+      "WebFetch(domain:www.instagram.com)"
     ],
     "deny": []
   }

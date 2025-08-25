@@ -2,7 +2,8 @@
 
 > A luxury beach resort website built with Next.js, TypeScript, and Tailwind CSS
 
-[![Deploy Status](https://github.com/studiofarzulla/crescent-beach-hotel/workflows/Build%20and%20Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/studiofarzulla/crescent-beach-hotel/actions)
+[![Deployed on Vercel](https://vercel.com/button)](https://vercel.com)
+[![Deploy Status](https://img.shields.io/badge/Deployment-Vercel-black)](https://farzulla.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
