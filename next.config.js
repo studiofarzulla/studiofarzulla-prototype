@@ -104,6 +104,12 @@ const nextConfig = {
   // Static export for GitHub Pages
   output: 'export',
   trailingSlash: true,
+  
+  // Fix module resolution in GitHub Actions
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
+    return config;
+  },
 };
 
 // Export config directly without next-intl plugin for now
