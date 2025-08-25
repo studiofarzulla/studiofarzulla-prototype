@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { IoLogoInstagram, IoHeart, IoChatbubbleOutline } from 'react-icons/io5';
 
 interface InstagramPost {
@@ -62,34 +61,23 @@ export default function InstagramFeed() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
+          <div
             className="flex items-center justify-center mb-4"
           >
             <IoLogoInstagram className="w-8 h-8 text-primary-600 mr-3" />
             <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900">
               Follow Our Journey
             </h2>
-          </motion.div>
+          </div>
           
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <p
             className="text-lg text-gray-600 max-w-2xl mx-auto mb-6"
           >
             Stay connected with The Crescent Beach Hotel through our Instagram feed. 
             Discover daily moments of luxury, breathtaking views, and unforgettable experiences.
-          </motion.p>
+          </p>
           
-          <motion.a
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+          <a
             href="https://instagram.com/crescentbeachhotel"
             target="_blank"
             rel="noopener noreferrer"
@@ -97,18 +85,14 @@ export default function InstagramFeed() {
           >
             <IoLogoInstagram className="w-5 h-5 mr-2" />
             Follow @crescentbeachhotel
-          </motion.a>
+          </a>
         </div>
 
         {/* Instagram Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4">
           {instagramPosts.map((post, index) => (
-            <motion.div
+            <div
               key={post.id}
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 cursor-pointer"
             >
               {/* Post Image */}
@@ -137,16 +121,13 @@ export default function InstagramFeed() {
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <IoLogoInstagram className="w-6 h-6 text-white" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-12">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
+          <div
             className="bg-gradient-to-r from-gray-50 to-primary-50 rounded-2xl p-8"
           >
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -158,7 +139,7 @@ export default function InstagramFeed() {
             <div className="text-primary-600 font-medium">
               #CrescentBeachHotel #BakuLuxury #CaspianSea
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

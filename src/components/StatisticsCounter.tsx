@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
 import { IconType } from 'react-icons';
 
 interface StatisticCounterProps {
@@ -22,8 +21,26 @@ export default function StatisticsCounter({
   index = 0
 }: StatisticCounterProps) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (isInView) {
@@ -47,12 +64,8 @@ export default function StatisticsCounter({
   }, [isInView, value]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
       className="text-center group"
     >
       <div className="mb-4 flex justify-center">
@@ -70,6 +83,6 @@ export default function StatisticsCounter({
       <p className="text-gray-600 font-medium">
         {label}
       </p>
-    </motion.div>
+    </div>
   );
 }

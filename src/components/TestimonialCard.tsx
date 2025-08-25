@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { IoStarOutline, IoChatboxOutline } from 'react-icons/io5';
 
 interface TestimonialCardProps {
@@ -23,11 +22,7 @@ export default function TestimonialCard({
   index = 0
 }: TestimonialCardProps) {
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+    <div
       className="bg-white p-6 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300"
     >
       {/* Quote Icon */}
@@ -64,6 +59,6 @@ export default function TestimonialCard({
           <p className="text-xs text-gray-500">{date}</p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

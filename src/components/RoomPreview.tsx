@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
   IoPeopleOutline, 
@@ -31,11 +30,7 @@ export default function RoomPreview({
   index = 0
 }: RoomPreviewProps) {
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+    <div
       className="group bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 overflow-hidden"
     >
       {/* Image */}
@@ -116,6 +111,6 @@ export default function RoomPreview({
           </Link>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
