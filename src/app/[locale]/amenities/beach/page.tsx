@@ -1,10 +1,8 @@
-import React from 'react';
 import { Metadata } from 'next';
 import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import BeachSection from '@/components/amenities/BeachSection';
-import { Button } from '@/components/ui/Button';
 import LocaleLink from '@/lib/locale-link';
 import { ArrowLeft, Waves, Umbrella, Volleyball, Ship } from 'lucide-react';
 
