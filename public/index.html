@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=/en/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crescent Beach Hotel - Redirecting...</title>
+    <script>
+        // Redirect to English version
+        const userLang = navigator.language || navigator.userLanguage;
+        let targetLang = 'en';
+        
+        if (userLang.startsWith('az')) {
+            targetLang = 'az';
+        } else if (userLang.startsWith('ru')) {
+            targetLang = 'ru';
+        }
+        
+        window.location.replace('/' + targetLang + '/');
+    </script>
+</head>
+<body style="font-family: system-ui, -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div style="text-align: center;">
+        <h1 style="color: #1e40af;">The Crescent Beach Hotel</h1>
+        <p>Redirecting to your preferred language...</p>
+        <p>If you are not redirected automatically, please choose:</p>
+        <div style="margin-top: 20px;">
+            <a href="/en/" style="margin: 0 10px; color: #1e40af;">English</a>
+            <a href="/az/" style="margin: 0 10px; color: #1e40af;">Azərbaycan</a>
+            <a href="/ru/" style="margin: 0 10px; color: #1e40af;">Русский</a>
+        </div>
+    </div>
+</body>
+</html>
