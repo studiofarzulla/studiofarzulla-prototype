@@ -31,6 +31,9 @@ import TestimonialCard from '@/components/TestimonialCard';
 import StatisticsCounter from '@/components/StatisticsCounter';
 import InstagramFeed from '@/components/InstagramFeed';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Luxury Beach Resort | The Crescent Beach Hotel',
   description: 'Experience unparalleled luxury at The Crescent Beach Hotel on the shores of the Caspian Sea. Premium accommodations, world-class dining, and exceptional amenities await.',

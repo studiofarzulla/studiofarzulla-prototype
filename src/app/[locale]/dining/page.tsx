@@ -1,7 +1,4 @@
-'use client';
-
 import { Metadata } from 'next';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import RestaurantCard from '@/components/RestaurantCard';
@@ -17,6 +14,9 @@ import {
   IoStarOutline,
   IoArrowForwardOutline
 } from 'react-icons/io5';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
 
 // export const metadata: Metadata = {
 //   title: 'Fine Dining & Restaurants | The Crescent Beach Hotel',
@@ -178,34 +178,15 @@ export default function DiningPage() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold mb-6"
-            >
+          <div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Culinary Excellence
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto"
-            >
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
               Experience world-class cuisine at our distinctive restaurants and bars, 
               where international flavors meet the pristine shores of the Caspian Sea
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href="#restaurants"
                 className="bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105"
@@ -218,37 +199,22 @@ export default function DiningPage() {
               >
                 Make Reservation
               </Link>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
-          >
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white/70 rounded-full mt-2" />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Dining Features Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               A Culinary Journey Awaits
             </h2>
@@ -256,16 +222,12 @@ export default function DiningPage() {
               From international à la carte dining to beachfront refreshments, discover 
               a world of flavors and dining experiences across our distinctive venues
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group text-center p-6"
               >
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}>
@@ -273,7 +235,7 @@ export default function DiningPage() {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -282,13 +244,7 @@ export default function DiningPage() {
       {/* Restaurants Section */}
       <section id="restaurants" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Distinctive Restaurants
             </h2>
@@ -296,7 +252,7 @@ export default function DiningPage() {
               Each venue offers a unique atmosphere and culinary experience, from elegant 
               fine dining to casual beachside relaxation
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {restaurants.map((restaurant, index) => (
@@ -321,12 +277,7 @@ export default function DiningPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Private Dining & Special Events
               </h2>
@@ -368,15 +319,9 @@ export default function DiningPage() {
                   View Event Gallery
                 </button>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="relative h-40 rounded-lg overflow-hidden">
@@ -415,7 +360,7 @@ export default function DiningPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -427,13 +372,7 @@ export default function DiningPage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl shadow-soft p-8 text-center"
-            >
+            <div className="bg-white rounded-2xl shadow-soft p-8 text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <IoHomeOutline className="w-8 h-8 text-white" />
               </div>
@@ -445,15 +384,9 @@ export default function DiningPage() {
                 <span>View Room Service Menu</span>
                 <IoArrowForwardOutline className="w-4 h-4" />
               </button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-2xl shadow-soft p-8 text-center"
-            >
+            <div className="bg-white rounded-2xl shadow-soft p-8 text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <IoHeartOutline className="w-8 h-8 text-white" />
               </div>
@@ -465,15 +398,9 @@ export default function DiningPage() {
                 <span>Dietary Information</span>
                 <IoArrowForwardOutline className="w-4 h-4" />
               </button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white rounded-2xl shadow-soft p-8 text-center"
-            >
+            <div className="bg-white rounded-2xl shadow-soft p-8 text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <IoStarOutline className="w-8 h-8 text-white" />
               </div>
@@ -485,7 +412,7 @@ export default function DiningPage() {
                 <span>Reserve Chef's Table</span>
                 <IoArrowForwardOutline className="w-4 h-4" />
               </button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -493,13 +420,7 @@ export default function DiningPage() {
       {/* CTA Section */}
       <section id="reservations" className="py-16 bg-gradient-to-r from-primary-600 to-accent-500">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-white"
-          >
+          <div className="text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready for Your Culinary Journey?
             </h2>
@@ -521,7 +442,7 @@ export default function DiningPage() {
                 <span>Call +994 12 345 6789</span>
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

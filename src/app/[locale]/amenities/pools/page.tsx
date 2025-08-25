@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import { ArrowLeft, Waves, Thermometer, Clock, Users, Droplets } from 'lucide-react';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Swimming Pools - Indoor & Infinity Pools | The Crescent Beach Hotel',
   description: 'Enjoy our stunning infinity pool with Caspian Sea views and heated indoor pool. Premium pool facilities with bar service and luxury loungers.',

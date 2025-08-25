@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import { ArrowLeft, Waves, Umbrella, Volleyball, Ship } from 'lucide-react';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Private Caspian Sea Beach | The Crescent Beach Hotel Amenities',
   description: 'Experience our exclusive private beach on the Caspian Sea with premium sunbeds, water sports, beach volleyball, and professional beachside service.',

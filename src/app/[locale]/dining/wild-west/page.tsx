@@ -1,12 +1,12 @@
-'use client';
-
 import RestaurantHero from '@/components/dining/RestaurantHero';
 import MenuSection from '@/components/dining/MenuSection';
 import ChefProfile from '@/components/dining/ChefProfile';
 import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import ReservationForm from '@/components/dining/ReservationForm';
-import { motion } from 'framer-motion';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
 
 const menuItems = {
   appetizers: [
@@ -272,12 +272,7 @@ export default function WildWestRestaurantPage() {
       <section className="py-16 bg-gradient-to-br from-amber-50 to-orange-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Welcome to the Wild West Experience
               </h2>
@@ -305,7 +300,7 @@ export default function WildWestRestaurantPage() {
                   <div className="text-sm text-gray-500 mt-1">Country music & line dancing</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -344,12 +339,7 @@ export default function WildWestRestaurantPage() {
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-600 text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold mb-6">Authentic BBQ Smoking Process</h2>
               <p className="text-xl text-orange-100 mb-6 leading-relaxed">
                 Our BBQ meats are smoked low and slow for up to 12 hours using traditional 
@@ -380,15 +370,9 @@ export default function WildWestRestaurantPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="/images/dining/wild-west/bbq-smoker.jpg"
@@ -404,7 +388,7 @@ export default function WildWestRestaurantPage() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -424,13 +408,7 @@ export default function WildWestRestaurantPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 text-center"
-            >
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-8 text-center">
               <div className="text-4xl mb-4">🎸</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Live Country Music</h3>
               <p className="text-gray-600 mb-4">
@@ -438,15 +416,9 @@ export default function WildWestRestaurantPage() {
                 local and visiting artists.
               </p>
               <div className="text-sm text-orange-600 font-medium">Fri-Sat 8:00 PM</div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8 text-center"
-            >
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8 text-center">
               <div className="text-4xl mb-4">💃</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Line Dancing</h3>
               <p className="text-gray-600 mb-4">
@@ -454,15 +426,9 @@ export default function WildWestRestaurantPage() {
                 and fun for experienced dancers.
               </p>
               <div className="text-sm text-red-600 font-medium">Saturdays 9:00 PM</div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 text-center"
-            >
+            <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-8 text-center">
               <div className="text-4xl mb-4">🥩</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">BBQ Nights</h3>
               <p className="text-gray-600 mb-4">
@@ -470,7 +436,7 @@ export default function WildWestRestaurantPage() {
                 and authentic Western atmosphere.
               </p>
               <div className="text-sm text-yellow-600 font-medium">Saturdays 8:00 PM</div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,12 +1,12 @@
-'use client';
-
 import RestaurantHero from '@/components/dining/RestaurantHero';
 import MenuSection from '@/components/dining/MenuSection';
 import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import ReservationForm from '@/components/dining/ReservationForm';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
 
 const menuItems = {
   cocktails: [
@@ -242,12 +242,7 @@ export default function ShadeBarPage() {
       <section className="py-16 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Your Perfect Beach Escape
               </h2>
@@ -280,7 +275,7 @@ export default function ShadeBarPage() {
                   <div className="text-sm text-gray-600">Direct access to private beach</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -313,12 +308,7 @@ export default function ShadeBarPage() {
       <section className="py-16 bg-gradient-to-r from-orange-400 to-pink-500 text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold mb-6">The Perfect Sunset Experience</h2>
               <p className="text-xl text-orange-100 mb-6 leading-relaxed">
                 There's no better place to watch the sun set over the Caspian Sea than from 
@@ -349,15 +339,9 @@ export default function ShadeBarPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/dining/shade-bar/sunset-view.jpg"
@@ -374,7 +358,7 @@ export default function ShadeBarPage() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -391,50 +375,32 @@ export default function ShadeBarPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-blue-50 to-teal-50 rounded-2xl p-8 text-center"
-            >
+            <div className="bg-gradient-to-br from-blue-50 to-teal-50 rounded-2xl p-8 text-center">
               <div className="text-4xl mb-4">⛵</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Iconic Sail Structure</h3>
               <p className="text-gray-600">
                 Our distinctive sail canopy provides natural shade while creating a unique 
                 architectural landmark visible throughout the resort.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 text-center"
-            >
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 text-center">
               <div className="text-4xl mb-4">🏖️</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Beach Access</h3>
               <p className="text-gray-600">
                 Step directly from the bar onto our private beach with premium sunbeds 
                 and umbrellas available for guests.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 text-center"
-            >
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 text-center">
               <div className="text-4xl mb-4">🎵</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Ambient Music</h3>
               <p className="text-gray-600">
                 Carefully curated playlist featuring chill-out, lounge, and acoustic music 
                 that perfectly complements the beachside atmosphere.
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -461,27 +427,15 @@ export default function ShadeBarPage() {
       <section className="py-16 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12"
-            >
+            <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Special Offers & Events</h2>
               <p className="text-lg text-gray-600">
                 Make the most of your beach bar experience with our special promotions and events
               </p>
-            </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="bg-white rounded-2xl shadow-soft p-8"
-              >
+              <div className="bg-white rounded-2xl shadow-soft p-8">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Happy Hour Daily</h3>
                 <p className="text-gray-600 mb-4">
                   Enjoy 30% off all cocktails and appetizers during our daily happy hour, 
@@ -491,15 +445,9 @@ export default function ShadeBarPage() {
                   <div className="font-semibold text-teal-700">5:00 PM - 7:00 PM Daily</div>
                   <div className="text-teal-600 text-sm">All cocktails and light bites</div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-2xl shadow-soft p-8"
-              >
+              <div className="bg-white rounded-2xl shadow-soft p-8">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Weekend DJ Sets</h3>
                 <p className="text-gray-600 mb-4">
                   Saturday evenings feature live DJ sets with chill-out and lounge music, 
@@ -509,7 +457,7 @@ export default function ShadeBarPage() {
                   <div className="font-semibold text-purple-700">Saturdays 8:00 PM - 12:00 AM</div>
                   <div className="text-purple-600 text-sm">Chill-out & lounge vibes</div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -519,12 +467,7 @@ export default function ShadeBarPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Visit The Shade Bar</h2>
               <p className="text-lg text-gray-600 mb-8">
                 No reservations required - simply walk in and find your perfect spot under our iconic sail. 
@@ -556,7 +499,7 @@ export default function ShadeBarPage() {
                   View Location Map
                 </button>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

@@ -17,6 +17,9 @@ import {
   Leaf
 } from 'lucide-react';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Wellness Center - Gym, Sauna & Spa | The Crescent Beach Hotel',
   description: 'Rejuvenate at our comprehensive wellness center featuring modern fitness facilities, steam & dry saunas, spa treatments, and professional wellness programs.',

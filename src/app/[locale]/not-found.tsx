@@ -1,22 +1,19 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import { IoHome, IoCall, IoSearch, IoArrowBack } from 'react-icons/io5';
 import { CONTACT_INFO, NAVIGATION_ITEMS } from '@/constants';
 
-export default function NotFoundPage() {
-  const params = useParams();
-  const locale = params.locale as string;
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default function NotFoundPage({ params }: PageProps) {
+  const { locale } = params;
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           {/* 404 Illustration */}
           <div className="relative mb-8">
             <div className="text-9xl font-bold text-primary-200 select-none">
@@ -30,12 +27,7 @@ export default function NotFoundPage() {
           </div>
 
           {/* Error Message */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-8"
-          >
+          <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Page Not Found
             </h1>
@@ -44,15 +36,10 @@ export default function NotFoundPage() {
               Don't worry, there are plenty of other beautiful destinations to explore at 
               The Crescent Beach Hotel.
             </p>
-          </motion.div>
+          </div>
 
           {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link
               href={`/${locale}`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
@@ -61,13 +48,14 @@ export default function NotFoundPage() {
               Back to Homepage
             </Link>
             
-            <button
-              onClick={() => window.history.back()}
+            <Link
+              href="#"
+              onClick={(e) => { e.preventDefault(); if (typeof window !== 'undefined') window.history.back(); }}
               className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
             >
               <IoArrowBack className="w-5 h-5" />
               Go Back
-            </button>
+            </Link>
 
             <a
               href={`tel:${CONTACT_INFO.phone}`}
@@ -76,26 +64,16 @@ export default function NotFoundPage() {
               <IoCall className="w-5 h-5" />
               Call for Help
             </a>
-          </motion.div>
+          </div>
 
           {/* Quick Navigation */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="bg-white rounded-2xl shadow-lg p-8"
-          >
+          <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Popular Pages
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {NAVIGATION_ITEMS.slice(0, 6).map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.3 }}
-                >
+                <div key={item.href}>
                   <Link
                     href={item.href}
                     className="block p-4 bg-gray-50 hover:bg-primary-50 rounded-lg transition-colors group"
@@ -107,18 +85,13 @@ export default function NotFoundPage() {
                       {getPageDescription(item.key)}
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
-            className="mt-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl p-8 text-white"
-          >
+          <div className="mt-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">Need Assistance?</h3>
             <p className="text-white/90 mb-6">
               Our friendly staff is available 24/7 to help you find what you're looking for
@@ -156,15 +129,10 @@ export default function NotFoundPage() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Search Suggestions */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="mt-8 text-center"
-          >
+          <div className="mt-8 text-center">
             <p className="text-sm text-gray-500 mb-4">
               You might have been looking for:
             </p>
@@ -177,19 +145,16 @@ export default function NotFoundPage() {
                 'Beach Access',
                 'Hotel Amenities'
               ].map((suggestion, index) => (
-                <motion.span
+                <span
                   key={suggestion}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.4 + index * 0.1, duration: 0.3 }}
                   className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-primary-100 hover:text-primary-700 cursor-pointer transition-colors"
                 >
                   {suggestion}
-                </motion.span>
+                </span>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

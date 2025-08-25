@@ -17,6 +17,9 @@ import {
   Mail
 } from 'lucide-react';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Professional Conference & Corporate Event Facilities | The Crescent Beach Hotel',
   description: 'Host successful corporate events at The Crescent Beach Hotel. State-of-the-art conference facilities, meeting rooms, and comprehensive event packages. Trusted by Saipem, BP, Baku City Circuit.',

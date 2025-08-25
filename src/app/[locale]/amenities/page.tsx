@@ -20,6 +20,9 @@ import {
   Clock
 } from 'lucide-react';
 
+// Force static generation for this page
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Luxury Hotel Amenities & Facilities | The Crescent Beach Hotel',
   description: 'Discover world-class amenities at The Crescent Beach Hotel: private Caspian Sea beach, infinity pools, wellness center with saunas, kids club, entertainment stage, and premium facilities.',

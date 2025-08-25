@@ -1,12 +1,12 @@
-'use client';
-
 import RestaurantHero from '@/components/dining/RestaurantHero';
 import MenuSection from '@/components/dining/MenuSection';
 import ChefProfile from '@/components/dining/ChefProfile';
 import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import ReservationForm from '@/components/dining/ReservationForm';
-import { motion } from 'framer-motion';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
 
 const menuItems = {
   breakfast: [
@@ -281,12 +281,7 @@ export default function TerraceRestaurantPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Where Culinary Art Meets Ocean Views
               </h2>
@@ -311,7 +306,7 @@ export default function TerraceRestaurantPage() {
                   <div className="text-gray-600">Wine Selections</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -353,12 +348,7 @@ export default function TerraceRestaurantPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Premium Wine & Beverage Selection</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Our extensive wine collection features over 200 carefully selected wines from renowned 
@@ -389,15 +379,9 @@ export default function TerraceRestaurantPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-soft">
                 <img
                   src="/images/dining/terrace/wine-cellar.jpg"
@@ -413,7 +397,7 @@ export default function TerraceRestaurantPage() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

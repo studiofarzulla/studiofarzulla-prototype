@@ -1,8 +1,4 @@
-'use client';
-
-import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import RoomGallery from '@/components/rooms/RoomGallery';
 import RoomAmenities from '@/components/rooms/RoomAmenities';
@@ -18,6 +14,30 @@ import {
   IoLocationOutline,
   IoShieldCheckmarkOutline
 } from 'react-icons/io5';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
+
+// Generate static params for all room types
+export function generateStaticParams() {
+  const roomTypes = [
+    'standard-single',
+    'standard-twin',
+    'deluxe-sea-view',
+    'junior-suite',
+    'family-suite',
+    'presidential-suite'
+  ];
+  
+  const locales = ['en', 'az', 'ru'];
+  
+  return locales.flatMap(locale => 
+    roomTypes.map(roomType => ({
+      locale,
+      roomType
+    }))
+  );
+}
 
 // Room data - this would typically come from an API
 const roomsData = {
@@ -334,9 +354,8 @@ const roomsData = {
   },
 };
 
-export default function RoomDetailPage() {
-  const params = useParams();
-  const roomType = params.roomType as string;
+export default function RoomDetailPage({ params }: { params: { roomType: string, locale: string } }) {
+  const roomType = params.roomType;
   const t = useTranslations('rooms');
   const tCommon = useTranslations('common');
 
@@ -379,11 +398,7 @@ export default function RoomDetailPage() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Room Header */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="mb-8"
-            >
+            <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                   room.roomType === 'standard' ? 'bg-blue-100 text-blue-800' :
@@ -432,29 +447,19 @@ export default function RoomDetailPage() {
                   <div className="font-semibold text-gray-900">{room.building}</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Room Gallery */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="mb-12"
-            >
+            <div className="mb-12">
               <RoomGallery 
                 images={room.images} 
                 roomName={room.name}
                 className="group"
               />
-            </motion.div>
+            </div>
 
             {/* Room Details */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mb-12"
-            >
+            <div className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Room Details</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
@@ -499,29 +504,19 @@ export default function RoomDetailPage() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Amenities */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="mb-12"
-            >
+            <div className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Room Features & Amenities</h2>
               <RoomAmenities 
                 amenities={room.features} 
                 roomType={room.roomType}
               />
-            </motion.div>
+            </div>
 
             {/* Location & Nearby */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mb-12"
-            >
+            <div className="mb-12">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Location & Nearby</h2>
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="flex items-center mb-4">
@@ -540,37 +535,29 @@ export default function RoomDetailPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Pricing */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
+            <div>
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Pricing & Offers</h2>
               <PriceDisplay 
                 basePrice={room.basePrice}
                 roomType={room.roomType}
                 viewType={room.viewType}
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* Booking Sidebar */}
           <div className="lg:col-span-1">
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
+            <div>
               <BookingCard 
                 roomId={room.id}
                 roomName={room.name}
                 basePrice={room.basePrice}
                 availability="available"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+
+// Force static generation for this page
+export const dynamic = 'force-static';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
