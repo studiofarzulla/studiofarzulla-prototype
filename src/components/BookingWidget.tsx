@@ -18,8 +18,9 @@ export default function BookingWidget() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle booking submission
-    console.log('Booking:', { checkIn, checkOut, guests, rooms });
+    // Show booking information in alert for now
+    // In production, this would integrate with a real booking system
+    alert(`Booking Request Received!\n\nCheck-in: ${checkIn || 'Not selected'}\nCheck-out: ${checkOut || 'Not selected'}\nGuests: ${guests}\nRooms: ${rooms}\n\nPlease contact us at +994 12 599 88 88 to complete your reservation.`);
   };
 
   const getTomorrowDate = () => {
@@ -158,12 +159,12 @@ export default function BookingWidget() {
       <div className='mt-6 pt-6 border-t border-gray-200'>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 text-center'>
           <div>
-            <p className='text-2xl font-bold text-primary-600'>200+</p>
+            <p className='text-2xl font-bold text-primary-600'>262</p>
             <p className='text-sm text-gray-600'>Luxury Rooms</p>
           </div>
           <div>
-            <p className='text-2xl font-bold text-primary-600'>9</p>
-            <p className='text-sm text-gray-600'>Buildings</p>
+            <p className='text-2xl font-bold text-primary-600'>24/7</p>
+            <p className='text-sm text-gray-600'>Room Service</p>
           </div>
           <div>
             <p className='text-2xl font-bold text-primary-600'>2</p>

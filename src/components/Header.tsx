@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import LocaleLink from '@/lib/locale-link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from '@/lib/LocaleProvider';
 import { IoMenu, IoClose, IoCall } from 'react-icons/io5';
@@ -75,7 +76,7 @@ export default function Header() {
       <nav className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16 lg:h-20'>
           {/* Logo */}
-          <Link href='/' className='flex items-center space-x-2 z-50'>
+          <LocaleLink href='/' className='flex items-center space-x-2 z-50'>
             <div className='w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center'>
               <span className='text-white font-bold text-xl'>C</span>
             </div>
@@ -97,12 +98,12 @@ export default function Header() {
                 Luxury Beach Resort
               </p>
             </div>
-          </Link>
+          </LocaleLink>
 
           {/* Desktop Navigation */}
           <div className='hidden lg:flex items-center space-x-8'>
             {NAVIGATION_ITEMS.map(item => (
-              <Link
+              <LocaleLink
                 key={item.href}
                 href={item.href}
                 className={cn(
@@ -115,13 +116,13 @@ export default function Header() {
                 )}
               >
                 {t(item.key)}
-              </Link>
+              </LocaleLink>
             ))}
           </div>
 
           {/* Desktop Actions */}
           <div className='hidden lg:flex items-center space-x-4'>
-            <Link
+            <LocaleLink
               href={`tel:${CONTACT_INFO.phone}`}
               className={cn(
                 'flex items-center gap-2 text-sm font-medium transition-colors duration-300',
@@ -132,11 +133,11 @@ export default function Header() {
             >
               <IoCall className='w-4 h-4' />
               <span className='hidden xl:inline'>{CONTACT_INFO.phone}</span>
-            </Link>
+            </LocaleLink>
 
             <LanguageSwitcher />
 
-            <Link
+            <LocaleLink
               href='/contact'
               className={cn(
                 'px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg',
@@ -146,7 +147,7 @@ export default function Header() {
               )}
             >
               {t('common.book_now')}
-            </Link>
+            </LocaleLink>
           </div>
 
           {/* Mobile Actions */}
@@ -179,7 +180,7 @@ export default function Header() {
             <div className='container mx-auto px-4 py-6'>
               <div className='flex flex-col space-y-4'>
                 {NAVIGATION_ITEMS.map(item => (
-                  <Link
+                  <LocaleLink
                     key={item.href}
                     href={item.href}
                     className={cn(
@@ -190,7 +191,7 @@ export default function Header() {
                     )}
                   >
                     {t(item.key)}
-                  </Link>
+                  </LocaleLink>
                 ))}
 
                 <div className='pt-4 border-t border-gray-200'>
@@ -204,12 +205,12 @@ export default function Header() {
                 </div>
 
                 <div className='pt-2'>
-                  <Link
+                  <LocaleLink
                     href='/contact'
                     className='btn-primary w-full justify-center'
                   >
                     {t('common.book_now')}
-                  </Link>
+                  </LocaleLink>
                 </div>
               </div>
             </div>

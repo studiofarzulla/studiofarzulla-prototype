@@ -98,9 +98,9 @@ export default function ContactPageContent() {
         <div className='container mx-auto px-4 relative z-10'>
           <div className='text-center text-white max-w-4xl mx-auto animate-fade-in-up'>
             <h1 className='text-5xl md:text-6xl font-bold mb-6'>
-              {t('title')}
+              {t('page_title')}
             </h1>
-            <p className='text-xl md:text-2xl text-white/90'>{t('subtitle')}</p>
+            <p className='text-xl md:text-2xl text-white/90'>{t('page_subtitle')}</p>
           </div>
         </div>
       </section>

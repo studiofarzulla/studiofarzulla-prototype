@@ -1,0 +1,112 @@
+version: 2
+
+updates:
+  # Enable version updates for npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "studiofarzulla"
+    assignees:
+      - "studiofarzulla"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "automated"
+    # Group dependency updates to reduce PR noise
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-*"
+          - "@types/react*"
+      next:
+        patterns:
+          - "next"
+          - "@next/*"
+      typescript:
+        patterns:
+          - "typescript"
+          - "@typescript-eslint/*"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+      eslint:
+        patterns:
+          - "eslint"
+          - "eslint-*"
+      testing:
+        patterns:
+          - "*test*"
+          - "*jest*"
+          - "@testing-library/*"
+    # Ignore specific dependencies that require manual updates
+    ignore:
+      - dependency-name: "node"
+        # Ignore major version updates for Node.js
+        update-types: ["version-update:semver-major"]
+    # Auto-merge minor and patch updates for trusted dependencies
+    allow:
+      - dependency-type: "direct"
+        update-type: "security"
+      - dependency-type: "indirect"
+        update-type: "security"
+    rebase-strategy: "auto"
+    target-branch: "main"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "studiofarzulla"
+    assignees:
+      - "studiofarzulla"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "ci/cd"
+      - "automated"
+    # Group GitHub Actions updates
+    groups:
+      actions:
+        patterns:
+          - "actions/*"
+        exclude-patterns:
+          - "actions/checkout"
+          - "actions/setup-node"
+    rebase-strategy: "auto"
+    target-branch: "main"
+
+  # Enable version updates for Docker (if using Docker in the future)
+  # - package-ecosystem: "docker"
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #     day: "monday"
+  #     time: "06:00"
+  #     timezone: "UTC"
+  #   open-pull-requests-limit: 5
+  #   reviewers:
+  #     - "studiofarzulla"
+  #   commit-message:
+  #     prefix: "docker"
+  #     include: "scope"
+  #   labels:
+  #     - "docker"
+  #     - "automated"

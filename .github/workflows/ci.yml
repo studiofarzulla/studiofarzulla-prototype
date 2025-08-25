@@ -1,0 +1,207 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Job to detect changes and set up conditional execution
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      dependencies: ${{ steps.changes.outputs.dependencies }}
+      source: ${{ steps.changes.outputs.source }}
+      workflows: ${{ steps.changes.outputs.workflows }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      
+      - name: Detect changes
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: changes
+        with:
+          filters: |
+            dependencies:
+              - 'package*.json'
+              - 'yarn.lock'
+              - 'pnpm-lock.yaml'
+            source:
+              - 'src/**'
+              - 'public/**'
+              - '*.js'
+              - '*.ts'
+              - '*.tsx'
+              - '*.json'
+              - '*.md'
+            workflows:
+              - '.github/workflows/**'
+
+  # Main CI job with matrix strategy
+  ci:
+    name: CI (Node.js ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.source == 'true' || needs.changes.outputs.dependencies == 'true' || needs.changes.outputs.workflows == 'true'
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Cache Next.js build
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false
+
+      - name: Check code formatting with Prettier
+        run: npm run prettier:check
+
+      - name: Type check with TypeScript
+        run: npm run type-check
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          NODE_ENV: production
+          SITE_URL: https://farzulla.org
+
+      - name: Test build output
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Build output directory 'out' not found"
+            exit 1
+          fi
+          
+          if [ ! -f "out/index.html" ]; then
+            echo "index.html not found in build output"
+            exit 1
+          fi
+          
+          echo "Build output validation successful"
+
+      - name: Upload build artifacts
+        if: matrix.node-version == '20.x'
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        with:
+          name: build-output
+          path: out/
+          retention-days: 7
+
+  # Code quality analysis job
+  code-quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.source == 'true'
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for better analysis
+
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run TypeScript compiler (strict mode)
+        run: npx tsc --noEmit --strict
+
+      - name: Analyze bundle size
+        run: |
+          npm run build:analyze || echo "Bundle analysis not available"
+
+      - name: Check for unused dependencies
+        run: |
+          npx depcheck --ignores="@types/*,eslint-*,prettier,autoprefixer,postcss,tailwindcss" || echo "Depcheck completed with warnings"
+
+  # Security and dependency check
+  security:
+    name: Security Analysis
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.dependencies == 'true' || needs.changes.outputs.source == 'true'
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Check for known vulnerabilities
+        run: |
+          npx audit-ci --high || echo "Audit completed with findings"
+
+  # Status check job
+  ci-status:
+    name: CI Status
+    runs-on: ubuntu-latest
+    needs: [changes, ci, code-quality, security]
+    if: always()
+    
+    steps:
+      - name: Check CI results
+        run: |
+          echo "Changes detected: ${{ needs.changes.outputs.source || needs.changes.outputs.dependencies || needs.changes.outputs.workflows }}"
+          echo "CI result: ${{ needs.ci.result }}"
+          echo "Code quality result: ${{ needs.code-quality.result }}"
+          echo "Security result: ${{ needs.security.result }}"
+          
+          if [[ "${{ needs.ci.result }}" == "failure" || "${{ needs.code-quality.result }}" == "failure" || "${{ needs.security.result }}" == "failure" ]]; then
+            echo "One or more CI checks failed"
+            exit 1
+          elif [[ "${{ needs.ci.result }}" == "skipped" && "${{ needs.code-quality.result }}" == "skipped" && "${{ needs.security.result }}" == "skipped" ]]; then
+            echo "No relevant changes detected, CI skipped"
+          else
+            echo "All CI checks passed successfully"
+          fi

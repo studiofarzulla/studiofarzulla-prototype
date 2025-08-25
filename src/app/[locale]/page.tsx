@@ -1,6 +1,6 @@
 import { getTranslations } from '@/lib/static-translations';
 import { Metadata } from 'next';
-import Link from 'next/link';
+import LocaleLink from '@/lib/locale-link';
 import {
   IoStar,
   IoWifi,
@@ -112,7 +112,7 @@ export default function HomePage({ params }: PageProps) {
 
   // Statistics
   const statistics = [
-    { icon: 'bed', value: 200, label: 'Luxury Rooms', suffix: '+' },
+    { icon: 'bed', value: 262, label: 'Luxury Rooms' },
     { icon: 'home', value: 9, label: 'Buildings' },
     { icon: 'restaurant', value: 2, label: 'Restaurants' },
     { icon: 'globe', value: 50, label: 'Countries Served', suffix: '+' },
@@ -261,8 +261,8 @@ export default function HomePage({ params }: PageProps) {
 
             <p className='text-lg text-gray-600 mb-8 leading-relaxed'>
               For decades, The Crescent Beach Hotel has stood as a beacon of
-              excellence on Azerbaijan's most prestigious beachfront. Spanning
-              nine magnificent buildings with over 200 luxurious rooms, we offer
+              excellence on Azerbaijan's most prestigious beachfront. With
+              262 luxurious rooms and extensive leisure facilities, we offer
               an unmatched blend of traditional Azerbaijani hospitality and
               modern sophistication.
             </p>
@@ -344,13 +344,13 @@ export default function HomePage({ params }: PageProps) {
           </div>
 
           <div className='text-center mt-12'>
-            <Link
+            <LocaleLink
               href='/rooms'
               className='btn-primary text-lg px-8 py-4 inline-flex items-center'
             >
               View All Rooms
               <IoArrowForward className='ml-2 w-5 h-5' />
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>
@@ -515,12 +515,12 @@ export default function HomePage({ params }: PageProps) {
                 Special corporate rates and comprehensive packages for business
                 travelers and conference groups.
               </p>
-              <Link
+              <LocaleLink
                 href='/conferences'
                 className='text-primary-600 font-medium hover:text-primary-700'
               >
                 Learn More →
-              </Link>
+              </LocaleLink>
             </div>
 
             <div className='bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300'>
@@ -532,12 +532,12 @@ export default function HomePage({ params }: PageProps) {
                 Exclusive seasonal membership with beach access, dining
                 privileges, and special event invitations.
               </p>
-              <Link
+              <LocaleLink
                 href='/contact'
                 className='text-accent-600 font-medium hover:text-accent-700'
               >
                 Join Now →
-              </Link>
+              </LocaleLink>
             </div>
 
             <div className='bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300'>
@@ -549,12 +549,12 @@ export default function HomePage({ params }: PageProps) {
                 Earn points with every stay and enjoy exclusive benefits, room
                 upgrades, and personalized services.
               </p>
-              <Link
+              <LocaleLink
                 href='/contact'
                 className='text-secondary-600 font-medium hover:text-secondary-700'
               >
                 Sign Up →
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -577,20 +577,20 @@ export default function HomePage({ params }: PageProps) {
           </p>
 
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <Link
+            <LocaleLink
               href='/rooms'
               className='bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl'
             >
               Book Your Stay
               <IoArrowForward className='ml-2 w-5 h-5' />
-            </Link>
+            </LocaleLink>
 
-            <Link
+            <LocaleLink
               href='/contact'
               className='border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200'
             >
               Contact Us
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>

@@ -1,0 +1,176 @@
+name: "CodeQL Security Analysis"
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run CodeQL analysis every Monday at 6:00 AM UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: javascript-typescript
+            build-mode: none
+        # Add more languages as needed:
+        # - language: python
+        #   build-mode: none
+        # - language: java-kotlin
+        #   build-mode: autobuild
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+          # Override default query suite with security-extended
+          queries: security-extended,security-and-quality
+          # Custom queries can be added here
+          # queries: +.github/codeql/custom-queries.ql
+
+      - name: Setup Node.js (if needed for analysis)
+        if: matrix.language == 'javascript-typescript'
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies (for better analysis)
+        if: matrix.language == 'javascript-typescript'
+        run: |
+          npm ci --prefer-offline --no-audit --ignore-scripts
+        continue-on-error: true
+
+      # If build-mode is 'manual', add build steps here
+      # - name: Manual build step
+      #   if: matrix.build-mode == 'manual'
+      #   run: |
+      #     npm run build
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
+        with:
+          category: "/language:${{ matrix.language }}"
+          # Upload SARIF results even if there are findings
+          upload: true
+          # Wait for processing to complete
+          wait-for-processing: true
+
+      - name: Upload CodeQL results as artifact
+        if: always()
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        with:
+          name: codeql-results-${{ matrix.language }}
+          path: |
+            /home/runner/work/_temp/codeql_databases/
+            /home/runner/work/_temp/codeql-sarif-*
+          retention-days: 7
+        continue-on-error: true
+
+  # Job to check for security advisories
+  security-advisories:
+    name: Security Advisories Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Check for security vulnerabilities
+        run: |
+          echo "Running npm audit..."
+          npm audit --audit-level=moderate || npm audit --audit-level=moderate --json > audit-results.json
+          
+          if [ -f audit-results.json ]; then
+            echo "Security audit completed. Results:"
+            cat audit-results.json | jq '.vulnerabilities | length' || echo "No vulnerabilities JSON to parse"
+          fi
+        continue-on-error: true
+
+      - name: Upload security audit results
+        if: always()
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4.3.1
+        with:
+          name: security-audit-results
+          path: audit-results.json
+          retention-days: 30
+        continue-on-error: true
+
+  # Dependency review for pull requests
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@72eb03d02c7872a771aacd928f3123ac62ad6d3a # v4.3.2
+        with:
+          # Block PRs with high or critical vulnerabilities
+          fail-on-severity: high
+          # Allow licenses (customize as needed)
+          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+          # Deny specific licenses
+          deny-licenses: GPL-2.0, GPL-3.0
+          # Comment on PR with results
+          comment-summary-in-pr: always
+          # Configuration for vulnerability reporting
+          vulnerability-check: true
+          license-check: true
+          
+  # Security status check
+  security-status:
+    name: Security Status
+    runs-on: ubuntu-latest
+    needs: [analyze, security-advisories]
+    if: always()
+    
+    steps:
+      - name: Check security analysis results
+        run: |
+          echo "CodeQL Analysis result: ${{ needs.analyze.result }}"
+          echo "Security Advisories result: ${{ needs.security-advisories.result }}"
+          
+          if [[ "${{ needs.analyze.result }}" == "failure" ]]; then
+            echo "❌ CodeQL analysis failed or found critical security issues"
+            exit 1
+          elif [[ "${{ needs.security-advisories.result }}" == "failure" ]]; then
+            echo "⚠️  Security advisories check completed with warnings"
+            echo "✅ No critical security issues found by CodeQL"
+          else
+            echo "✅ All security checks passed successfully"
+          fi
