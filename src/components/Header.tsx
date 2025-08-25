@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
 import { IoMenu, IoClose, IoCall } from 'react-icons/io5';
 import { NAVIGATION_ITEMS, SITE_CONFIG, CONTACT_INFO } from '@/constants';
 import { cn } from '@/lib/utils';
@@ -175,15 +174,8 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className='lg:hidden bg-white border-t border-gray-200 shadow-medium'
-          >
+      {isMenuOpen && (
+        <div className='lg:hidden bg-white border-t border-gray-200 shadow-medium transition-all duration-300'>
             <div className='container mx-auto px-4 py-6'>
               <div className='flex flex-col space-y-4'>
                 {NAVIGATION_ITEMS.map(item => (
@@ -221,9 +213,8 @@ export default function Header() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </header>
   );
 }

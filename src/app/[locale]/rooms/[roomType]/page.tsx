@@ -1,9 +1,10 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import RoomGallery from '@/components/rooms/RoomGallery';
 import RoomAmenities from '@/components/rooms/RoomAmenities';
 import PriceDisplay from '@/components/rooms/PriceDisplay';
 import BookingCard from '@/components/rooms/BookingCard';
+import BackButton from '@/components/ui/BackButton';
 import {
   IoArrowBackOutline,
   IoPeopleOutline,
@@ -368,11 +369,11 @@ const roomsData = {
 export default function RoomDetailPage({
   params,
 }: {
-  params: { roomType: string; locale: string };
+  params?: { roomType?: string; locale?: string };
 }) {
-  const roomType = params.roomType;
-  const t = useTranslations('rooms');
-  const tCommon = useTranslations('common');
+  const roomType = params?.roomType;
+  const t = getTranslations(params?.locale || 'en');
+  const tCommon = getTranslations(params?.locale || 'en');
 
   const room = roomsData[roomType as keyof typeof roomsData];
 
@@ -386,9 +387,9 @@ export default function RoomDetailPage({
           <p className='text-gray-600 mb-6'>
             The room you're looking for doesn't exist.
           </p>
-          <button onClick={() => window.history.back()} className='btn-primary'>
+          <BackButton className='btn-primary'>
             Go Back
-          </button>
+          </BackButton>
         </div>
       </div>
     );
@@ -399,13 +400,10 @@ export default function RoomDetailPage({
       {/* Navigation */}
       <div className='bg-white border-b border-gray-200 sticky top-16 z-40'>
         <div className='container mx-auto px-4 py-4'>
-          <button
-            onClick={() => window.history.back()}
-            className='flex items-center text-primary-600 hover:text-primary-700 transition-colors'
-          >
+          <BackButton className='flex items-center text-primary-600 hover:text-primary-700 transition-colors border-0 px-0 py-0 bg-transparent hover:bg-transparent'>
             <IoArrowBackOutline className='w-5 h-5 mr-2' />
             Back to Rooms
-          </button>
+          </BackButton>
         </div>
       </div>
 

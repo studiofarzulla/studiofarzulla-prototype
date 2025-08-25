@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { SITE_CONFIG } from '@/constants';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { LocaleProvider } from '@/lib/LocaleProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -82,21 +81,29 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params?: { locale?: string };
 }) {
-  // Load messages for the specific locale
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const locale = params?.locale || 'en';
+  
+  // Load messages for static export
+  let messages;
+  try {
+    messages = (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    // Fallback to English messages
+    messages = (await import(`../../../messages/en.json`)).default;
+  }
 
   return (
-    <NextIntlClientProvider messages={messages}>
+    <LocaleProvider locale={locale} messages={messages}>
       <div className='flex flex-col min-h-screen'>
         <Header />
         <main className='flex-1 pt-16 lg:pt-20'>{children}</main>
         <Footer />
       </div>
-    </NextIntlClientProvider>
+    </LocaleProvider>
   );
 }

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   IoAirplane,
   IoCarSport,
@@ -203,12 +202,12 @@ export default function DirectionsCard({ className }: DirectionsCardProps) {
   return (
     <div className={cn('space-y-8', className)}>
       {DIRECTION_ROUTES.map((route, routeIndex) => (
-        <motion.div
+        <div
           key={route.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: routeIndex * 0.2 }}
-          className='bg-white rounded-2xl shadow-lg overflow-hidden'
+          className='bg-white rounded-2xl shadow-lg overflow-hidden animate-fade-in-up'
+          style={{
+            animationDelay: `${routeIndex * 200}ms`
+          }}
         >
           {/* Route Header */}
           <div
@@ -251,12 +250,12 @@ export default function DirectionsCard({ className }: DirectionsCardProps) {
           <div className='p-6'>
             <div className='space-y-6'>
               {route.steps.map((step, stepIndex) => (
-                <motion.div
+                <div
                   key={stepIndex}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: routeIndex * 0.2 + stepIndex * 0.1 }}
-                  className='relative'
+                  className='relative animate-slide-in-left'
+                  style={{
+                    animationDelay: `${(routeIndex * 200) + (stepIndex * 100)}ms`
+                  }}
                 >
                   {/* Connection Line */}
                   {stepIndex < route.steps.length - 1 && (
@@ -325,7 +324,7 @@ export default function DirectionsCard({ className }: DirectionsCardProps) {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -343,7 +342,7 @@ export default function DirectionsCard({ className }: DirectionsCardProps) {
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       ))}
 
       {/* Additional Information */}

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
+
 import {
   IoTrendingDownOutline,
   IoTrendingUpOutline,
@@ -288,11 +288,7 @@ export default function PriceDisplay({
 
         {/* Price Breakdown */}
         {showBreakdown && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            className='bg-gray-50 rounded-lg p-4 mb-6'
-          >
+          <div className='bg-gray-50 rounded-lg p-4 mb-6'>
             <h4 className='font-medium text-gray-900 mb-3'>Price Breakdown</h4>
             <div className='space-y-2 text-sm'>
               <div className='flex justify-between'>
@@ -341,7 +337,7 @@ export default function PriceDisplay({
                 <span>{formatPrice(getCurrentPrice())}</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
 

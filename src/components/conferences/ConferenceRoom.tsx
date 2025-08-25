@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import {
@@ -33,16 +33,31 @@ interface ConferenceRoomProps {
   rooms: RoomSpecification[];
 }
 
+// Helper function to get icon component from name
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    'users': Users,
+    'monitor': Monitor,
+    'wifi': Wifi,
+    'coffee': Coffee,
+    'car': Car,
+    'utensils': Utensils,
+    'mic': Mic,
+    'presentation': Presentation,
+  };
+  return iconMap[iconName] || Monitor;
+};
+
 export default function ConferenceRoom({ rooms }: ConferenceRoomProps) {
   const t = useTranslations('conferences');
 
   const standardEquipment = [
-    { name: 'High-Definition Projectors', icon: Monitor },
-    { name: 'Professional Sound System', icon: Mic },
-    { name: 'Wireless Presentation System', icon: Presentation },
-    { name: 'High-Speed Internet', icon: Wifi },
-    { name: 'Climate Control', icon: Monitor },
-    { name: 'Natural Lighting', icon: Monitor },
+    { name: 'High-Definition Projectors', iconName: 'monitor' },
+    { name: 'Professional Sound System', iconName: 'mic' },
+    { name: 'Wireless Presentation System', iconName: 'presentation' },
+    { name: 'High-Speed Internet', iconName: 'wifi' },
+    { name: 'Climate Control', iconName: 'monitor' },
+    { name: 'Natural Lighting', iconName: 'monitor' },
   ];
 
   return (
@@ -185,7 +200,7 @@ export default function ConferenceRoom({ rooms }: ConferenceRoomProps) {
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             {standardEquipment.map((equipment, index) => {
-              const IconComponent = equipment.icon;
+              const IconComponent = getIconComponent(equipment.iconName);
               return (
                 <div
                   key={index}

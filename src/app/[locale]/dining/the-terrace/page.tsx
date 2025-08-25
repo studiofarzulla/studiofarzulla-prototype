@@ -277,7 +277,8 @@ const chefProfile = {
     'Cuisine is the art of transforming simple ingredients into extraordinary experiences, where every dish tells a story of culture, tradition, and innovation.',
 };
 
-export default function TerraceRestaurantPage() {
+interface PageProps {  params?: { locale?: string };}
+export default function TerraceRestaurantPage({ params }: PageProps) {
   return (
     <div className='min-h-screen'>
       {/* Restaurant Hero */}

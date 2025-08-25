@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   IoLogoFacebook,
   IoLogoInstagram,
@@ -148,15 +147,15 @@ export default function SocialLinks({
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {SOCIAL_PLATFORMS.map((platform, index) => (
-            <motion.a
+            <a
               key={platform.name}
               href={platform.url}
               target='_blank'
               rel='noopener noreferrer'
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className='group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden'
+              className='group relative bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden animate-fade-in-up'
+              style={{
+                animationDelay: `${index * 100}ms`
+              }}
             >
               {/* Background Gradient */}
               <div
@@ -226,7 +225,7 @@ export default function SocialLinks({
 
               {/* Hover Effect */}
               <div className='absolute inset-0 border-2 border-transparent group-hover:border-gray-200 rounded-xl transition-colors' />
-            </motion.a>
+            </a>
           ))}
         </div>
       </div>
@@ -240,15 +239,15 @@ export default function SocialLinks({
         </p>
         <div className='flex flex-wrap gap-2 mb-6'>
           {HASHTAGS.map((hashtag, index) => (
-            <motion.span
+            <span
               key={hashtag}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
-              className='px-3 py-1 bg-white/20 rounded-full text-sm font-medium hover:bg-white/30 transition-colors cursor-pointer'
+              className='px-3 py-1 bg-white/20 rounded-full text-sm font-medium hover:bg-white/30 transition-colors cursor-pointer animate-fade-in-scale'
+              style={{
+                animationDelay: `${index * 50}ms`
+              }}
             >
               {hashtag}
-            </motion.span>
+            </span>
           ))}
         </div>
         <div className='text-sm text-white/80'>

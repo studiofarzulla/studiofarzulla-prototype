@@ -262,6 +262,7 @@ const specialHours = [
   },
 ];
 
+interface PageProps {  params?: { locale?: string };}
 export default function PoolBarPage() {
   return (
     <div className='min-h-screen'>

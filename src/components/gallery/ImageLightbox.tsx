@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import {
   IoClose,
   IoChevronBack,
@@ -141,26 +141,16 @@ export default function ImageLightbox({
   if (!isOpen || !currentImage) return null;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className='fixed inset-0 z-50 bg-black/95 flex items-center justify-center'
+    <div
+      className='fixed inset-0 z-50 bg-black/95 flex items-center justify-center'
         onClick={e => {
           if (e.target === e.currentTarget) onClose();
         }}
         onMouseMove={() => setShowControls(true)}
       >
         {/* Navigation Controls */}
-        <AnimatePresence>
-          {showControls && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className='absolute inset-0 pointer-events-none'
-            >
+        {showControls && (
+          <div className='absolute inset-0 pointer-events-none'>
               {/* Header Controls */}
               <div className='absolute top-0 left-0 right-0 bg-gradient-to-b from-black/50 to-transparent p-4 pointer-events-auto'>
                 <div className='flex items-center justify-between'>
@@ -259,9 +249,8 @@ export default function ImageLightbox({
                   )}
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+        )}
 
         {/* Main Content */}
         <div className='relative max-w-full max-h-full flex items-center justify-center'>
@@ -348,7 +337,6 @@ export default function ImageLightbox({
           <div>Z Zoom</div>
           {currentImage.isVideo && <div>Space Play/Pause</div>}
         </div>
-      </motion.div>
-    </AnimatePresence>
+    </div>
   );
 }

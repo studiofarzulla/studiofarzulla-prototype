@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import BeachSection from '@/components/amenities/BeachSection';
@@ -16,8 +16,12 @@ export const metadata: Metadata = {
     'Experience our exclusive private beach on the Caspian Sea with premium sunbeds, water sports, beach volleyball, and professional beachside service.',
 };
 
-export default function BeachPage() {
-  const t = useTranslations('amenities');
+interface PageProps {
+  params?: { locale?: string };
+}
+
+export default function BeachPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   return (
     <div className='min-h-screen'>
@@ -41,7 +45,7 @@ export default function BeachPage() {
         description='Enjoy pristine private access to the Caspian Sea with professional beach services, water sports, and luxury amenities in a completely private setting.'
         backgroundImage='/images/amenities/private-beach-hero.jpg'
         ctaText='Reserve Beach Access'
-        ctaAction={() => console.log('Reserve beach access')}
+        ctaLink='/contact'
       />
 
       {/* Beach Overview */}

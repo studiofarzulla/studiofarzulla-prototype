@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { IoLocation, IoNavigate, IoCar, IoTime, IoCall } from 'react-icons/io5';
 import { cn } from '@/lib/utils';
 import { CONTACT_INFO } from '@/constants';
@@ -103,13 +102,9 @@ export default function InteractiveMap({ className }: MapProps) {
       {/* Content */}
       <div className='p-6'>
         {activeTab === 'map' ? (
-          <motion.div
+          <div
             key='map'
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.3 }}
-            className='space-y-6'
+            className='space-y-6 animate-slide-in-left'
           >
             {/* Map Placeholder */}
             <div className='relative aspect-video bg-gray-100 rounded-lg overflow-hidden'>
@@ -191,25 +186,21 @@ export default function InteractiveMap({ className }: MapProps) {
                 Call Hotel
               </a>
             </div>
-          </motion.div>
+          </div>
         ) : (
-          <motion.div
+          <div
             key='directions'
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            className='space-y-6'
+            className='space-y-6 animate-slide-in-right'
           >
             {/* Transportation Options */}
             <div className='space-y-4'>
               {transportOptions.map((option, index) => (
-                <motion.div
+                <div
                   key={option.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className='flex items-start gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors'
+                  className='flex items-start gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors animate-fade-in-up'
+                  style={{
+                    animationDelay: `${index * 100}ms`
+                  }}
                 >
                   <div
                     className={cn(
@@ -235,7 +226,7 @@ export default function InteractiveMap({ className }: MapProps) {
                       {option.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
@@ -284,7 +275,7 @@ export default function InteractiveMap({ className }: MapProps) {
                 Call Concierge: {CONTACT_INFO.phone}
               </a>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </div>

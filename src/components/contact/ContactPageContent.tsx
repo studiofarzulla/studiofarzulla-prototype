@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
 import {
   IoCall,
   IoMail,
@@ -90,19 +89,6 @@ export default function ContactPageContent() {
     },
   ];
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 },
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
   return (
     <div className='min-h-screen bg-white'>
@@ -110,17 +96,12 @@ export default function ContactPageContent() {
       <section className='relative bg-gradient-to-br from-primary-500 to-primary-700 py-32'>
         <div className='absolute inset-0 bg-black/20' />
         <div className='container mx-auto px-4 relative z-10'>
-          <motion.div
-            className='text-center text-white max-w-4xl mx-auto'
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className='text-center text-white max-w-4xl mx-auto animate-fade-in-up'>
             <h1 className='text-5xl md:text-6xl font-bold mb-6'>
               {t('title')}
             </h1>
             <p className='text-xl md:text-2xl text-white/90'>{t('subtitle')}</p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -128,7 +109,7 @@ export default function ContactPageContent() {
       <section className='bg-gray-50 py-8 border-b'>
         <div className='container mx-auto px-4'>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
-            <motion.div className='flex items-center space-x-3' {...fadeInUp}>
+            <div className='flex items-center space-x-3 animate-fade-in-up'>
               <div className='bg-primary-100 p-3 rounded-full'>
                 <IoCall className='h-6 w-6 text-primary-600' />
               </div>
@@ -136,13 +117,9 @@ export default function ContactPageContent() {
                 <p className='text-sm text-gray-600'>Call Us</p>
                 <p className='font-semibold'>{contactInfo.phone}</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className='flex items-center space-x-3'
-              {...fadeInUp}
-              transition={{ delay: 0.1 }}
-            >
+            <div className='flex items-center space-x-3 animate-fade-in-up animation-delay-100'>
               <div className='bg-primary-100 p-3 rounded-full'>
                 <IoMail className='h-6 w-6 text-primary-600' />
               </div>
@@ -150,13 +127,9 @@ export default function ContactPageContent() {
                 <p className='text-sm text-gray-600'>Email</p>
                 <p className='font-semibold'>{contactInfo.email}</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className='flex items-center space-x-3'
-              {...fadeInUp}
-              transition={{ delay: 0.2 }}
-            >
+            <div className='flex items-center space-x-3 animate-fade-in-up animation-delay-200'>
               <div className='bg-primary-100 p-3 rounded-full'>
                 <IoLocation className='h-6 w-6 text-primary-600' />
               </div>
@@ -164,13 +137,9 @@ export default function ContactPageContent() {
                 <p className='text-sm text-gray-600'>Location</p>
                 <p className='font-semibold'>{contactInfo.address}</p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className='flex items-center space-x-3'
-              {...fadeInUp}
-              transition={{ delay: 0.3 }}
-            >
+            <div className='flex items-center space-x-3 animate-fade-in-up animation-delay-300'>
               <div className='bg-primary-100 p-3 rounded-full'>
                 <IoTime className='h-6 w-6 text-primary-600' />
               </div>
@@ -178,7 +147,7 @@ export default function ContactPageContent() {
                 <p className='text-sm text-gray-600'>Support</p>
                 <p className='font-semibold'>{contactInfo.hours}</p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -188,48 +157,30 @@ export default function ContactPageContent() {
         <div className='container mx-auto px-4'>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12'>
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className='animate-slide-in-left'>
               <h2 className='text-3xl font-bold mb-6'>Send Us a Message</h2>
               <p className='text-gray-600 mb-8'>
                 Have a question or special request? Fill out the form below and
                 our team will get back to you within 24 hours.
               </p>
               <ContactForm />
-            </motion.div>
+            </div>
 
             {/* Department Contacts */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className='animate-slide-in-right'>
               <h2 className='text-3xl font-bold mb-6'>Department Contacts</h2>
               <p className='text-gray-600 mb-8'>
                 Connect directly with our specialized departments for faster
                 service.
               </p>
 
-              <motion.div
-                className='space-y-4'
-                variants={staggerContainer}
-                initial='initial'
-                whileInView='animate'
-                viewport={{ once: true }}
-              >
+              <div className='space-y-4'>
                 {departments.map(dept => {
                   const Icon = dept.icon;
                   return (
-                    <motion.div
+                    <div
                       key={dept.id}
-                      className='bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer'
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02 }}
+                      className='bg-white border rounded-lg p-6 hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105'
                     >
                       <div className='flex items-start space-x-4'>
                         <div className='bg-gradient-to-br from-primary-500 to-primary-600 p-3 rounded-lg'>
@@ -270,11 +221,11 @@ export default function ContactPageContent() {
                           </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -282,20 +233,14 @@ export default function ContactPageContent() {
       {/* Map Section */}
       <section className='py-16 bg-gray-50'>
         <div className='container mx-auto px-4'>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className='text-center mb-12'
-          >
+          <div className='text-center mb-12 animate-fade-in-up'>
             <h2 className='text-3xl font-bold mb-4'>Find Us</h2>
             <p className='text-gray-600 max-w-2xl mx-auto'>
               Located on the stunning shores of the Caspian Sea, just 35 minutes
               from Baku city center and 45 minutes from Heydar Aliyev
               International Airport.
             </p>
-          </motion.div>
+          </div>
 
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
             <InteractiveMap />
@@ -307,13 +252,7 @@ export default function ContactPageContent() {
       {/* FAQ Section */}
       <section className='py-16'>
         <div className='container mx-auto px-4'>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className='max-w-3xl mx-auto'
-          >
+          <div className='max-w-3xl mx-auto animate-fade-in-up'>
             <h2 className='text-3xl font-bold text-center mb-12'>
               Frequently Asked Questions
             </h2>
@@ -362,7 +301,7 @@ export default function ContactPageContent() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

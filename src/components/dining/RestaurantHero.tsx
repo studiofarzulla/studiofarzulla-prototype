@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   IoLocationOutline,
@@ -39,20 +38,9 @@ export default function RestaurantHero({
       {/* Background Images Slideshow */}
       <div className='absolute inset-0'>
         {images.map((image, index) => (
-          <motion.div
+          <div
             key={index}
             className='absolute inset-0'
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{
-              opacity: index === 0 ? 1 : 0,
-              scale: 1,
-            }}
-            transition={{
-              duration: 1.5,
-              delay: index * 5,
-              repeat: Infinity,
-              repeatDelay: images.length * 5 - 5,
-            }}
           >
             <Image
               src={image}
@@ -61,7 +49,7 @@ export default function RestaurantHero({
               className='object-cover'
               priority={index === 0}
             />
-          </motion.div>
+          </div>
         ))}
 
         {/* Overlay */}
@@ -70,56 +58,38 @@ export default function RestaurantHero({
 
       {/* Content */}
       <div className='relative z-10 container mx-auto px-4 text-center text-white'>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <div
         >
           {/* Cuisine Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+          <div
             className='inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6'
           >
             <span className='text-sm font-medium'>{cuisine} Cuisine</span>
-          </motion.div>
+          </div>
 
           {/* Restaurant Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+          <h1
             className='text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent'
           >
             {name}
-          </motion.h1>
+          </h1>
 
           {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+          <p
             className='text-xl md:text-2xl mb-6 text-gray-200'
           >
             {tagline}
-          </motion.p>
+          </p>
 
           {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+          <p
             className='text-lg max-w-3xl mx-auto mb-8 leading-relaxed text-gray-300'
           >
             {description}
-          </motion.p>
+          </p>
 
           {/* Restaurant Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+          <div
             className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8'
           >
             <div className='flex items-center justify-center space-x-3 bg-white/10 backdrop-blur-sm rounded-lg p-4'>
@@ -134,14 +104,11 @@ export default function RestaurantHero({
               <IoPeopleOutline className='w-6 h-6 text-accent-400' />
               <span className='font-medium'>{capacity}</span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Features */}
           {features.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+            <div
               className='flex flex-wrap justify-center gap-3 mb-8'
             >
               {features.map((feature, index) => (
@@ -152,14 +119,11 @@ export default function RestaurantHero({
                   {feature}
                 </span>
               ))}
-            </motion.div>
+            </div>
           )}
 
           {/* Call to Actions */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+          <div
             className='flex flex-col sm:flex-row gap-4 justify-center items-center'
           >
             <button className='bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105'>
@@ -177,25 +141,20 @@ export default function RestaurantHero({
                 <span className='font-medium'>{phone}</span>
               </a>
             )}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2 }}
+      <div
         className='absolute bottom-8 left-1/2 transform -translate-x-1/2'
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+        <div
           className='w-6 h-10 border-2 border-white/50 rounded-full flex justify-center'
         >
           <div className='w-1 h-3 bg-white/70 rounded-full mt-2' />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

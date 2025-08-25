@@ -1,15 +1,16 @@
 import Link from 'next/link';
-import { IoHome, IoCall, IoSearch, IoArrowBack } from 'react-icons/io5';
+import { IoHome, IoCall, IoSearch } from 'react-icons/io5';
 import { CONTACT_INFO, NAVIGATION_ITEMS } from '@/constants';
+import BackButton from '@/components/ui/BackButton';
 
 interface PageProps {
-  params: {
-    locale: string;
+  params?: {
+    locale?: string;
   };
 }
 
 export default function NotFoundPage({ params }: PageProps) {
-  const { locale } = params;
+  const locale = params?.locale || 'en';
   return (
     <div className='min-h-screen bg-gray-50 flex items-center justify-center px-4'>
       <div className='max-w-4xl mx-auto text-center'>
@@ -48,17 +49,7 @@ export default function NotFoundPage({ params }: PageProps) {
               Back to Homepage
             </Link>
 
-            <Link
-              href='#'
-              onClick={e => {
-                e.preventDefault();
-                if (typeof window !== 'undefined') window.history.back();
-              }}
-              className='inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium'
-            >
-              <IoArrowBack className='w-5 h-5' />
-              Go Back
-            </Link>
+            <BackButton />
 
             <a
               href={`tel:${CONTACT_INFO.phone}`}

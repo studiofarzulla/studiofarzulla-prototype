@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import {
   IoPlay,
   IoPause,
@@ -149,11 +149,7 @@ export default function VideoGallery({
     <div className='space-y-8'>
       {/* Featured Video Player */}
       {selectedVideo && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className='bg-black rounded-2xl overflow-hidden shadow-2xl'
-        >
+        <div className='bg-black rounded-2xl overflow-hidden shadow-2xl'>
           <div className='relative aspect-video'>
             <video
               ref={videoRef}
@@ -250,7 +246,7 @@ export default function VideoGallery({
               </span>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Video Thumbnail Grid */}
@@ -261,11 +257,8 @@ export default function VideoGallery({
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
           {videos.map((video, index) => (
-            <motion.div
+            <div
               key={video.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
               className={cn(
                 'group relative cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300',
                 selectedVideo?.id === video.id && 'ring-2 ring-primary-500'
@@ -305,7 +298,7 @@ export default function VideoGallery({
                   {video.category}
                 </span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

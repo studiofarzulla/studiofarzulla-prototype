@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { IoSearch, IoGrid, IoList, IoFilter } from 'react-icons/io5';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -127,14 +127,8 @@ export default function GalleryGrid({
       </div>
 
       {/* Category Filters */}
-      <AnimatePresence>
-        {isFilterOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className='overflow-hidden'
-          >
+      {isFilterOpen && (
+        <div className='overflow-hidden'>
             <div className='bg-white border border-gray-200 rounded-lg p-4'>
               <h3 className='text-sm font-medium text-gray-900 mb-3'>
                 Categories
@@ -157,9 +151,8 @@ export default function GalleryGrid({
                 ))}
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
 
       {/* Results Count */}
       <div className='flex items-center justify-between'>
@@ -185,20 +178,15 @@ export default function GalleryGrid({
             : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'
         )}
       >
-        <AnimatePresence>
-          {filteredImages.map((image, index) => (
-            <motion.div
-              key={image.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className={cn(
-                'group relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer',
-                viewMode === 'masonry' ? 'break-inside-avoid' : 'aspect-[4/3]'
-              )}
-              onClick={() => onImageClick(image, index)}
-            >
+        {filteredImages.map((image, index) => (
+          <div
+            key={image.id}
+            className={cn(
+              'group relative overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer',
+              viewMode === 'masonry' ? 'break-inside-avoid' : 'aspect-[4/3]'
+            )}
+            onClick={() => onImageClick(image, index)}
+          >
               <div className='relative'>
                 <Image
                   src={image.src}
@@ -243,9 +231,8 @@ export default function GalleryGrid({
                   </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+            </div>
+        ))}
       </div>
 
       {/* Empty State */}

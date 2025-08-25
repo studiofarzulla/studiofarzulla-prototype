@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import {
@@ -15,13 +15,26 @@ import {
 interface BeachActivity {
   name: string;
   description: string;
-  icon: any;
+  iconName: string;
   available: boolean;
 }
 
 interface BeachSectionProps {
   activities?: BeachActivity[];
 }
+
+// Helper function to get icon component from name
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    'volleyball': Volleyball,
+    'ship': Ship,
+    'umbrella': Umbrella,
+    'sparkles': Sparkles,
+    'waves': Waves,
+    'users': Users,
+  };
+  return iconMap[iconName] || Sparkles;
+};
 
 export default function BeachSection({ activities }: BeachSectionProps) {
   const t = useTranslations('amenities');
@@ -30,25 +43,25 @@ export default function BeachSection({ activities }: BeachSectionProps) {
     {
       name: 'Beach Volleyball',
       description: 'Professional court with equipment provided',
-      icon: Volleyball,
+      iconName: 'volleyball',
       available: true,
     },
     {
       name: 'Water Sports',
       description: 'Kayaking, paddleboarding, and more',
-      icon: Ship,
+      iconName: 'ship',
       available: true,
     },
     {
       name: 'Premium Sunbeds',
       description: 'Luxury loungers with umbrellas and service',
-      icon: Umbrella,
+      iconName: 'umbrella',
       available: true,
     },
     {
       name: 'Beach Parties',
       description: 'Special events and celebrations',
-      icon: Sparkles,
+      iconName: 'sparkles',
       available: true,
     },
   ];
@@ -119,7 +132,7 @@ export default function BeachSection({ activities }: BeachSectionProps) {
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
             {beachActivities.map((activity, index) => {
-              const IconComponent = activity.icon;
+              const IconComponent = getIconComponent(activity.iconName);
               return (
                 <div
                   key={index}

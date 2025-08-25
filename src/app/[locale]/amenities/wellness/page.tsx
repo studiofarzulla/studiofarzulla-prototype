@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import WellnessFeatures from '@/components/amenities/WellnessFeatures';
+import WellnessStats from '@/components/wellness/WellnessStats';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import {
@@ -27,14 +28,15 @@ export const metadata: Metadata = {
     'Rejuvenate at our comprehensive wellness center featuring modern fitness facilities, steam & dry saunas, spa treatments, and professional wellness programs.',
 };
 
-export default function WellnessPage() {
-  const t = useTranslations('amenities');
+interface PageProps {  params?: { locale?: string };}
+export default function WellnessPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   const wellnessStats = [
-    { number: '200+', label: 'Fitness Equipment Pieces', icon: Dumbbell },
-    { number: '15+', label: 'Spa Treatment Options', icon: Leaf },
-    { number: '4', label: 'Sauna Facilities', icon: Droplets },
-    { number: '24/7', label: 'Fitness Center Access', icon: Clock },
+    { number: '200+', label: 'Fitness Equipment Pieces', iconName: 'dumbbell' },
+    { number: '15+', label: 'Spa Treatment Options', iconName: 'leaf' },
+    { number: '4', label: 'Sauna Facilities', iconName: 'droplets' },
+    { number: '24/7', label: 'Fitness Center Access', iconName: 'clock' },
   ];
 
   const fitnessEquipment = [
@@ -117,28 +119,13 @@ export default function WellnessPage() {
         description='Rejuvenate at our state-of-the-art wellness center featuring modern fitness equipment, traditional saunas, professional spa treatments, and personalized wellness programs.'
         backgroundImage='/images/amenities/wellness-hero.jpg'
         ctaText='Book Wellness Session'
-        ctaAction={() => console.log('Book wellness session')}
+        ctaLink='/contact'
       />
 
       {/* Wellness Stats */}
       <section className='py-12 bg-white border-b'>
         <div className='container mx-auto px-4'>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
-            {wellnessStats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <div key={index} className='text-center'>
-                  <div className='bg-green-100 p-4 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center'>
-                    <IconComponent className='h-10 w-10 text-green-600' />
-                  </div>
-                  <div className='text-3xl font-bold text-green-600 mb-2'>
-                    {stat.number}
-                  </div>
-                  <p className='text-gray-600 text-sm'>{stat.label}</p>
-                </div>
-              );
-            })}
-          </div>
+          <WellnessStats stats={wellnessStats} />
         </div>
       </section>
 

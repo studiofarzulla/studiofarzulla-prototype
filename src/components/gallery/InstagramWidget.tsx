@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+
 import {
   IoLogoInstagram,
   IoHeart,
@@ -201,11 +201,8 @@ export default function InstagramWidget({
         ) : (
           <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
             {posts.map((post, index) => (
-              <motion.div
+              <div
                 key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
                 className='group relative aspect-square rounded-lg overflow-hidden cursor-pointer'
               >
                 <Image
@@ -241,7 +238,7 @@ export default function InstagramWidget({
                   className='absolute inset-0 z-10'
                   aria-label={`View Instagram post: ${post.caption.slice(0, 50)}`}
                 />
-              </motion.div>
+              </div>
             ))}
           </div>
         )}

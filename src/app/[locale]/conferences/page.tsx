@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import ConferenceRoom from '@/components/conferences/ConferenceRoom';
@@ -28,8 +28,9 @@ export const metadata: Metadata = {
     'Host successful corporate events at The Crescent Beach Hotel. State-of-the-art conference facilities, meeting rooms, and comprehensive event packages. Trusted by Saipem, BP, Baku City Circuit.',
 };
 
-export default function ConferencesPage() {
-  const t = useTranslations('common');
+interface PageProps {  params?: { locale?: string };}
+export default function ConferencesPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   const conferenceRooms = [
     {
@@ -127,7 +128,7 @@ export default function ConferencesPage() {
         description='Host successful corporate events, conferences, and meetings in our state-of-the-art facilities with comprehensive support services and stunning Caspian Sea views.'
         backgroundImage='/images/conferences/conference-hero.jpg'
         ctaText='Schedule Site Visit'
-        ctaAction={() => console.log('Schedule site visit')}
+        ctaLink='/contact'
       />
 
       {/* Quick Stats */}

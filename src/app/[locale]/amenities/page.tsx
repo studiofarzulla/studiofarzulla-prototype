@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import AmenityCard from '@/components/amenities/AmenityCard';
@@ -7,6 +7,7 @@ import BeachSection from '@/components/amenities/BeachSection';
 import WellnessFeatures from '@/components/amenities/WellnessFeatures';
 import PoolInfo from '@/components/amenities/PoolInfo';
 import ActivitySchedule from '@/components/amenities/ActivitySchedule';
+import QuickAccessNav from '@/components/amenities/QuickAccessNav';
 import { Button } from '@/components/ui/Button';
 import {
   Waves,
@@ -30,14 +31,15 @@ export const metadata: Metadata = {
     'Discover world-class amenities at The Crescent Beach Hotel: private Caspian Sea beach, infinity pools, wellness center with saunas, kids club, entertainment stage, and premium facilities.',
 };
 
-export default function AmenitiesPage() {
-  const t = useTranslations('common');
+interface PageProps {  params?: { locale?: string };}
+export default function AmenitiesPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   const amenities = [
     {
       title: 'Private Caspian Beach',
       description: 'Exclusive 500m private beach with premium services',
-      icon: Waves,
+      iconName: 'waves',
       image: '/images/amenities/private-beach.jpg',
       features: [
         'Direct Caspian Sea access',
@@ -52,7 +54,7 @@ export default function AmenitiesPage() {
     {
       title: 'Infinity & Indoor Pools',
       description: 'Multiple pools for every preference and season',
-      icon: Waves,
+      iconName: 'waves',
       image: '/images/amenities/pools.jpg',
       features: [
         'Outdoor infinity pool',
@@ -67,7 +69,7 @@ export default function AmenitiesPage() {
     {
       title: 'Wellness Center',
       description: 'Complete wellness facilities for body and mind',
-      icon: Dumbbell,
+      iconName: 'dumbbell',
       image: '/images/amenities/wellness.jpg',
       features: [
         'Modern fitness center',
@@ -82,7 +84,7 @@ export default function AmenitiesPage() {
     {
       title: 'Kids Club & Family Area',
       description: 'Safe and fun environment for children',
-      icon: Baby,
+      iconName: 'baby',
       image: '/images/amenities/kids-club.jpg',
       features: [
         'Supervised play area',
@@ -97,7 +99,7 @@ export default function AmenitiesPage() {
     {
       title: 'The Shade Bar',
       description: 'Unique sail-covered beachside relaxation',
-      icon: Umbrella,
+      iconName: 'umbrella',
       image: '/images/amenities/shade-bar.jpg',
       features: [
         'Iconic sail structure',
@@ -111,7 +113,7 @@ export default function AmenitiesPage() {
     {
       title: 'Entertainment Stage',
       description: 'Professional venue for events and performances',
-      icon: Music,
+      iconName: 'music',
       image: '/images/amenities/entertainment-stage.jpg',
       features: [
         'Professional sound system',
@@ -169,35 +171,21 @@ export default function AmenitiesPage() {
         subtitle='Experience luxury at every turn'
         description='From our private Caspian Sea beach to our comprehensive wellness facilities, every amenity is designed to create unforgettable experiences for our guests.'
         backgroundImage='/images/amenities/amenities-hero.jpg'
-        ctaText='Explore All Facilities'
-        ctaAction={() => console.log('Scroll to amenities')}
       />
 
       {/* Quick Access Navigation */}
       <section className='py-12 bg-white border-b'>
         <div className='container mx-auto px-4'>
-          <div className='flex flex-wrap justify-center gap-4'>
-            {[
-              { name: 'Private Beach', icon: Waves, href: '#beach' },
-              { name: 'Pools', icon: Waves, href: '#pools' },
-              { name: 'Wellness', icon: Dumbbell, href: '#wellness' },
-              { name: 'Kids Club', icon: Baby, href: '#kids' },
-              { name: 'Entertainment', icon: Music, href: '#entertainment' },
-              { name: 'Activities', icon: Sparkles, href: '#activities' },
-            ].map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <a
-                  key={index}
-                  href={item.href}
-                  className='flex items-center bg-gray-50 hover:bg-primary-50 px-4 py-2 rounded-full transition-colors'
-                >
-                  <IconComponent className='h-5 w-5 text-primary-600 mr-2' />
-                  <span className='text-sm font-medium'>{item.name}</span>
-                </a>
-              );
-            })}
-          </div>
+          <QuickAccessNav 
+            items={[
+              { name: 'Private Beach', iconName: 'waves', href: '#beach' },
+              { name: 'Pools', iconName: 'waves', href: '#pools' },
+              { name: 'Wellness', iconName: 'dumbbell', href: '#wellness' },
+              { name: 'Kids Club', iconName: 'baby', href: '#kids' },
+              { name: 'Entertainment', iconName: 'music', href: '#entertainment' },
+              { name: 'Activities', iconName: 'sparkles', href: '#activities' },
+            ]}
+          />
         </div>
       </section>
 
@@ -221,7 +209,7 @@ export default function AmenitiesPage() {
                 key={index}
                 title={amenity.title}
                 description={amenity.description}
-                icon={amenity.icon}
+                iconName={amenity.iconName}
                 image={amenity.image}
                 features={amenity.features}
                 href={amenity.href}

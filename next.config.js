@@ -1,10 +1,16 @@
 /** @type {import('next').NextConfig} */
-const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
+// Temporarily disable next-intl plugin for static export
+// const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 
 const nextConfig = {
   // Enable experimental features
   experimental: {
     typedRoutes: false, // Temporarily disabled due to locale routing changes
+  },
+  
+  // Disable problematic optimizations for static export
+  compiler: {
+    removeConsole: false,
   },
 
   // Image optimization configuration
@@ -100,4 +106,6 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-module.exports = withNextIntl(nextConfig);
+// Export config directly without next-intl plugin for now
+module.exports = nextConfig;
+// module.exports = withNextIntl(nextConfig);

@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -46,48 +46,63 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function HomePage() {
-  const t = useTranslations();
+interface PageProps {
+  params?: { locale?: string };
+}
+
+// Helper function to get icon component from name
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    'checkmark-circle': IoCheckmarkCircle,
+    'heart': IoHeart,
+    'shield': IoShield,
+    'trending-up': IoTrendingUp,
+  };
+  return iconMap[iconName] || IoCheckmarkCircle;
+};
+
+export default function HomePage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   // Premium Amenities
   const features = [
     {
-      icon: IoWaterOutline,
+      icon: 'water-outline',
       title: 'Indoor & Outdoor Pools',
       description:
         'Multiple swimming pools including infinity pools with stunning Caspian Sea views and indoor pools for year-round enjoyment.',
       gradient: 'from-blue-100 to-blue-200',
     },
     {
-      icon: IoFitness,
+      icon: 'fitness',
       title: 'Wellness & Spa',
       description:
         'Complete wellness center with modern gym, steam and dry saunas, and rejuvenating spa treatments.',
       gradient: 'from-green-100 to-green-200',
     },
     {
-      icon: IoWater,
+      icon: 'water',
       title: 'Private Beach Access',
       description:
         'Exclusive private beach with premium sunbeds and beachside service on the pristine Caspian Sea shore.',
       gradient: 'from-cyan-100 to-cyan-200',
     },
     {
-      icon: IoGameController,
+      icon: 'game-controller',
       title: "Children's Paradise",
       description:
         "Dedicated children's area with safe play zones, entertainment programs, and family-friendly activities.",
       gradient: 'from-purple-100 to-purple-200',
     },
     {
-      icon: IoCafe,
+      icon: 'cafe',
       title: 'Shade Bar',
       description:
         'Unique sail-structured bar offering refreshing beverages and light snacks with panoramic sea views.',
       gradient: 'from-orange-100 to-orange-200',
     },
     {
-      icon: IoCamera,
+      icon: 'camera',
       title: 'Entertainment Stage',
       description:
         'Professional entertainment venue hosting live performances, cultural shows, and special events.',
@@ -97,10 +112,10 @@ export default function HomePage() {
 
   // Statistics
   const statistics = [
-    { icon: IoBed, value: 200, label: 'Luxury Rooms', suffix: '+' },
-    { icon: IoHome, value: 9, label: 'Buildings' },
-    { icon: IoRestaurant, value: 2, label: 'Restaurants' },
-    { icon: IoGlobe, value: 50, label: 'Countries Served', suffix: '+' },
+    { icon: 'bed', value: 200, label: 'Luxury Rooms', suffix: '+' },
+    { icon: 'home', value: 9, label: 'Buildings' },
+    { icon: 'restaurant', value: 2, label: 'Restaurants' },
+    { icon: 'globe', value: 50, label: 'Countries Served', suffix: '+' },
   ];
 
   // Featured Rooms
@@ -206,25 +221,25 @@ export default function HomePage() {
   // Why Choose Us points
   const whyChooseUs = [
     {
-      icon: IoCheckmarkCircle,
+      iconName: 'checkmark-circle',
       title: 'Legacy of Excellence',
       description:
         'Decades of hospitality experience with a reputation for exceptional service and memorable experiences.',
     },
     {
-      icon: IoHeart,
+      iconName: 'heart',
       title: 'Personalized Service',
       description:
         '24/7 concierge service and personalized attention to ensure every guest feels special and cared for.',
     },
     {
-      icon: IoShield,
+      iconName: 'shield',
       title: 'Safety & Security',
       description:
         'Comprehensive safety protocols and security measures ensuring peace of mind throughout your stay.',
     },
     {
-      icon: IoTrendingUp,
+      iconName: 'trending-up',
       title: 'Modern Amenities',
       description:
         'Cutting-edge facilities and technology integrated seamlessly with traditional Azerbaijani hospitality.',
@@ -380,15 +395,18 @@ export default function HomePage() {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-            {whyChooseUs.map((item, index) => (
-              <div key={item.title} className='text-center'>
-                <div className='w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4'>
-                  <item.icon className='w-8 h-8 text-white' />
+            {whyChooseUs.map((item, index) => {
+              const IconComponent = getIconComponent(item.iconName);
+              return (
+                <div key={item.title} className='text-center'>
+                  <div className='w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4'>
+                    <IconComponent className='w-8 h-8 text-white' />
+                  </div>
+                  <h3 className='text-xl font-semibold mb-3'>{item.title}</h3>
+                  <p className='text-primary-100'>{item.description}</p>
                 </div>
-                <h3 className='text-xl font-semibold mb-3'>{item.title}</h3>
-                <p className='text-primary-100'>{item.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

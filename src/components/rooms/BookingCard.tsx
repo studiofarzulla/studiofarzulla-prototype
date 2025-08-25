@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
+
 import {
   IoCalendarOutline,
   IoPeopleOutline,
@@ -204,11 +204,7 @@ export default function BookingCard({
 
       {/* Booking Summary */}
       {isFormValid && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className='bg-gray-50 rounded-lg p-4 mb-6'
-        >
+        <div className='bg-gray-50 rounded-lg p-4 mb-6'>
           <h4 className='font-medium text-gray-900 mb-3'>Booking Summary</h4>
           <div className='space-y-2 text-sm'>
             <div className='flex justify-between'>
@@ -248,7 +244,7 @@ export default function BookingCard({
               }
             })()}
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Action Buttons */}
@@ -295,11 +291,7 @@ export default function BookingCard({
 
       {/* Contact Form */}
       {showContactForm && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className='mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg'
-        >
+        <div className='mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg'>
           <h4 className='font-medium text-blue-900 mb-3'>Quick Contact</h4>
           <div className='space-y-3'>
             <input
@@ -321,7 +313,7 @@ export default function BookingCard({
               Send Message
             </button>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Additional Info */}

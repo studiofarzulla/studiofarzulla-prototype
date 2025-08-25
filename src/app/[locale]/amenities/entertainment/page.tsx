@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 
 // Force static generation for this page
@@ -7,6 +7,7 @@ export const dynamic = 'force-static';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
+import StageFeatures from '@/components/entertainment/StageFeatures';
 import {
   ArrowLeft,
   Music,
@@ -27,8 +28,12 @@ export const metadata: Metadata = {
     'Experience world-class entertainment at our professional stage venue featuring live music, cultural shows, and special events with stunning Caspian Sea backdrop.',
 };
 
-export default function EntertainmentPage() {
-  const t = useTranslations('amenities');
+interface PageProps {
+  params?: { locale?: string };
+}
+
+export default function EntertainmentPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   const weeklyEvents = [
     {
@@ -117,34 +122,34 @@ export default function EntertainmentPage() {
       title: 'Professional Sound System',
       description:
         'State-of-the-art audio equipment with crystal clear acoustics',
-      icon: Volume2,
+      iconName: 'volume2',
     },
     {
       title: 'Dynamic Lighting',
       description:
         'Professional stage lighting with color-changing LED systems',
-      icon: Spotlight,
+      iconName: 'spotlight',
     },
     {
       title: 'Large Performance Area',
       description: 'Spacious stage accommodating various performance types',
-      icon: MapPin,
+      iconName: 'map-pin',
     },
     {
       title: 'VIP Seating Area',
       description: 'Premium seating with table service and enhanced views',
-      icon: Star,
+      iconName: 'star',
     },
     {
       title: 'Weather Protection',
       description:
         'Covered performance area suitable for all weather conditions',
-      icon: Users,
+      iconName: 'users',
     },
     {
       title: 'Recording Capabilities',
       description: 'Professional recording and livestream equipment available',
-      icon: Mic,
+      iconName: 'mic',
     },
   ];
 
@@ -181,7 +186,7 @@ export default function EntertainmentPage() {
         description='Experience unforgettable live entertainment at our professional outdoor stage venue, featuring international artists, cultural shows, and special events with the stunning Caspian Sea as a backdrop.'
         backgroundImage='/images/amenities/entertainment-stage-hero.jpg'
         ctaText='View Event Schedule'
-        ctaAction={() => console.log('View events')}
+        ctaLink='/contact'
       />
 
       {/* Stage Overview */}
@@ -238,23 +243,7 @@ export default function EntertainmentPage() {
           </div>
 
           {/* Stage Features */}
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {stageFeatures.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <div
-                  key={index}
-                  className='bg-white rounded-lg shadow-soft p-6 hover:shadow-lg transition-shadow'
-                >
-                  <div className='bg-purple-100 p-3 rounded-full w-fit mb-4'>
-                    <IconComponent className='h-8 w-8 text-purple-600' />
-                  </div>
-                  <h3 className='text-xl font-bold mb-3'>{feature.title}</h3>
-                  <p className='text-gray-600'>{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
+          <StageFeatures features={stageFeatures} />
         </div>
       </section>
 

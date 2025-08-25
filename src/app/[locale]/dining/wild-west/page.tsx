@@ -269,7 +269,8 @@ const chefProfile = {
     "Real BBQ isn't just cooking - it's a passion, a tradition, and a way of bringing people together around great food and good times.",
 };
 
-export default function WildWestRestaurantPage() {
+interface PageProps {  params?: { locale?: string };}
+export default function WildWestRestaurantPage({ params }: PageProps) {
   return (
     <div className='min-h-screen'>
       {/* Restaurant Hero */}

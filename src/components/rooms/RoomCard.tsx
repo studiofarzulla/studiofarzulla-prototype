@@ -1,9 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 import {
   IoPeopleOutline,
   IoResizeOutline,
@@ -79,12 +78,11 @@ export default function RoomCard({
   };
 
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className='group bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 overflow-hidden'
+    <div
+      className='group bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 overflow-hidden animate-fade-in-up'
+      style={{
+        animationDelay: `${index * 100}ms`
+      }}
     >
       {/* Image Section */}
       <div className='relative h-64 overflow-hidden'>
@@ -223,6 +221,6 @@ export default function RoomCard({
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

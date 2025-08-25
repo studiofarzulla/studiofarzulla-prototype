@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 import { Button } from '@/components/ui/Button';
 import {
   Dumbbell,
@@ -24,13 +24,28 @@ interface WellnessService {
 interface WellnessFeature {
   title: string;
   description: string;
-  icon: any;
+  iconName: string;
   features: string[];
 }
 
 interface WellnessFeaturesProps {
   services?: WellnessService[];
 }
+
+// Helper function to get icon component from name
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    'dumbbell': Dumbbell,
+    'heart': Heart,
+    'droplets': Droplets,
+    'leaf': Leaf,
+    'clock': Clock,
+    'users': Users,
+    'award': Award,
+    'thermometer': Thermometer,
+  };
+  return iconMap[iconName] || Heart;
+};
 
 export default function WellnessFeatures({ services }: WellnessFeaturesProps) {
   const t = useTranslations('amenities');
@@ -40,7 +55,7 @@ export default function WellnessFeatures({ services }: WellnessFeaturesProps) {
       title: 'Modern Fitness Center',
       description:
         'State-of-the-art equipment and professional training facilities',
-      icon: Dumbbell,
+      iconName: 'dumbbell',
       features: [
         'Latest Technogym equipment',
         'Free weights and resistance training',
@@ -53,7 +68,7 @@ export default function WellnessFeatures({ services }: WellnessFeaturesProps) {
     {
       title: 'Steam Sauna',
       description: 'Traditional steam rooms for relaxation and detoxification',
-      icon: Droplets,
+      iconName: 'droplets',
       features: [
         'Eucalyptus-infused steam',
         'Temperature controlled environment',
@@ -66,7 +81,7 @@ export default function WellnessFeatures({ services }: WellnessFeaturesProps) {
     {
       title: 'Dry Sauna',
       description: 'Finnish-style dry sauna for deep relaxation',
-      icon: Thermometer,
+      iconName: 'thermometer',
       features: [
         'Authentic Finnish design',
         'Premium wood construction',
@@ -79,7 +94,7 @@ export default function WellnessFeatures({ services }: WellnessFeaturesProps) {
     {
       title: 'Spa Services',
       description: 'Rejuvenating treatments and massage therapy',
-      icon: Leaf,
+      iconName: 'leaf',
       features: [
         'Professional massage therapists',
         'Variety of treatment options',
@@ -114,7 +129,7 @@ export default function WellnessFeatures({ services }: WellnessFeaturesProps) {
         {/* Wellness Features Grid */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16'>
           {wellnessFeatures.map((feature, index) => {
-            const IconComponent = feature.icon;
+            const IconComponent = getIconComponent(feature.iconName);
             return (
               <div
                 key={index}

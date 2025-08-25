@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   IoTimeOutline,
   IoCalendarOutline,
@@ -45,45 +44,29 @@ export default function OpeningHours({
   });
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <section
       className='bg-white py-16'
     >
       <div className='container mx-auto px-4'>
         <div className='max-w-4xl mx-auto'>
           {/* Header */}
           <div className='text-center mb-12'>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <h2
               className='text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center'
             >
               <IoTimeOutline className='w-8 h-8 text-primary-500 mr-3' />
               {title}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            </h2>
+            <p
               className='text-gray-600'
             >
               All times shown in {timezone}
-            </motion.p>
+            </p>
           </div>
 
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
             {/* Schedule */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+            <div
               className='bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-soft p-8'
             >
               <h3 className='text-xl font-semibold text-gray-900 mb-6'>
@@ -95,12 +78,8 @@ export default function OpeningHours({
                   const isToday = daySchedule.day === currentDay;
 
                   return (
-                    <motion.div
+                    <div
                       key={daySchedule.day}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
                       className={`p-4 rounded-lg border-2 transition-all duration-200 ${
                         isToday
                           ? 'border-primary-500 bg-primary-50'
@@ -158,18 +137,14 @@ export default function OpeningHours({
                           {daySchedule.note}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
-            </motion.div>
+            </div>
 
             {/* Additional Information */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+            <div
               className='space-y-6'
             >
               {/* Special Hours */}
@@ -300,10 +275,10 @@ export default function OpeningHours({
                   </div>
                 </div>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

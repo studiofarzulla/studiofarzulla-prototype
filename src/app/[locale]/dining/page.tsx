@@ -161,40 +161,40 @@ const specialEvents: SpecialEvent[] = [
 
 const features = [
   {
-    icon: IoRestaurantOutline,
+    iconName: 'restaurant-outline',
     title: 'International Cuisine',
     description:
       'À la carte menu featuring the finest dishes from around the world',
     color: 'from-orange-500 to-red-500',
   },
   {
-    icon: IoWineOutline,
+    iconName: 'wine-outline',
     title: 'Premium Beverages',
     description:
       'Extensive wine collection and craft cocktails by expert mixologists',
     color: 'from-purple-500 to-pink-500',
   },
   {
-    icon: IoUmbrellaOutline,
+    iconName: 'umbrella-outline',
     title: 'Beachfront Dining',
     description: 'Unique dining experiences directly on the Caspian Sea shore',
     color: 'from-blue-500 to-teal-500',
   },
   {
-    icon: IoWaterOutline,
+    iconName: 'water-outline',
     title: 'Poolside Service',
     description:
       'Refreshments and meals served directly to your poolside location',
     color: 'from-green-500 to-blue-500',
   },
   {
-    icon: IoHomeOutline,
+    iconName: 'home-outline',
     title: '24/7 Room Service',
     description: 'In-room dining available around the clock for hotel guests',
     color: 'from-indigo-500 to-purple-500',
   },
   {
-    icon: IoBusinessOutline,
+    iconName: 'business-outline',
     title: 'Event Catering',
     description:
       'Corporate events, weddings, and special occasion catering services',
@@ -202,6 +202,20 @@ const features = [
   },
 ];
 
+// Helper function to get icon component from name
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    'restaurant-outline': IoRestaurantOutline,
+    'wine-outline': IoWineOutline,
+    'umbrella-outline': IoUmbrellaOutline,
+    'water-outline': IoWaterOutline,
+    'home-outline': IoHomeOutline,
+    'business-outline': IoBusinessOutline,
+  };
+  return iconMap[iconName] || IoRestaurantOutline;
+};
+
+interface PageProps {  params?: { locale?: string };}
 export default function DiningPage() {
   return (
     <div className='min-h-screen bg-gray-50'>
@@ -268,21 +282,24 @@ export default function DiningPage() {
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {features.map((feature, index) => (
-              <div key={index} className='group text-center p-6'>
-                <div
-                  className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <feature.icon className='w-8 h-8 text-white' />
+            {features.map((feature, index) => {
+              const IconComponent = getIconComponent(feature.iconName);
+              return (
+                <div key={index} className='group text-center p-6'>
+                  <div
+                    className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}
+                  >
+                    <IconComponent className='w-8 h-8 text-white' />
+                  </div>
+                  <h3 className='text-xl font-semibold text-gray-900 mb-3'>
+                    {feature.title}
+                  </h3>
+                  <p className='text-gray-600 leading-relaxed'>
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className='text-xl font-semibold text-gray-900 mb-3'>
-                  {feature.title}
-                </h3>
-                <p className='text-gray-600 leading-relaxed'>
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

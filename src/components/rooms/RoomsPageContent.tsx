@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
+
 import Image from 'next/image';
 import RoomCard from '@/components/rooms/RoomCard';
 import RoomFilter from '@/components/rooms/RoomFilter';
@@ -272,30 +272,15 @@ export default function RoomsPageContent() {
         </div>
 
         <div className='relative z-10 text-center text-white max-w-4xl mx-auto px-4'>
-          <motion.h1
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className='heading-primary text-white mb-6'
-          >
+          <h1 className='heading-primary text-white mb-6'>
             {t('page_title')}
-          </motion.h1>
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className='text-xl lg:text-2xl text-gray-100 mb-8'
-          >
+          </h1>
+          <p className='text-xl lg:text-2xl text-gray-100 mb-8'>
             {t('page_subtitle')}
-          </motion.p>
+          </p>
 
           {/* Quick Stats */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className='grid grid-cols-2 md:grid-cols-4 gap-6 mt-12'
-          >
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-6 mt-12'>
             <div className='text-center'>
               <div className='text-3xl font-bold text-white mb-2'>250+</div>
               <div className='text-sm text-gray-200'>Luxury Rooms</div>
@@ -312,7 +297,7 @@ export default function RoomsPageContent() {
               <div className='text-3xl font-bold text-white mb-2'>24/7</div>
               <div className='text-sm text-gray-200'>Concierge</div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -320,12 +305,7 @@ export default function RoomsPageContent() {
       <section className='section-padding'>
         <div className='container mx-auto px-4'>
           {/* Intro Section */}
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className='text-center mb-16'
-          >
+          <div className='text-center mb-16'>
             <h2 className='heading-secondary mb-6'>{t('hero_title')}</h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto mb-12'>
               {t('hero_description')}
@@ -333,13 +313,7 @@ export default function RoomsPageContent() {
 
             {/* Key Features */}
             <div className='grid grid-cols-1 md:grid-cols-4 gap-8 mb-16'>
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className='text-center'
-              >
+              <div className='text-center'>
                 <div className='w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4'>
                   <IoHomeOutline className='w-8 h-8 text-primary-600' />
                 </div>
@@ -347,15 +321,9 @@ export default function RoomsPageContent() {
                 <p className='text-gray-600 text-sm'>
                   Premium amenities and contemporary design
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className='text-center'
-              >
+              <div className='text-center'>
                 <div className='w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4'>
                   <IoPeopleOutline className='w-8 h-8 text-accent-600' />
                 </div>
@@ -363,15 +331,9 @@ export default function RoomsPageContent() {
                 <p className='text-gray-600 text-sm'>
                   Connecting rooms and family-friendly layouts
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className='text-center'
-              >
+              <div className='text-center'>
                 <div className='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4'>
                   <IoBusinessOutline className='w-8 h-8 text-green-600' />
                 </div>
@@ -379,15 +341,9 @@ export default function RoomsPageContent() {
                 <p className='text-gray-600 text-sm'>
                   Full building rentals and business facilities
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className='text-center'
-              >
+              <div className='text-center'>
                 <div className='w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4'>
                   <IoTrophyOutline className='w-8 h-8 text-yellow-600' />
                 </div>
@@ -395,9 +351,9 @@ export default function RoomsPageContent() {
                 <p className='text-gray-600 text-sm'>
                   5-star hospitality and personalized attention
                 </p>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Filters */}
           <RoomFilter filters={filters} onFiltersChange={setFilters} />
@@ -441,8 +397,7 @@ export default function RoomsPageContent() {
 
           {/* Rooms Grid */}
           {filteredRooms.length > 0 ? (
-            <motion.div
-              layout
+            <div
               className={`grid gap-8 mb-16 ${
                 viewMode === 'grid'
                   ? 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3'
@@ -467,13 +422,9 @@ export default function RoomsPageContent() {
                   index={index}
                 />
               ))}
-            </motion.div>
+            </div>
           ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className='text-center py-16'
-            >
+            <div className='text-center py-16'>
               <div className='text-6xl mb-6'>🏨</div>
               <h3 className='text-xl font-semibold text-gray-900 mb-4'>
                 No rooms match your criteria
@@ -497,16 +448,11 @@ export default function RoomsPageContent() {
               >
                 Clear All Filters
               </button>
-            </motion.div>
+            </div>
           )}
 
           {/* Corporate Partnership Section */}
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className='bg-gradient-to-r from-gray-900 via-primary-900 to-gray-900 rounded-2xl p-12 text-center text-white mb-16'
-          >
+          <div className='bg-gradient-to-r from-gray-900 via-primary-900 to-gray-900 rounded-2xl p-12 text-center text-white mb-16'>
             <h2 className='text-3xl font-bold mb-6'>Corporate Partnerships</h2>
             <p className='text-xl text-gray-300 mb-8 max-w-3xl mx-auto'>
               Trusted by international organizations including Saipem, BP, and
@@ -519,7 +465,7 @@ export default function RoomsPageContent() {
                 Download Brochure
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

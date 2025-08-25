@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
   IoTrophyOutline,
@@ -34,21 +33,13 @@ export default function ChefProfile({
   philosophy,
 }: ChefProfileProps) {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
+    <section
       className='bg-gradient-to-br from-gray-50 to-white py-16'
     >
       <div className='container mx-auto px-4'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
           {/* Chef Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <div
             className='relative'
           >
             <div className='relative w-full max-w-md mx-auto'>
@@ -72,14 +63,10 @@ export default function ChefProfile({
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Chef Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+          <div
             className='space-y-6'
           >
             <div>
@@ -174,9 +161,9 @@ export default function ChefProfile({
                 </div>
               </div>
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -97,11 +96,7 @@ export default function ContactForm() {
 
   if (isSuccess) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className='bg-green-50 border border-green-200 rounded-2xl p-8 text-center'
-      >
+      <div className='bg-green-50 border border-green-200 rounded-2xl p-8 text-center animate-fade-in-scale'>
         <div className='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4'>
           <IoCheckmark className='w-8 h-8 text-green-600' />
         </div>
@@ -117,7 +112,7 @@ export default function ContactForm() {
         >
           Send Another Message
         </button>
-      </motion.div>
+      </div>
     );
   }
 

@@ -2,9 +2,23 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { IconType } from 'react-icons';
+import {
+  IoBed,
+  IoHome,
+  IoRestaurant,
+  IoGlobe,
+} from 'react-icons/io5';
+
+// Icon mapping for static export compatibility
+const iconMap: Record<string, IconType> = {
+  'bed': IoBed,
+  'home': IoHome,
+  'restaurant': IoRestaurant,
+  'globe': IoGlobe,
+};
 
 interface StatisticCounterProps {
-  icon: IconType;
+  icon: IconType | string;
   value: number;
   label: string;
   suffix?: string;
@@ -13,13 +27,15 @@ interface StatisticCounterProps {
 }
 
 export default function StatisticsCounter({
-  icon: Icon,
+  icon,
   value,
   label,
   suffix = '',
   prefix = '',
   index = 0,
 }: StatisticCounterProps) {
+  // Handle both component and string icon types
+  const Icon = typeof icon === 'string' ? (iconMap[icon] || IoBed) : icon;
   const [count, setCount] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import PoolInfo from '@/components/amenities/PoolInfo';
@@ -23,8 +23,9 @@ export const metadata: Metadata = {
     'Enjoy our stunning infinity pool with Caspian Sea views and heated indoor pool. Premium pool facilities with bar service and luxury loungers.',
 };
 
-export default function PoolsPage() {
-  const t = useTranslations('amenities');
+interface PageProps {  params?: { locale?: string };}
+export default function PoolsPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   const poolDetails = [
     {
@@ -106,7 +107,7 @@ export default function PoolsPage() {
         description="Experience luxury swimming in our stunning infinity pool with Caspian Sea views, climate-controlled indoor pool, and dedicated children's pool area."
         backgroundImage='/images/amenities/pools-hero.jpg'
         ctaText='Reserve Pool Access'
-        ctaAction={() => console.log('Reserve pool access')}
+        ctaLink='/contact'
       />
 
       {/* Pool Overview */}

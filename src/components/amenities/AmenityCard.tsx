@@ -1,29 +1,50 @@
 'use client';
 
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 import { Button } from '@/components/ui/Button';
-import { LucideIcon } from 'lucide-react';
+import { 
+  Waves,
+  Dumbbell,
+  Baby,
+  Music,
+  Umbrella,
+  Sparkles,
+} from 'lucide-react';
 
 interface AmenityCardProps {
   title: string;
   description: string;
-  icon: LucideIcon;
+  iconName: string;
   image: string;
   features: string[];
   href?: string;
   className?: string;
 }
 
+// Helper function to get icon component from name
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    'waves': Waves,
+    'dumbbell': Dumbbell,
+    'baby': Baby,
+    'music': Music,
+    'umbrella': Umbrella,
+    'sparkles': Sparkles,
+  };
+  return iconMap[iconName] || Sparkles;
+};
+
 export default function AmenityCard({
   title,
   description,
-  icon: Icon,
+  iconName,
   image,
   features,
   href,
   className = '',
 }: AmenityCardProps) {
+  const Icon = getIconComponent(iconName);
   const t = useTranslations('common');
 
   return (

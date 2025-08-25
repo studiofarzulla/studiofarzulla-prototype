@@ -1,9 +1,27 @@
 'use client';
 
 import { IconType } from 'react-icons';
+import {
+  IoWaterOutline,
+  IoFitness,
+  IoWater,
+  IoGameController,
+  IoCafe,
+  IoCamera,
+} from 'react-icons/io5';
+
+// Icon mapping for static export compatibility
+const iconMap: Record<string, IconType> = {
+  'water-outline': IoWaterOutline,
+  'fitness': IoFitness,
+  'water': IoWater,
+  'game-controller': IoGameController,
+  'cafe': IoCafe,
+  'camera': IoCamera,
+};
 
 interface FeatureCardProps {
-  icon: IconType;
+  icon: IconType | string;
   title: string;
   description: string;
   gradient?: string;
@@ -11,12 +29,14 @@ interface FeatureCardProps {
 }
 
 export default function FeatureCard({
-  icon: Icon,
+  icon,
   title,
   description,
   gradient = 'from-primary-100 to-primary-200',
   index = 0,
 }: FeatureCardProps) {
+  // Handle both component and string icon types
+  const Icon = typeof icon === 'string' ? (iconMap[icon] || IoWaterOutline) : icon;
   return (
     <div className='group bg-white p-6 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300'>
       <div

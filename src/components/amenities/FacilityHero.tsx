@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/Button';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 
 interface FacilityHeroProps {
   title: string;
@@ -9,7 +9,7 @@ interface FacilityHeroProps {
   description: string;
   backgroundImage: string;
   ctaText?: string;
-  ctaAction?: () => void;
+  ctaLink?: string;
 }
 
 export default function FacilityHero({
@@ -18,7 +18,7 @@ export default function FacilityHero({
   description,
   backgroundImage,
   ctaText,
-  ctaAction,
+  ctaLink,
 }: FacilityHeroProps) {
   const t = useTranslations('common');
 
@@ -44,14 +44,15 @@ export default function FacilityHero({
             {description}
           </p>
 
-          {ctaText && ctaAction && (
-            <Button
-              size='lg'
-              onClick={ctaAction}
-              className='bg-primary-600 hover:bg-primary-700 text-white px-8 py-4'
-            >
-              {ctaText}
-            </Button>
+          {ctaText && ctaLink && (
+            <a href={ctaLink}>
+              <Button
+                size='lg'
+                className='bg-primary-600 hover:bg-primary-700 text-white px-8 py-4'
+              >
+                {ctaText}
+              </Button>
+            </a>
           )}
         </div>
       </div>

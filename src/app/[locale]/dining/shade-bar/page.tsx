@@ -231,6 +231,7 @@ const specialHours = [
   },
 ];
 
+interface PageProps {  params?: { locale?: string };}
 export default function ShadeBarPage() {
   return (
     <div className='min-h-screen'>

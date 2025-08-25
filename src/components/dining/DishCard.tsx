@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface DishCardProps {
@@ -27,11 +26,7 @@ export default function DishCard({
   index = 0,
 }: DishCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <div
       className='group relative bg-white rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 overflow-hidden'
     >
       {/* Badge */}
@@ -103,6 +98,6 @@ export default function DishCard({
           Add to Order
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 }

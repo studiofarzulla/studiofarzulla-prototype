@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 interface MenuItemLocal {
@@ -36,11 +35,7 @@ export default function MenuSection({
       : items.filter(item => item.dietary?.includes(activeFilter as any));
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <section
       className='mb-12'
     >
       <div className='text-center mb-8'>
@@ -74,12 +69,8 @@ export default function MenuSection({
         className={`grid gap-6 ${columns === 2 ? 'md:grid-cols-2' : 'grid-cols-1'}`}
       >
         {filteredItems.map((item, index) => (
-          <motion.div
+          <div
             key={item.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
             className='relative bg-white p-6 rounded-lg border border-gray-200 hover:shadow-soft transition-shadow duration-300'
           >
             {/* Popular Badge */}
@@ -124,7 +115,7 @@ export default function MenuSection({
                 ))}
               </div>
             )}
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -135,6 +126,6 @@ export default function MenuSection({
           </p>
         </div>
       )}
-    </motion.section>
+    </section>
   );
 }

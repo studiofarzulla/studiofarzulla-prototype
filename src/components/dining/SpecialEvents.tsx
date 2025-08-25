@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -65,28 +64,20 @@ export default function SpecialEvents({
     <section className='py-16 bg-gradient-to-br from-gray-50 to-white'>
       <div className='container mx-auto px-4'>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className='text-center mb-12'
         >
           <h2 className='text-3xl md:text-4xl font-bold text-gray-900 mb-4'>
             {title}
           </h2>
           <p className='text-lg text-gray-600 max-w-3xl mx-auto'>{subtitle}</p>
-        </motion.div>
+        </div>
 
         {/* Events Grid */}
         <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-12'>
           {displayEvents.map((event, index) => (
-            <motion.div
+            <div
               key={event.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
               className='group bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 overflow-hidden'
             >
               {/* Event Image */}
@@ -221,17 +212,13 @@ export default function SpecialEvents({
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Call to Action */}
         {!showAll && events.length > 3 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div
             className='text-center'
           >
             <Link
@@ -241,15 +228,11 @@ export default function SpecialEvents({
               <span>View All Events</span>
               <IoArrowForwardOutline className='w-5 h-5' />
             </Link>
-          </motion.div>
+          </div>
         )}
 
         {/* Private Events Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        <div
           className='mt-16 bg-gradient-to-r from-primary-600 to-accent-500 rounded-2xl shadow-soft overflow-hidden'
         >
           <div className='p-8 text-white text-center'>
@@ -286,7 +269,7 @@ export default function SpecialEvents({
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

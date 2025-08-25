@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/lib/LocaleProvider';
 import {
   IoCalendarOutline,
   IoPeopleOutline,
@@ -36,12 +35,7 @@ export default function BookingWidget() {
   };
 
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className='bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8'
-    >
+    <div className='bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8 animate-fade-in-up'>
       <div className='text-center mb-6'>
         <h3 className='text-xl md:text-2xl font-semibold text-gray-900 mb-2'>
           Book Your Perfect Stay
@@ -181,6 +175,6 @@ export default function BookingWidget() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

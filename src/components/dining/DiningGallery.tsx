@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import {
   IoCloseOutline,
@@ -76,23 +75,15 @@ export default function DiningGallery({
     <section className='py-16 bg-gray-50'>
       <div className='container mx-auto px-4'>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className='text-center mb-12'
         >
           <h2 className='text-3xl font-bold text-gray-900 mb-4'>{title}</h2>
           <p className='text-gray-600 max-w-2xl mx-auto'>{subtitle}</p>
-        </motion.div>
+        </div>
 
         {/* Filter Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+        <div
           className='flex flex-wrap justify-center gap-2 mb-8'
         >
           {categories.map(({ key, label }) => (
@@ -108,32 +99,22 @@ export default function DiningGallery({
               {label}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Gallery Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        <div
           className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'
         >
-          <AnimatePresence mode='popLayout'>
-            {filteredImages.map((image, index) => (
-              <motion.div
-                key={image.id}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.4 }}
-                className={`relative group cursor-pointer overflow-hidden rounded-lg shadow-soft hover:shadow-medium transition-all duration-300 ${
-                  index % 7 === 0
-                    ? 'sm:col-span-2 sm:row-span-2'
-                    : 'aspect-square'
-                }`}
-                onClick={() => setSelectedImage(index)}
-              >
+          {filteredImages.map((image, index) => (
+          <div
+            key={image.id}
+            className={`relative group cursor-pointer overflow-hidden rounded-lg shadow-soft hover:shadow-medium transition-all duration-300 ${
+              index % 7 === 0
+                ? 'sm:col-span-2 sm:row-span-2'
+                : 'aspect-square'
+            }`}
+            onClick={() => setSelectedImage(index)}
+          >
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -161,10 +142,10 @@ export default function DiningGallery({
                       image.category.slice(1)}
                   </span>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+              </div>
+          ))
+        }
+        </div>
 
         {filteredImages.length === 0 && (
           <div className='text-center py-12'>
@@ -175,12 +156,8 @@ export default function DiningGallery({
         )}
 
         {/* Lightbox Modal */}
-        <AnimatePresence>
-          {selectedImage !== null && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+        {selectedImage !== null && (
+            <div
               className='fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4'
               onClick={() => setSelectedImage(null)}
             >
@@ -217,11 +194,7 @@ export default function DiningGallery({
               )}
 
               {/* Image */}
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+              <div
                 className='relative max-w-5xl max-h-[90vh] w-full h-full'
                 onClick={e => e.stopPropagation()}
               >
@@ -253,10 +226,9 @@ export default function DiningGallery({
                 <div className='absolute top-4 left-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm'>
                   {selectedImage + 1} / {filteredImages.length}
                 </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </div>
+            </div>
+        )}
       </div>
     </section>
   );

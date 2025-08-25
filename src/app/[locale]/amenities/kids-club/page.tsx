@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from '@/lib/static-translations';
 
 // Force static generation for this page
 export const dynamic = 'force-static';
@@ -25,8 +25,9 @@ export const metadata: Metadata = {
     'Safe, fun, and educational environment for children with supervised activities, educational programs, and professional childcare services.',
 };
 
-export default function KidsClubPage() {
-  const t = useTranslations('amenities');
+interface PageProps {  params?: { locale?: string };}
+export default function KidsClubPage({ params }: PageProps) {
+  const t = getTranslations(params?.locale || 'en');
 
   const ageGroups = [
     {
@@ -125,7 +126,7 @@ export default function KidsClubPage() {
         description='Our professional childcare team provides a nurturing environment where children can play, learn, and make new friends while parents enjoy peace of mind.'
         backgroundImage='/images/amenities/kids-club-hero.jpg'
         ctaText='Register Your Child'
-        ctaAction={() => console.log('Register child')}
+        ctaLink='/contact'
       />
 
       {/* Safety & Care Standards */}

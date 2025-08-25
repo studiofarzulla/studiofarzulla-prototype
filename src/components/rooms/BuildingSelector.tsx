@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
+
 import {
   IoBusinessOutline,
   IoHomeOutline,
@@ -222,11 +222,8 @@ export default function BuildingSelector({
           {buildings
             .filter(b => b.type === 'standard')
             .map((building, index) => (
-              <motion.div
+              <div
                 key={building.id}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.05 }}
                 className={`relative p-5 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
                   selectedBuilding === building.id
                     ? 'border-primary-600 bg-primary-50 shadow-medium'
@@ -305,11 +302,7 @@ export default function BuildingSelector({
 
                 {/* Details Dropdown */}
                 {showDetails === building.id && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    className='mt-3 pt-3 border-t border-gray-200'
-                  >
+                  <div className='mt-3 pt-3 border-t border-gray-200'>
                     <div className='space-y-1'>
                       {building.features.slice(2).map((feature, idx) => (
                         <div
@@ -321,9 +314,9 @@ export default function BuildingSelector({
                         </div>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </motion.div>
+              </div>
             ))}
         </div>
       </div>
@@ -338,11 +331,8 @@ export default function BuildingSelector({
           {buildings
             .filter(b => b.type === 'corporate')
             .map((building, index) => (
-              <motion.div
+              <div
                 key={building.id}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1 }}
                 className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
                   selectedBuilding === building.id
                     ? 'border-accent-600 bg-accent-50 shadow-medium'
@@ -411,18 +401,14 @@ export default function BuildingSelector({
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
         </div>
       </div>
 
       {/* Selected Building Info */}
       {selectedBuilding && (
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className='bg-primary-50 border border-primary-200 rounded-xl p-6'
-        >
+        <div className='bg-primary-50 border border-primary-200 rounded-xl p-6'>
           <h4 className='text-lg font-semibold text-primary-900 mb-3 flex items-center'>
             <IoLocationOutline className='w-5 h-5 mr-2' />
             Selected Building Details
@@ -456,7 +442,7 @@ export default function BuildingSelector({
               </div>
             ) : null;
           })()}
-        </motion.div>
+        </div>
       )}
     </div>
   );

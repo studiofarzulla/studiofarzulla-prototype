@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import {
   IoCalendarOutline,
   IoTimeOutline,
@@ -97,9 +96,7 @@ export default function ReservationForm({
 
   if (submitted) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
         className='bg-white rounded-2xl shadow-soft p-8 text-center'
       >
         <div className='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6'>
@@ -145,16 +142,12 @@ export default function ReservationForm({
         >
           Make Another Reservation
         </button>
-      </motion.div>
+      </div>
     );
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <div
       className='bg-white rounded-2xl shadow-soft p-8'
     >
       <div className='text-center mb-8'>
@@ -334,6 +327,6 @@ export default function ReservationForm({
           </a>
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }

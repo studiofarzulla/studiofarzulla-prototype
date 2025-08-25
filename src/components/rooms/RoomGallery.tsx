@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import {
   IoChevronBackOutline,
   IoChevronForwardOutline,
@@ -113,19 +113,12 @@ export default function RoomGallery({
       </div>
 
       {/* Fullscreen Modal */}
-      <AnimatePresence>
-        {isFullscreen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className='fixed inset-0 z-50 bg-black/95 flex items-center justify-center'
+      {isFullscreen && (
+        <div
+          className='fixed inset-0 z-50 bg-black/95 flex items-center justify-center'
             onClick={() => setIsFullscreen(false)}
           >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
+            <div
               className='relative max-w-7xl max-h-[90vh] w-full mx-4'
               onClick={e => e.stopPropagation()}
             >
@@ -197,10 +190,9 @@ export default function RoomGallery({
                   ))}
                 </div>
               )}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
     </>
   );
 }

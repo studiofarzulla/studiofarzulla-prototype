@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { useTranslations } from '@/lib/LocaleProvider';
+
 import { IoCamera, IoPlay, IoDownload, IoImage } from 'react-icons/io5';
 import GalleryGrid from '@/components/gallery/GalleryGrid';
 import ImageLightbox from '@/components/gallery/ImageLightbox';
@@ -136,11 +136,7 @@ export default function GalleryPageContent() {
         <div className='absolute inset-0 bg-gradient-to-r from-accent-600 to-primary-500' />
         <div className='absolute inset-0 bg-black/20' />
         <div className='relative z-10 text-center text-white max-w-4xl mx-auto px-4'>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h1 className='heading-primary text-white mb-4'>{t('gallery')}</h1>
             <p className='text-xl mb-6 text-white/90'>
               Discover the beauty and luxury of The Crescent Beach Hotel through
@@ -160,7 +156,7 @@ export default function GalleryPageContent() {
                 <span>360° Views</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -209,46 +205,30 @@ export default function GalleryPageContent() {
           {/* Tab Content */}
           <div className='space-y-12'>
             {activeTab === 'photos' && (
-              <motion.div
-                key='photos'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
+              <div key='photos'>
                 <GalleryGrid
                   images={GALLERY_IMAGES}
                   onImageClick={handleImageClick}
                 />
-              </motion.div>
+              </div>
             )}
 
             {activeTab === 'videos' && (
-              <motion.div
-                key='videos'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
+              <div key='videos'>
                 <VideoGallery videos={[]} />
-              </motion.div>
+              </div>
             )}
 
             {activeTab === 'instagram' && (
-              <motion.div
+              <div
                 key='instagram'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
                 className='max-w-4xl mx-auto'
               >
                 <InstagramWidget
                   username='crescentbeachhotel'
                   hashtag='CrescentBeachHotel'
                 />
-              </motion.div>
+              </div>
             )}
           </div>
 
