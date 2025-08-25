@@ -21,7 +21,11 @@
       "Bash(mv:*)",
       "Bash(npm run export:*)",
       "Bash(node build-static.js)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:farzulla.org)",
+      "Bash(gh run list:*)",
+      "Bash(npx next build:*)",
+      "Bash(npx next:*)"
     ],
     "deny": []
   }
