@@ -97,8 +97,8 @@ const nextConfig = {
   //   ];
   // },
   
-  // Static export only if no dynamic routes - temporarily disabled for testing
-  // output: 'export',
+  // Static export for GitHub Pages
+  output: 'export',
   trailingSlash: true,
 };
 

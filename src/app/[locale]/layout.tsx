@@ -76,6 +76,10 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'az' }, { locale: 'ru' }];
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale },
