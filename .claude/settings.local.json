@@ -29,7 +29,9 @@
       "WebFetch(domain:github.com)",
       "Bash(grep:*)",
       "Bash(cp:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npx serve:*)",
+      "WebFetch(domain:studiofarzulla.github.io)"
     ],
     "deny": []
   }

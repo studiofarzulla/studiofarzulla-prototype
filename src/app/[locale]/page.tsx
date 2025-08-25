@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { 
   IoStar, 
   IoWifi, 
@@ -207,37 +206,20 @@ export default function HomePage() {
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               A Legacy of Luxury on the Caspian Shore
-            </motion.h2>
+            </h2>
             
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 mb-8 leading-relaxed"
-            >
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               For decades, The Crescent Beach Hotel has stood as a beacon of excellence on Azerbaijan's 
               most prestigious beachfront. Spanning nine magnificent buildings with over 200 luxurious rooms, 
               we offer an unmatched blend of traditional Azerbaijani hospitality and modern sophistication.
-            </motion.p>
+            </p>
             
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-base text-gray-500 mb-12"
-            >
+            <p className="text-base text-gray-500 mb-12">
               From hosting international sports teams to corporate leaders, we've welcomed guests from over 
               50 countries, creating unforgettable experiences on the shores of the Caspian Sea.
-            </motion.p>
+            </p>
           </div>
         </div>
       </section>
@@ -264,24 +246,13 @@ export default function HomePage() {
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               World-Class Amenities
-            </motion.h2>
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Every detail has been carefully crafted to provide you with the ultimate luxury experience, 
               from our private beach to our world-class spa and entertainment facilities.
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -303,24 +274,13 @@ export default function HomePage() {
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               Luxurious Accommodations
-            </motion.h2>
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto mb-8"
-            >
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
               Choose from our collection of elegantly designed rooms and suites, each offering stunning 
               views and premium amenities for the perfect stay.
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -349,24 +309,13 @@ export default function HomePage() {
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               Culinary Excellence
-            </motion.h2>
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Embark on a culinary journey at our distinctive restaurants, each offering unique 
               atmospheres and exceptional cuisine crafted by world-renowned chefs.
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -385,34 +334,19 @@ export default function HomePage() {
       <section className="section-padding bg-gradient-to-br from-primary-600 via-primary-500 to-accent-500 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-white mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-6">
               Why Choose The Crescent Beach Hotel
-            </motion.h2>
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-primary-100 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-lg text-primary-100 max-w-3xl mx-auto">
               Discover what makes us the premier choice for discerning travelers seeking 
               the ultimate beachfront luxury experience.
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyChooseUs.map((item, index) => (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -420,7 +354,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
                 <p className="text-primary-100">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -430,24 +364,13 @@ export default function HomePage() {
       <section className="section-padding bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               What Our Guests Say
-            </motion.h2>
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
-            >
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Read testimonials from our valued guests who have experienced the exceptional 
               hospitality and luxury that defines The Crescent Beach Hotel.
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -466,67 +389,39 @@ export default function HomePage() {
       <section className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               Trusted by International Organizations
-            </motion.h2>
-            <motion.p 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto mb-12"
-            >
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
               We proudly serve as the preferred destination for international sports teams, 
               corporate events, and prestigious organizations from around the world.
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100"
-            >
+            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100">
               <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <IoStar className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-primary-900">FIFA Beach Football</h3>
               <p className="text-primary-700">Official accommodation partner for international beach football tournaments and events.</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center p-6 rounded-2xl bg-gradient-to-br from-accent-50 to-accent-100"
-            >
+            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-accent-50 to-accent-100">
               <div className="w-16 h-16 bg-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <IoTrendingUp className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-accent-900">Baku City Circuit</h3>
               <p className="text-accent-700">Premium hospitality services during Formula 1 and motorsport events in Baku.</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary-50 to-secondary-100"
-            >
+            <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary-50 to-secondary-100">
               <div className="w-16 h-16 bg-secondary-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <IoGlobe className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-secondary-900">International Teams</h3>
               <p className="text-secondary-700">Host to handball teams and sports delegations from across Europe and beyond.</p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -535,23 +430,13 @@ export default function HomePage() {
       <section className="section-padding bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6">
               Exclusive Offers & Programs
-            </motion.h2>
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300"
-            >
+            <div className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300">
               <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
                 <IoShield className="w-6 h-6 text-primary-600" />
               </div>
@@ -560,15 +445,9 @@ export default function HomePage() {
               <Link href="/conferences" className="text-primary-600 font-medium hover:text-primary-700">
                 Learn More →
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300"
-            >
+            <div className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300">
               <div className="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
                 <IoHeart className="w-6 h-6 text-accent-600" />
               </div>
@@ -577,15 +456,9 @@ export default function HomePage() {
               <Link href="/contact" className="text-accent-600 font-medium hover:text-accent-700">
                 Join Now →
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300"
-            >
+            <div className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300">
               <div className="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mb-4">
                 <IoStar className="w-6 h-6 text-secondary-600" />
               </div>
@@ -594,7 +467,7 @@ export default function HomePage() {
               <Link href="/contact" className="text-secondary-600 font-medium hover:text-secondary-700">
                 Sign Up →
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -605,33 +478,16 @@ export default function HomePage() {
       {/* Final CTA Section */}
       <section className="section-padding bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h2 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-serif font-light text-white mb-6"
-          >
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-6">
             Begin Your Extraordinary Journey
-          </motion.h2>
+          </h2>
           
-          <motion.p 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl mb-8 max-w-3xl mx-auto text-primary-100"
-          >
+          <p className="text-xl mb-8 max-w-3xl mx-auto text-primary-100">
             Experience the perfect blend of luxury, tradition, and modern comfort at Azerbaijan's 
             premier beachfront destination. Your unforgettable stay awaits.
-          </motion.p>
+          </p>
           
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/rooms"
               className="bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl"
@@ -646,7 +502,7 @@ export default function HomePage() {
             >
               Contact Us
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>
