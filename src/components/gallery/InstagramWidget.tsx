@@ -89,7 +89,7 @@ const MOCK_POSTS: InstagramPost[] = [
 ];
 
 export default function InstagramWidget({
-  username = 'crescentbeachhotel',
+  username = 'crescent_beach_hotel',
   hashtag = 'CrescentBeachHotel',
   maxPosts = 6,
 }: InstagramWidgetProps) {
