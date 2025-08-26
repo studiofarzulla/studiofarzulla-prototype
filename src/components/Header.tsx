@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import LocaleLink from '@/lib/locale-link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from '@/lib/LocaleProvider';
@@ -77,10 +78,13 @@ export default function Header() {
         <div className='flex items-center justify-between h-16 lg:h-20'>
           {/* Logo */}
           <LocaleLink href='/' className='flex items-center space-x-3 z-50'>
-            <img
+            <Image
               src='/logo.png'
               alt={SITE_CONFIG.name}
+              width={140}
+              height={56}
               className='h-12 lg:h-14 w-auto'
+              priority
             />
             <div className='hidden sm:block'>
               <h1

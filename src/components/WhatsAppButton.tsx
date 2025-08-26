@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { MessageCircle, X } from 'lucide-react';
+import { CONTACT_INFO } from '@/constants';
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  // WhatsApp number for the hotel
-  const whatsappNumber = '994123456789'; // Azerbaijan country code (+994)
+  // WhatsApp number for the hotel - using the real contact number from constants
+  // Remove the '+' from the number for WhatsApp URL
+  const whatsappNumber = CONTACT_INFO.whatsapp.replace('+', '')
   const defaultMessage = 'Hello! I would like to inquire about The Crescent Beach Hotel & Leisure Resort in Baku.';
 
   useEffect(() => {

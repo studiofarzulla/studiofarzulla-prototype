@@ -30,6 +30,9 @@ import TestimonialCard from '@/components/TestimonialCard';
 import StatisticsCounter from '@/components/StatisticsCounter';
 import InstagramFeed from '@/components/InstagramFeed';
 import HotelHighlights from '@/components/home/HotelHighlights';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import WeatherWidget from '@/components/WeatherWidget';
+import InstagramEmbed from '@/components/InstagramEmbed';
 
 // Enable ISR with 24 hour revalidation for the home page
 export const revalidate = 86400; // 24 hours
@@ -563,6 +566,9 @@ export default function HomePage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Instagram Feed */}
       <InstagramFeed />

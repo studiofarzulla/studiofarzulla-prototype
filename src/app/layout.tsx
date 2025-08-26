@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 // import { Inter, Playfair_Display } from 'next/font/google';
 import { locales } from '@/i18n';
 import './globals.css';
+import { hotelStructuredData } from '@/lib/structured-data';
+import Script from 'next/script';
 
 // Fallback font configuration for testing
 const inter = {
@@ -31,6 +33,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} min-h-screen bg-white antialiased scroll-smooth`}
       >
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(hotelStructuredData),
+          }}
+        />
         {children}
       </body>
     </html>
