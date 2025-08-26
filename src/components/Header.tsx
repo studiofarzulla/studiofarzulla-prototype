@@ -105,7 +105,7 @@ export default function Header() {
             {NAVIGATION_ITEMS.map(item => (
               <LocaleLink
                 key={item.href}
-                href={item.href}
+                href={item.href as any}
                 className={cn(
                   'text-sm font-medium transition-colors duration-300 hover:text-primary-600',
                   isActiveLink(item.href)
@@ -138,7 +138,7 @@ export default function Header() {
             <LanguageSwitcher />
 
             <LocaleLink
-              href='/contact'
+              href={'/contact' as any}
               className={cn(
                 'px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg',
                 isScrolled || !isHomePage
@@ -182,7 +182,7 @@ export default function Header() {
                 {NAVIGATION_ITEMS.map(item => (
                   <LocaleLink
                     key={item.href}
-                    href={item.href}
+                    href={item.href as any}
                     className={cn(
                       'text-base font-medium py-2 transition-colors duration-200',
                       isActiveLink(item.href)
@@ -206,7 +206,7 @@ export default function Header() {
 
                 <div className='pt-2'>
                   <LocaleLink
-                    href='/contact'
+                    href={'/contact' as any}
                     className='btn-primary w-full justify-center'
                   >
                     {t('common.book_now')}

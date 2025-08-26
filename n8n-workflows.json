@@ -1,0 +1,138 @@
+{
+  "name": "CBH Autonomous Development Workflow",
+  "nodes": [
+    {
+      "id": "schedule-morning",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [100, 100],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "github-check",
+      "type": "n8n-nodes-base.github",
+      "position": [300, 100],
+      "parameters": {
+        "operation": "getWorkflowRuns",
+        "owner": "studiofarzulla",
+        "repository": "studiofarzulla.github.cbh"
+      }
+    },
+    {
+      "id": "vercel-check",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [300, 200],
+      "parameters": {
+        "url": "https://api.vercel.com/v6/deployments",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer {{$env.VERCEL_TOKEN}}"
+        }
+      }
+    },
+    {
+      "id": "claude-agent-dispatch",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [500, 150],
+      "parameters": {
+        "command": "claude-code",
+        "arguments": "--agent github-actions-expert --task 'Review CI status and fix any issues'"
+      }
+    },
+    {
+      "id": "performance-monitor",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [300, 300],
+      "parameters": {
+        "url": "https://farzulla.org",
+        "method": "GET",
+        "responseFormat": "json",
+        "options": {
+          "timeout": 5000
+        }
+      }
+    },
+    {
+      "id": "decision-escalation",
+      "type": "n8n-nodes-base.if",
+      "position": [700, 150],
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.requiresUserDecision}}",
+              "value2": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "notify-user",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [900, 100],
+      "parameters": {
+        "subject": "CBH Development: Decision Required",
+        "text": "{{$json.decisionDetails}}",
+        "toEmail": "user@example.com"
+      }
+    },
+    {
+      "id": "autonomous-continue",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [900, 200],
+      "parameters": {
+        "command": "claude-code",
+        "arguments": "--continue --autonomous"
+      }
+    },
+    {
+      "id": "memory-update",
+      "type": "n8n-nodes-base.code",
+      "position": [1100, 150],
+      "parameters": {
+        "code": "// Update knowledge graph with today's progress\nconst progress = {\n  date: new Date().toISOString(),\n  tasksCompleted: items[0].json.completed,\n  decisionsRequired: items[0].json.decisions,\n  performance: items[0].json.metrics\n};\n\nreturn [{json: progress}];"
+      }
+    }
+  ],
+  "connections": {
+    "schedule-morning": {
+      "main": [
+        [
+          {"node": "github-check", "type": "main", "index": 0},
+          {"node": "vercel-check", "type": "main", "index": 0},
+          {"node": "performance-monitor", "type": "main", "index": 0}
+        ]
+      ]
+    },
+    "github-check": {
+      "main": [
+        [{"node": "claude-agent-dispatch", "type": "main", "index": 0}]
+      ]
+    },
+    "claude-agent-dispatch": {
+      "main": [
+        [{"node": "decision-escalation", "type": "main", "index": 0}]
+      ]
+    },
+    "decision-escalation": {
+      "main": [
+        [{"node": "notify-user", "type": "main", "index": 0}],
+        [{"node": "autonomous-continue", "type": "main", "index": 0}]
+      ]
+    },
+    "autonomous-continue": {
+      "main": [
+        [{"node": "memory-update", "type": "main", "index": 0}]
+      ]
+    }
+  }
+}

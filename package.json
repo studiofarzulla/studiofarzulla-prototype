@@ -8,7 +8,6 @@
     "build": "next build",
     "build:analyze": "ANALYZE=true next build",
     "start": "next start",
-    "export": "next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
@@ -16,8 +15,8 @@
     "prettier:check": "prettier --check .",
     "test:build": "npm run type-check && npm run build",
     "preview": "npm run build && npm run start",
-    "clean": "rm -rf .next out",
-    "postbuild": "echo 'Build completed successfully! 🎉'"
+    "clean": "rm -rf .next",
+    "postbuild": "echo 'Build completed successfully for Vercel! 🚀'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

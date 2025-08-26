@@ -16,8 +16,8 @@ import {
   IoShieldCheckmarkOutline,
 } from 'react-icons/io5';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 6 hour revalidation for dynamic room pages
+export const revalidate = 21600; // 6 hours
 
 // Generate static params for all room types
 export function generateStaticParams() {

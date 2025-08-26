@@ -96,13 +96,13 @@ export default function RoomPreview({
         {/* Actions */}
         <div className='flex space-x-3'>
           <Link
-            href={`/rooms/${id}`}
+            href={`/rooms/${id}` as any}
             className='flex-1 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-center'
           >
             View Details
           </Link>
           <Link
-            href={`/rooms/${id}?book=true`}
+            href={`/rooms/${id}?book=true` as any}
             className='flex items-center justify-center px-4 py-2 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200'
           >
             <IoArrowForward className='w-4 h-4' />

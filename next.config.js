@@ -1,19 +1,18 @@
 /** @type {import('next').NextConfig} */
-// Temporarily disable next-intl plugin for static export
-// const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
+const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 
 const nextConfig = {
-  // Enable experimental features
+  // Enable experimental features for Vercel
   experimental: {
-    typedRoutes: false, // Temporarily disabled due to locale routing changes
+    typedRoutes: true,
   },
   
-  // Disable problematic optimizations for static export
+  // Enable production optimizations
   compiler: {
-    removeConsole: false,
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Image optimization configuration
+  // Image optimization configuration - full Vercel support
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -26,6 +25,8 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    // Enable image optimization on Vercel
+    unoptimized: false,
   },
 
   // Performance optimizations
@@ -39,79 +40,66 @@ const nextConfig = {
     SITE_URL: process.env.SITE_URL || 'https://farzulla.org',
   },
 
-  // Headers for security and performance - disabled for static export
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'X-Frame-Options',
-  //           value: 'DENY',
-  //         },
-  //         {
-  //           key: 'X-Content-Type-Options',
-  //           value: 'nosniff',
-  //         },
-  //         {
-  //           key: 'Referrer-Policy',
-  //           value: 'strict-origin-when-cross-origin',
-  //         },
-  //         {
-  //           key: 'X-DNS-Prefetch-Control',
-  //           value: 'on',
-  //         },
-  //         {
-  //           key: 'Strict-Transport-Security',
-  //           value: 'max-age=31536000; includeSubDomains',
-  //         },
-  //         {
-  //           key: 'Cache-Control',
-  //           value: 'public, max-age=31536000, immutable',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       source: '/api/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'Cache-Control',
-  //           value: 'public, s-maxage=86400, stale-while-revalidate=43200',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       source: '/_next/static/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'Cache-Control',
-  //           value: 'public, max-age=31536000, immutable',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       source: '/images/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'Cache-Control',
-  //           value: 'public, max-age=31536000, immutable',
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  // Headers for security and performance
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000, stale-while-revalidate=86400',
+          },
+        ],
+      },
+    ];
+  },
 
-  // Static export for GitHub Pages
-  output: 'export',
-  trailingSlash: true,
-  
-  // Fix module resolution in GitHub Actions
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false, path: false };
-    return config;
+  // Enable ISR and dynamic features
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+        permanent: false,
+      },
+    ];
   },
 };
 
-// Export config directly without next-intl plugin for now
-module.exports = nextConfig;
-// module.exports = withNextIntl(nextConfig);
+// Enable next-intl plugin for full internationalization support
+module.exports = withNextIntl(nextConfig);

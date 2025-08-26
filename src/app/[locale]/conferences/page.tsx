@@ -18,8 +18,8 @@ import {
   Mail,
 } from 'lucide-react';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 24 hour revalidation for conferences
+export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
   title:

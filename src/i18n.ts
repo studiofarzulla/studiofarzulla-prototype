@@ -6,33 +6,19 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
-// For static export, we need to handle locale resolution more carefully
+// Optimized for Vercel with proper locale resolution
 export default getRequestConfig(async ({ requestLocale }) => {
-  // For static export, we need to handle the locale more safely
-  let locale: string;
-  
-  try {
-    locale = await requestLocale || defaultLocale;
-  } catch (error) {
-    locale = defaultLocale;
-  }
+  // Request locale is now handled properly by next-intl on Vercel
+  const locale = await requestLocale || defaultLocale;
 
   // Ensure locale is valid
-  if (!locales.includes(locale as Locale)) {
-    locale = defaultLocale;
-  }
+  const validLocale = locales.includes(locale as Locale) ? locale : defaultLocale;
 
-  // Safely import messages with fallback
-  let messages;
-  try {
-    messages = (await import(`../messages/${locale}.json`)).default;
-  } catch (error) {
-    // Fallback to default locale messages if import fails
-    messages = (await import(`../messages/${defaultLocale}.json`)).default;
-  }
+  // Import messages with proper error handling
+  const messages = (await import(`../messages/${validLocale}.json`)).default;
 
   return {
-    locale,
+    locale: validLocale,
     messages,
   };
 });

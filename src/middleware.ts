@@ -1,12 +1,21 @@
-// Middleware is disabled for static export
-// The middleware functionality is not compatible with Next.js static export
-// Locale routing is handled by the static HTML redirect in /index.html
+import createMiddleware from 'next-intl/middleware';
+import { locales, defaultLocale } from './i18n';
 
-export default function middleware() {
-  // No-op middleware for static export
-  return;
-}
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales,
+
+  // Used when no locale matches
+  defaultLocale,
+
+  // The locale prefix to use for URLs
+  localePrefix: 'always',
+
+  // Redirect to default locale when accessing without locale
+  localeDetection: true,
+});
 
 export const config = {
-  matcher: [],
+  // Match only internationalized pathnames
+  matcher: ['/', '/(az|en|ru)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
 };

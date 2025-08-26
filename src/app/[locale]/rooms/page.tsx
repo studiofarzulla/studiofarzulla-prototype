@@ -1,7 +1,7 @@
 import RoomsPageContent from '@/components/rooms/RoomsPageContent';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 12 hour revalidation for rooms page
+export const revalidate = 43200; // 12 hours
 
 interface PageProps {  params?: { locale?: string };}
 export default function RoomsPage() {

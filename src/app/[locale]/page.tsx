@@ -30,8 +30,8 @@ import TestimonialCard from '@/components/TestimonialCard';
 import StatisticsCounter from '@/components/StatisticsCounter';
 import InstagramFeed from '@/components/InstagramFeed';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 24 hour revalidation for the home page
+export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
   title: 'Luxury Beach Resort | The Crescent Beach Hotel',
@@ -345,7 +345,7 @@ export default function HomePage({ params }: PageProps) {
 
           <div className='text-center mt-12'>
             <LocaleLink
-              href='/rooms'
+              href={'/rooms' as any}
               className='btn-primary text-lg px-8 py-4 inline-flex items-center'
             >
               View All Rooms
@@ -516,7 +516,7 @@ export default function HomePage({ params }: PageProps) {
                 travelers and conference groups.
               </p>
               <LocaleLink
-                href='/conferences'
+                href={'/conferences' as any}
                 className='text-primary-600 font-medium hover:text-primary-700'
               >
                 Learn More →
@@ -533,7 +533,7 @@ export default function HomePage({ params }: PageProps) {
                 privileges, and special event invitations.
               </p>
               <LocaleLink
-                href='/contact'
+                href={'/contact' as any}
                 className='text-accent-600 font-medium hover:text-accent-700'
               >
                 Join Now →
@@ -550,7 +550,7 @@ export default function HomePage({ params }: PageProps) {
                 upgrades, and personalized services.
               </p>
               <LocaleLink
-                href='/contact'
+                href={'/contact' as any}
                 className='text-secondary-600 font-medium hover:text-secondary-700'
               >
                 Sign Up →
@@ -578,7 +578,7 @@ export default function HomePage({ params }: PageProps) {
 
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <LocaleLink
-              href='/rooms'
+              href={'/rooms' as any}
               className='bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl'
             >
               Book Your Stay
@@ -586,7 +586,7 @@ export default function HomePage({ params }: PageProps) {
             </LocaleLink>
 
             <LocaleLink
-              href='/contact'
+              href={'/contact' as any}
               className='border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200'
             >
               Contact Us

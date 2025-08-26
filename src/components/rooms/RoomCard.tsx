@@ -190,13 +190,13 @@ export default function RoomCard({
         {/* Actions */}
         <div className='flex space-x-3'>
           <Link
-            href={`/rooms/${id}`}
+            href={`/rooms/${id}` as any}
             className='flex-1 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium py-3 px-4 rounded-lg transition-colors duration-200 text-center'
           >
             {tCommon('view_details')}
           </Link>
           <Link
-            href={`/rooms/${id}?book=true`}
+            href={`/rooms/${id}?book=true` as any}
             className='flex items-center justify-center px-4 py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200 group'
           >
             <IoArrowForward className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-200' />

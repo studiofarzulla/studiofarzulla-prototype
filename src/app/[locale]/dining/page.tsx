@@ -15,8 +15,8 @@ import {
   IoArrowForwardOutline,
 } from 'react-icons/io5';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 8 hour revalidation for dining (menu updates)
+export const revalidate = 28800; // 8 hours
 
 // export const metadata: Metadata = {
 //   title: 'Fine Dining & Restaurants | The Crescent Beach Hotel',

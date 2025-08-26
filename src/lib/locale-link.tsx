@@ -31,5 +31,5 @@ export default function LocaleLink({ href, ...props }: LocaleLinkProps) {
   // Add the locale prefix to the path
   const localizedHref = `/${locale}${hrefString}`;
   
-  return <Link href={localizedHref} {...props} />;
+  return <Link href={localizedHref as any} {...props} />;
 }

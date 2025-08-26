@@ -22,8 +22,8 @@ import {
   Clock,
 } from 'lucide-react';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 12 hour revalidation for amenities
+export const revalidate = 43200; // 12 hours
 
 export const metadata: Metadata = {
   title: 'Luxury Hotel Amenities & Facilities | The Crescent Beach Hotel',
