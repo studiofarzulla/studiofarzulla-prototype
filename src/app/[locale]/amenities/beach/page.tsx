@@ -4,10 +4,11 @@ import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';
 import BeachSection from '@/components/amenities/BeachSection';
 import LocaleLink from '@/lib/locale-link';
+import { Button } from '@/components/ui/Button';
 import { ArrowLeft, Waves, Umbrella, Volleyball, Ship } from 'lucide-react';
 
-// Force static generation for this page
-export const dynamic = 'force-static';
+// Enable ISR with 12 hour revalidation
+export const revalidate = 43200; // 12 hours
 
 export const metadata: Metadata = {
   title: 'Private Caspian Sea Beach | The Crescent Beach Hotel Amenities',
@@ -28,7 +29,7 @@ export default function BeachPage({ params }: PageProps) {
       <section className='bg-white border-b'>
         <div className='container mx-auto px-4 py-4'>
           <LocaleLink
-            href='/amenities'
+            href={'/amenities' as any}
             className='inline-flex items-center text-gray-600 hover:text-primary-600'
           >
             <ArrowLeft className='h-4 w-4 mr-2' />

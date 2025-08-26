@@ -63,11 +63,20 @@ export default function ContactForm() {
     setError(null);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Send to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      // In production, this would be an actual API call
-      console.log('Form submitted:', data);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
 
       setIsSuccess(true);
       reset();
@@ -77,7 +86,8 @@ export default function ContactForm() {
         setIsSuccess(false);
       }, 5000);
     } catch (err) {
-      setError('Failed to send message. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to send message. Please try again.';
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }

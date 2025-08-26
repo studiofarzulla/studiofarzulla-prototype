@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { useTranslations } from '@/lib/LocaleProvider';
+import LocaleLink from '@/lib/locale-link';
 
 interface FacilityHeroProps {
   title: string;
@@ -45,14 +46,14 @@ export default function FacilityHero({
           </p>
 
           {ctaText && ctaLink && (
-            <a href={ctaLink}>
+            <LocaleLink href={ctaLink as any}>
               <Button
                 size='lg'
                 className='bg-primary-600 hover:bg-primary-700 text-white px-8 py-4'
               >
                 {ctaText}
               </Button>
-            </a>
+            </LocaleLink>
           )}
         </div>
       </div>
