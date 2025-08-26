@@ -9,42 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Beach Resort Color Palette
+        // Azerbaijani Flag Inspired Color Palette
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0084b4', // Main primary
-          600: '#006994', // Darker primary
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#e6f4ea',
+          100: '#c1e3cb',
+          200: '#98d1a9',
+          300: '#6ebf87',
+          400: '#4fb06d',
+          500: '#00966F', // Azerbaijan Green
+          600: '#008861',
+          700: '#007654',
+          800: '#006547',
+          900: '#00453d',
         },
         secondary: {
-          50: '#fefdfb',
-          100: '#fdf8f0',
-          200: '#f5e6d3', // Light sandy beige
-          300: '#eed5b7',
-          400: '#e3c29b',
-          500: '#d4b5a0', // Main secondary
-          600: '#c4a484',
-          700: '#a08568',
-          800: '#7d6751',
-          900: '#5c4a3b',
+          50: '#e8f4fb',
+          100: '#c5e4f5',
+          200: '#9ed2ef',
+          300: '#77c0e9',
+          400: '#5ab2e4',
+          500: '#00B5E2', // Azerbaijan Blue
+          600: '#0095c4',
+          700: '#0075a0',
+          800: '#00567d',
+          900: '#003859',
         },
         accent: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#ff6b6b', // Sunset coral
-          600: '#ef4444',
-          700: '#dc2626',
-          800: '#b91c1c',
-          900: '#991b1b',
+          50: '#ffebeb',
+          100: '#ffcdcd',
+          200: '#ffabab',
+          300: '#ff8989',
+          400: '#ff6f6f',
+          500: '#E30A17', // Azerbaijan Red
+          600: '#cc0915',
+          700: '#b30813',
+          800: '#990711',
+          900: '#66050c',
         },
         neutral: {
           50: '#fafafa',

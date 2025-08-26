@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   links: {
     twitter: 'https://twitter.com/crescentbeach',
     facebook: 'https://facebook.com/crescentbeachhotel',
-    instagram: 'https://instagram.com/crescentbeachhotel',
+    instagram: 'https://instagram.com/crescent_beach_hotel',
     linkedin: 'https://linkedin.com/company/crescentbeachhotel',
     booking: 'https://www.booking.com/hotel/az/the-crescent-beach.html',
   },

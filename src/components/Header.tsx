@@ -76,10 +76,12 @@ export default function Header() {
       <nav className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16 lg:h-20'>
           {/* Logo */}
-          <LocaleLink href='/' className='flex items-center space-x-2 z-50'>
-            <div className='w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center'>
-              <span className='text-white font-bold text-xl'>C</span>
-            </div>
+          <LocaleLink href='/' className='flex items-center space-x-3 z-50'>
+            <img
+              src='/logo.png'
+              alt={SITE_CONFIG.name}
+              className='h-12 lg:h-14 w-auto'
+            />
             <div className='hidden sm:block'>
               <h1
                 className={cn(

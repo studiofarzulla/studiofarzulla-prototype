@@ -9,87 +9,157 @@ import ImageLightbox from '@/components/gallery/ImageLightbox';
 import InstagramWidget from '@/components/gallery/InstagramWidget';
 import VideoGallery from '@/components/gallery/VideoGallery';
 
-// Mock gallery data - In production, this would come from a CMS or API
+// Real hotel gallery images
 const GALLERY_IMAGES = [
   {
     id: '1',
-    src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800',
-    alt: 'Hotel exterior with beautiful architecture',
+    src: '/images/hotel/pretty image of hotel.jpg',
+    alt: 'The Crescent Beach Hotel exterior view',
     category: 'hotel',
-    title: 'Grand Hotel Entrance',
+    title: 'Hotel Exterior',
     description:
-      'The impressive entrance of The Crescent Beach Hotel welcomes guests with luxury and elegance.',
-    tags: ['architecture', 'entrance', 'luxury', 'exterior'],
+      'The impressive architecture of The Crescent Beach Hotel & Leisure Resort overlooking the Caspian Sea.',
+    tags: ['architecture', 'exterior', 'luxury', 'resort'],
   },
   {
     id: '2',
-    src: 'https://images.unsplash.com/photo-1578774204375-39ab30d2ebb1?w=800',
-    alt: 'Luxury hotel room with ocean view',
-    category: 'rooms',
-    title: 'Ocean View Suite',
+    src: '/images/hotel/beach.avif',
+    alt: 'Pristine beach area of the Crescent Beach Hotel',
+    category: 'beach',
+    title: 'Caspian Beach',
     description:
-      'Spacious suite with panoramic views of the Caspian Sea and modern amenities.',
-    tags: ['suite', 'ocean view', 'luxury', 'bedroom'],
+      'Our exclusive beach area with crystal clear Caspian Sea waters and pristine sandy shores.',
+    tags: ['beach', 'caspian sea', 'waterfront', 'exclusive'],
   },
   {
     id: '3',
-    src: 'https://images.unsplash.com/photo-1544963650-2bf9e2c36fb4?w=800',
-    alt: 'Fine dining restaurant interior',
+    src: '/images/hotel/shade bar.jpg',
+    alt: 'Shade Bar overlooking the Caspian Sea',
     category: 'dining',
-    title: 'The Terrace Restaurant',
+    title: 'Shade Bar',
     description:
-      'Elegant dining experience with breathtaking sunset views over the sea.',
-    tags: ['restaurant', 'fine dining', 'terrace', 'sunset'],
+      'Stylish beachfront bar offering refreshing cocktails and stunning sea views.',
+    tags: ['bar', 'beachfront', 'cocktails', 'ocean view'],
   },
   {
     id: '4',
-    src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800',
-    alt: 'Infinity pool overlooking the sea',
+    src: '/images/hotel/outside pool.jpg',
+    alt: 'Outdoor pool with sea views',
     category: 'amenities',
-    title: 'Infinity Pool',
+    title: 'Outdoor Pool Complex',
     description:
-      'Our stunning infinity pool creates the illusion of water extending to the horizon.',
-    tags: ['pool', 'infinity', 'swimming', 'relaxation'],
+      'Multiple outdoor pools including children\'s areas with panoramic Caspian Sea views.',
+    tags: ['pool', 'outdoor', 'swimming', 'family'],
   },
   {
     id: '5',
-    src: 'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800',
-    alt: 'Beach wedding ceremony setup',
-    category: 'events',
-    title: 'Beach Wedding',
+    src: '/images/hotel/outside pool2.jpg',
+    alt: 'Resort pool area with loungers',
+    category: 'amenities',
+    title: 'Pool Lounging Area',
     description:
-      'Create unforgettable memories with a romantic beachfront wedding ceremony.',
-    tags: ['wedding', 'beach', 'ceremony', 'romantic'],
+      'Relaxing poolside lounging areas with comfortable sunbeds and umbrellas.',
+    tags: ['pool', 'lounging', 'relaxation', 'sunbathing'],
   },
   {
     id: '6',
-    src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',
-    alt: 'Spa treatment room with ocean view',
+    src: '/images/hotel/sauna steam.jpg',
+    alt: 'Luxury sauna and steam room facilities',
     category: 'amenities',
-    title: 'Spa Sanctuary',
+    title: 'Sauna & Steam',
     description:
-      'Relax and rejuvenate in our tranquil spa with panoramic sea views.',
-    tags: ['spa', 'wellness', 'relaxation', 'treatment'],
+      'Modern sauna and steam room facilities for ultimate relaxation and wellness.',
+    tags: ['sauna', 'steam room', 'wellness', 'relaxation'],
   },
   {
     id: '7',
-    src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800',
-    alt: 'Private beach with crystal clear water',
-    category: 'beach',
-    title: 'Private Beach',
+    src: '/images/hotel/dry sauna.jpg',
+    alt: 'Traditional dry sauna facilities',
+    category: 'amenities',
+    title: 'Dry Sauna',
     description:
-      'Exclusive access to pristine beach with crystal clear Caspian Sea waters.',
-    tags: ['beach', 'private', 'crystal clear', 'exclusive'],
+      'Traditional Finnish-style dry sauna for detoxification and relaxation.',
+    tags: ['sauna', 'dry sauna', 'wellness', 'detox'],
   },
   {
     id: '8',
-    src: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=800',
-    alt: 'Hotel lobby with modern design',
+    src: '/images/hotel/leisure centre reception.jpg',
+    alt: 'Leisure centre reception area',
     category: 'hotel',
-    title: 'Luxury Lobby',
+    title: 'Leisure Centre',
     description:
-      'Grand lobby featuring contemporary design and traditional Azerbaijani elements.',
-    tags: ['lobby', 'interior', 'design', 'luxury'],
+      'Modern leisure centre reception with friendly staff ready to assist with all activities.',
+    tags: ['leisure', 'reception', 'activities', 'service'],
+  },
+  {
+    id: '9',
+    src: '/images/hotel/food1.jpg',
+    alt: 'Gourmet cuisine at Crescent Beach Hotel',
+    category: 'dining',
+    title: 'Culinary Excellence',
+    description:
+      'Exquisite international and local Azerbaijani cuisine prepared by our master chefs.',
+    tags: ['food', 'cuisine', 'gourmet', 'dining'],
+  },
+  {
+    id: '10',
+    src: '/images/hotel/food2.jpg',
+    alt: 'Fine dining presentation',
+    category: 'dining',
+    title: 'Fine Dining Experience',
+    description:
+      'Beautifully presented dishes combining traditional flavors with modern techniques.',
+    tags: ['food', 'fine dining', 'restaurant', 'gourmet'],
+  },
+  {
+    id: '11',
+    src: '/images/hotel/food3.jpg',
+    alt: 'Fresh seafood and local specialties',
+    category: 'dining',
+    title: 'Fresh Seafood',
+    description:
+      'Daily fresh seafood from the Caspian Sea and local market specialties.',
+    tags: ['seafood', 'fresh', 'caspian', 'local'],
+  },
+  {
+    id: '12',
+    src: '/images/hotel/outside pool3.jpg',
+    alt: 'Evening pool atmosphere',
+    category: 'amenities',
+    title: 'Evening Pool Scene',
+    description:
+      'Magical evening atmosphere at our illuminated pool complex.',
+    tags: ['pool', 'evening', 'atmosphere', 'lighting'],
+  },
+  {
+    id: '13',
+    src: '/images/hotel/beach area.jpg',
+    alt: 'Beach recreational area',
+    category: 'beach',
+    title: 'Beach Activities',
+    description:
+      'Wide range of beach activities and water sports available for all ages.',
+    tags: ['beach', 'activities', 'recreation', 'sports'],
+  },
+  {
+    id: '14',
+    src: '/images/hotel/menu1.jpg',
+    alt: 'Restaurant menu selections',
+    category: 'dining',
+    title: 'Menu Selections',
+    description:
+      'Diverse menu offerings featuring international and Azerbaijani dishes.',
+    tags: ['menu', 'dining', 'choices', 'restaurant'],
+  },
+  {
+    id: '15',
+    src: '/images/hotel/menu2.jpg',
+    alt: 'Specialty drinks and beverages menu',
+    category: 'dining',
+    title: 'Beverage Selection',
+    description:
+      'Extensive beverage menu including cocktails, wines, and local specialties.',
+    tags: ['drinks', 'beverages', 'cocktails', 'bar'],
   },
 ];
 
@@ -145,7 +215,7 @@ export default function GalleryPageContent() {
             <div className='flex items-center justify-center gap-6 text-white/80'>
               <div className='flex items-center gap-2'>
                 <IoCamera className='w-5 h-5' />
-                <span>{GALLERY_IMAGES.length}+ Photos</span>
+                <span>{GALLERY_IMAGES.length} Photos</span>
               </div>
               <div className='flex items-center gap-2'>
                 <IoPlay className='w-5 h-5' />
@@ -225,7 +295,7 @@ export default function GalleryPageContent() {
                 className='max-w-4xl mx-auto'
               >
                 <InstagramWidget
-                  username='crescentbeachhotel'
+                  username='crescent_beach_hotel'
                   hashtag='CrescentBeachHotel'
                 />
               </div>
