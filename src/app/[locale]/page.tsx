@@ -29,6 +29,7 @@ import RestaurantCard from '@/components/RestaurantCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import StatisticsCounter from '@/components/StatisticsCounter';
 import InstagramFeed from '@/components/InstagramFeed';
+import HotelHighlights from '@/components/home/HotelHighlights';
 
 // Enable ISR with 24 hour revalidation for the home page
 export const revalidate = 86400; // 24 hours
@@ -250,6 +251,9 @@ export default function HomePage({ params }: PageProps) {
     <>
       {/* Hero Section with Booking Widget */}
       <HeroSection />
+
+      {/* Hotel Highlights */}
+      <HotelHighlights />
 
       {/* Welcome & Legacy Section */}
       <section className='section-padding bg-white'>

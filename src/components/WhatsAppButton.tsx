@@ -7,9 +7,9 @@ export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
-  // WhatsApp number for the hotel (replace with actual number)
-  const whatsappNumber = '994123456789'; // Azerbaijan country code
-  const defaultMessage = 'Hello! I would like to inquire about The Crescent Beach Hotel.';
+  // WhatsApp number for the hotel
+  const whatsappNumber = '994123456789'; // Azerbaijan country code (+994)
+  const defaultMessage = 'Hello! I would like to inquire about The Crescent Beach Hotel & Leisure Resort in Baku.';
 
   useEffect(() => {
     // Show button after 2 seconds

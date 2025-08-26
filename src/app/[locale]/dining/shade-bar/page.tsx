@@ -4,9 +4,13 @@ import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import ReservationForm from '@/components/dining/ReservationForm';
 import Image from 'next/image';
+import { DINING_VENUES } from '@/constants/hotel-info';
 
 // Force static generation for this page
 export const dynamic = 'force-static';
+
+// Get restaurant data from constants
+const restaurantData = DINING_VENUES.find(venue => venue.id === 'shade-bar')!;
 
 const menuItems = {
   cocktails: [
@@ -237,12 +241,12 @@ export default function ShadeBarPage() {
     <div className='min-h-screen'>
       {/* Restaurant Hero */}
       <RestaurantHero
-        name='The Shade Bar'
+        name={restaurantData.name}
         tagline='Beach bar under iconic sail structure'
-        description='Relax and unwind at our unique beachfront bar, sheltered under a distinctive sail structure that has become an iconic feature of our resort. Enjoy refreshing cocktails, light Mediterranean fare, and spectacular sunset views over the Caspian Sea.'
-        cuisine='Beach Bar & Light Mediterranean'
+        description={restaurantData.description}
+        cuisine={restaurantData.cuisine.join(' & ')}
         location='Beachfront - Under Sail Structure'
-        hours='10:00 AM - 2:00 AM'
+        hours={(restaurantData.hours as any).daily}
         capacity='60 Guests'
         phone='+994 12 345 6789'
         images={[
@@ -250,13 +254,7 @@ export default function ShadeBarPage() {
           '/images/dining/shade-bar/hero-2.jpg',
           '/images/dining/shade-bar/hero-3.jpg',
         ]}
-        features={[
-          'Beachfront Location',
-          'Sail Canopy Design',
-          'Sunset Views',
-          'Cocktail Bar',
-          'Light Meals',
-        ]}
+        features={[...restaurantData.features]}
       />
 
       {/* Bar Introduction */}

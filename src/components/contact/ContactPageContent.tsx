@@ -26,10 +26,13 @@ export default function ContactPageContent() {
   const [activeTab, setActiveTab] = useState('general');
 
   const contactInfo = {
-    phone: '+994 12 599 88 88',
-    email: 'info@crescentbeach.az',
-    address: 'Bilgah Beach, Baku AZ1023, Azerbaijan',
-    hours: 'Available 24/7 for guests',
+    phone: '+994 12 345 45 67',
+    whatsapp: '+994 12 345 67 89',
+    email: 'info@crescentbeachhotel.com',
+    address: 'Salyan Highway 31, Shikhov, Baku AZ1023, Azerbaijan',
+    hours: 'Reception: 24/7 | Check-in: 14:00 | Check-out: 12:00',
+    distanceFromCenter: '8.9 km from city center',
+    distanceFromAirport: '40 km from Heydar Aliyev Airport (35-40 min drive)',
   };
 
   const departments = [

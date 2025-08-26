@@ -3,9 +3,13 @@ import MenuSection from '@/components/dining/MenuSection';
 import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import Image from 'next/image';
+import { DINING_VENUES } from '@/constants/hotel-info';
 
 // Force static generation for this page
 export const dynamic = 'force-static';
+
+// Get restaurant data from constants
+const restaurantData = DINING_VENUES.find(venue => venue.id === 'pool-bar')!;
 
 const menuItems = {
   poolsideCocktails: [
@@ -268,12 +272,12 @@ export default function PoolBarPage() {
     <div className='min-h-screen'>
       {/* Restaurant Hero */}
       <RestaurantHero
-        name='Pool Bar'
+        name={restaurantData.name}
         tagline='Refreshing drinks with poolside views'
-        description='Cool off and relax at our Pool Bar, perfectly positioned to overlook our outdoor swimming pool and recreational areas. Enjoy tropical cocktails, refreshing smoothies, and light snacks while taking in the vibrant pool atmosphere and sunshine.'
-        cuisine='Poolside Refreshments & Light Meals'
+        description={restaurantData.description}
+        cuisine={restaurantData.cuisine.join(' & ')}
         location='Pool Area - Outdoor Deck'
-        hours='9:00 AM - 10:00 PM'
+        hours={(restaurantData.hours as any).daily}
         capacity='40 Guests'
         phone='+994 12 345 6789'
         images={[
@@ -281,13 +285,7 @@ export default function PoolBarPage() {
           '/images/dining/pool-bar/hero-2.jpg',
           '/images/dining/pool-bar/hero-3.jpg',
         ]}
-        features={[
-          'Pool Views',
-          'Direct Pool Service',
-          'Tropical Cocktails',
-          'Light Snacks',
-          'Ice Cream Bar',
-        ]}
+        features={[...restaurantData.features]}
       />
 
       {/* Pool Bar Introduction */}

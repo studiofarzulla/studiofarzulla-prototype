@@ -5,9 +5,13 @@ import ChefProfile from '@/components/dining/ChefProfile';
 import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import ReservationForm from '@/components/dining/ReservationForm';
+import { DINING_VENUES } from '@/constants/hotel-info';
 
 // Force static generation for this page
 export const dynamic = 'force-static';
+
+// Get restaurant data from constants
+const restaurantData = DINING_VENUES.find(venue => venue.id === 'wild-west')!;
 
 const menuItems = {
   appetizers: [
@@ -188,39 +192,16 @@ const galleryImages = [
   },
 ];
 
+// Generate schedule from restaurant data
 const schedule = [
-  {
-    day: 'Monday',
-    closed: true,
-  },
-  {
-    day: 'Tuesday',
-    dinner: '6:00 PM - 11:00 PM',
-  },
-  {
-    day: 'Wednesday',
-    dinner: '6:00 PM - 11:00 PM',
-  },
-  {
-    day: 'Thursday',
-    dinner: '6:00 PM - 11:00 PM',
-    note: 'Happy Hour: 6:00 PM - 8:00 PM',
-  },
-  {
-    day: 'Friday',
-    dinner: '6:00 PM - 12:00 AM',
-    note: 'Extended hours with live music',
-  },
-  {
-    day: 'Saturday',
-    dinner: '6:00 PM - 12:00 AM',
-    note: 'BBQ Night with live country music and line dancing',
-  },
-  {
-    day: 'Sunday',
-    dinner: '6:00 PM - 11:00 PM',
-  },
-];
+  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+].map(day => ({
+  day,
+  ...(day === 'Monday' ? { closed: false } : { dinner: (restaurantData.hours as any).daily }),
+  ...(day === 'Thursday' && { note: 'Happy Hour: 5:00 PM - 7:00 PM' }),
+  ...(day === 'Friday' && { note: 'Extended hours with live music' }),
+  ...(day === 'Saturday' && { note: 'BBQ Night with live country music and line dancing' }),
+}));
 
 const specialHours = [
   {
@@ -275,12 +256,12 @@ export default function WildWestRestaurantPage({ params }: PageProps) {
     <div className='min-h-screen'>
       {/* Restaurant Hero */}
       <RestaurantHero
-        name='Wild West Restaurant'
+        name={restaurantData.name}
         tagline='Authentic American cuisine in a Western atmosphere'
-        description='Step back in time to the American frontier with our Western-themed restaurant featuring authentic American BBQ, hearty comfort food, and rustic ambiance. Experience the spirit of the Wild West with live country music, line dancing, and genuine hospitality.'
-        cuisine='American & Western'
+        description={restaurantData.description}
+        cuisine={restaurantData.cuisine.join(' & ')}
         location='Building F - First Floor'
-        hours='6:00 PM - 12:00 AM (Closed Mondays)'
+        hours={(restaurantData.hours as any).daily}
         capacity='80 Guests'
         phone='+994 12 345 6789'
         images={[
@@ -288,13 +269,7 @@ export default function WildWestRestaurantPage({ params }: PageProps) {
           '/images/dining/wild-west/hero-2.jpg',
           '/images/dining/wild-west/hero-3.jpg',
         ]}
-        features={[
-          'Western Theme',
-          'Live Country Music',
-          'Line Dancing',
-          'BBQ Specialties',
-          'Craft Cocktails',
-        ]}
+        features={[...restaurantData.features]}
       />
 
       {/* Restaurant Introduction */}

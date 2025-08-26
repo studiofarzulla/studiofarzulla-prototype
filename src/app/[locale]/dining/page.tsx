@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import RestaurantCard from '@/components/RestaurantCard';
 import SpecialEvents, { SpecialEvent } from '@/components/dining/SpecialEvents';
+import { DINING_VENUES } from '@/constants/hotel-info';
 import {
   IoRestaurantOutline,
   IoWineOutline,
@@ -23,71 +24,40 @@ export const revalidate = 28800; // 8 hours
 //   description: 'Experience world-class cuisine at our restaurants and bars. From international flavors to local specialties, every meal is a culinary adventure.',
 // };
 
-const restaurants = [
-  {
-    name: 'The Terrace Restaurant',
-    description:
-      'Experience international cuisine at its finest with our à la carte menu featuring dishes from around the world, complemented by stunning Caspian Sea views.',
-    cuisine: 'International À La Carte',
-    hours: '7:00 AM - 11:00 PM',
-    capacity: 'Up to 120 guests',
-    location: 'Main Building - Ground Floor',
-    image: '/images/dining/terrace-restaurant.jpg',
-    features: [
-      'Sea View Terrace',
-      'International Menu',
-      'Wine Selection',
-      'Private Dining',
-    ],
-    href: '/dining/the-terrace',
-  },
-  {
-    name: 'Wild West Restaurant',
-    description:
-      'Step into the American frontier with our Western-themed restaurant offering authentic American cuisine in a rustic, nostalgic atmosphere.',
-    cuisine: 'American & Western',
-    hours: '6:00 PM - 12:00 AM',
-    capacity: 'Up to 80 guests',
-    location: 'Building F - First Floor',
-    image: '/images/dining/wild-west-restaurant.jpg',
-    features: [
-      'Western Theme',
-      'BBQ Specialties',
-      'Live Entertainment',
-      'Craft Cocktails',
-    ],
-    href: '/dining/wild-west',
-  },
-  {
-    name: 'The Shade Bar',
-    description:
-      'Relax under our unique sail structure while enjoying refreshing beverages and light snacks with unobstructed views of the Caspian Sea.',
-    cuisine: 'Beach Bar & Light Meals',
-    hours: '10:00 AM - 2:00 AM',
-    capacity: 'Up to 60 guests',
-    location: 'Beachfront - Under Sail Structure',
-    image: '/images/dining/shade-bar.jpg',
-    features: [
-      'Beachfront Location',
-      'Sunset Views',
-      'Cocktail Bar',
-      'Light Meals',
-    ],
-    href: '/dining/shade-bar',
-  },
-  {
-    name: 'Pool Bar',
-    description:
-      'Cool off poolside with tropical drinks and casual dining while enjoying the perfect view of our outdoor swimming pool and recreational areas.',
-    cuisine: 'Poolside Refreshments',
-    hours: '9:00 AM - 10:00 PM',
-    capacity: 'Up to 40 guests',
-    location: 'Pool Area - Outdoor Deck',
-    image: '/images/dining/pool-bar.jpg',
-    features: ['Pool Views', 'Tropical Drinks', 'Pool Service', 'Light Snacks'],
-    href: '/dining/pool-bar',
-  },
-];
+// Transform DINING_VENUES data to match restaurant card format
+const restaurants = DINING_VENUES.map((venue) => {
+  // Generate consistent slug for routing
+  const slug = venue.id;
+  
+  // Format hours for display
+  const formatHours = () => {
+    const hours = venue.hours as any;
+    if (hours.breakfast && hours.lunch && hours.dinner) {
+      return `${hours.breakfast} - ${hours.dinner.split(' - ')[1]}`;
+    } else if (hours.daily) {
+      return hours.daily;
+    } else {
+      return Object.values(hours).join(', ');
+    }
+  };
+
+  return {
+    name: venue.name,
+    description: venue.description,
+    cuisine: venue.cuisine.join(' & '),
+    hours: formatHours(),
+    capacity: venue.type === 'Restaurant' ? 'Up to 120 guests' : 
+             venue.type === 'Bar' ? 'Up to 80 guests' : 
+             'Up to 60 guests',
+    location: venue.type === 'Restaurant' ? 'Main Building - Ground Floor' :
+              venue.id === 'wild-west' ? 'Building F - First Floor' :
+              venue.id === 'shade-bar' ? 'Beachfront - Under Sail Structure' :
+              'Pool Area - Outdoor Deck',
+    image: `/images/dining/${venue.id}-restaurant.jpg`,
+    features: [...venue.features],
+    href: `/dining/${slug}`,
+  };
+});
 
 const specialEvents: SpecialEvent[] = [
   {
@@ -99,7 +69,7 @@ const specialEvents: SpecialEvent[] = [
     date: 'Every Friday',
     time: '7:00 PM',
     duration: '2.5 hours',
-    location: 'The Terrace Restaurant',
+    location: DINING_VENUES.find(v => v.id === 'terrace')!.name,
     capacity: 20,
     price: '150 AZN per person',
     image: '/images/dining/events/wine-tasting.jpg',
@@ -122,7 +92,7 @@ const specialEvents: SpecialEvent[] = [
     date: 'Every Saturday',
     time: '8:00 PM',
     duration: '4 hours',
-    location: 'Wild West Restaurant',
+    location: DINING_VENUES.find(v => v.id === 'wild-west')!.name,
     price: '80 AZN per person',
     image: '/images/dining/events/bbq-night.jpg',
     features: [
@@ -143,7 +113,7 @@ const specialEvents: SpecialEvent[] = [
     date: 'May - September',
     time: '7:30 PM',
     duration: '3 hours',
-    location: 'The Shade Bar - Beach Setup',
+    location: `${DINING_VENUES.find(v => v.id === 'shade-bar')!.name} - Beach Setup`,
     capacity: 30,
     price: '120 AZN per person',
     image: '/images/dining/events/sunset-dining.jpg',

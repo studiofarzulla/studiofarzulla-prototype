@@ -5,9 +5,13 @@ import ChefProfile from '@/components/dining/ChefProfile';
 import DiningGallery from '@/components/dining/DiningGallery';
 import OpeningHours from '@/components/dining/OpeningHours';
 import ReservationForm from '@/components/dining/ReservationForm';
+import { DINING_VENUES } from '@/constants/hotel-info';
 
 // Force static generation for this page
 export const dynamic = 'force-static';
+
+// Get restaurant data from constants
+const restaurantData = DINING_VENUES.find(venue => venue.id === 'terrace')!;
 
 const menuItems = {
   breakfast: [
@@ -184,51 +188,16 @@ const galleryImages = [
   },
 ];
 
+// Generate schedule from restaurant data
 const schedule = [
-  {
-    day: 'Monday',
-    breakfast: '7:00 AM - 11:00 AM',
-    lunch: '12:00 PM - 4:00 PM',
-    dinner: '7:00 PM - 11:00 PM',
-  },
-  {
-    day: 'Tuesday',
-    breakfast: '7:00 AM - 11:00 AM',
-    lunch: '12:00 PM - 4:00 PM',
-    dinner: '7:00 PM - 11:00 PM',
-  },
-  {
-    day: 'Wednesday',
-    breakfast: '7:00 AM - 11:00 AM',
-    lunch: '12:00 PM - 4:00 PM',
-    dinner: '7:00 PM - 11:00 PM',
-  },
-  {
-    day: 'Thursday',
-    breakfast: '7:00 AM - 11:00 AM',
-    lunch: '12:00 PM - 4:00 PM',
-    dinner: '7:00 PM - 11:00 PM',
-  },
-  {
-    day: 'Friday',
-    breakfast: '7:00 AM - 11:00 AM',
-    lunch: '12:00 PM - 4:00 PM',
-    dinner: '7:00 PM - 12:00 AM',
-    note: 'Extended hours for Wine Tasting event',
-  },
-  {
-    day: 'Saturday',
-    breakfast: '7:00 AM - 11:30 AM',
-    lunch: '12:00 PM - 4:30 PM',
-    dinner: '7:00 PM - 12:00 AM',
-  },
-  {
-    day: 'Sunday',
-    breakfast: '7:00 AM - 11:30 AM',
-    lunch: '12:00 PM - 4:30 PM',
-    dinner: '7:00 PM - 11:00 PM',
-  },
-];
+  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+].map(day => ({
+  day,
+  breakfast: (restaurantData.hours as any).breakfast,
+  lunch: (restaurantData.hours as any).lunch,
+  dinner: (restaurantData.hours as any).dinner,
+  ...(day === 'Friday' && { note: 'Extended hours for Wine Tasting event' }),
+}));
 
 const specialHours = [
   {
@@ -283,12 +252,12 @@ export default function TerraceRestaurantPage({ params }: PageProps) {
     <div className='min-h-screen'>
       {/* Restaurant Hero */}
       <RestaurantHero
-        name='The Terrace Restaurant'
-        tagline='International à la carte dining with sea views'
-        description='Experience sophisticated international cuisine on our elegant terrace overlooking the Caspian Sea. Our à la carte menu features carefully crafted dishes from around the world, prepared with the finest ingredients and served in an atmosphere of refined luxury.'
-        cuisine='International'
+        name={restaurantData.name}
+        tagline={`${restaurantData.cuisine.join(' & ')} dining with sea views`}
+        description={restaurantData.description}
+        cuisine={restaurantData.cuisine.join(' & ')}
         location='Main Building - Ground Floor'
-        hours='7:00 AM - 11:00 PM'
+        hours={`${(restaurantData.hours as any).breakfast} - ${(restaurantData.hours as any).dinner.split(' - ')[1]}`}
         capacity='120 Guests'
         phone='+994 12 345 6789'
         images={[
@@ -296,13 +265,7 @@ export default function TerraceRestaurantPage({ params }: PageProps) {
           '/images/dining/terrace/hero-2.jpg',
           '/images/dining/terrace/hero-3.jpg',
         ]}
-        features={[
-          'Sea View Terrace',
-          'International Menu',
-          'Wine Selection',
-          'Private Dining',
-          'Live Music',
-        ]}
+        features={[...restaurantData.features]}
       />
 
       {/* Restaurant Introduction */}
