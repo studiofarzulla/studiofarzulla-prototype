@@ -107,6 +107,24 @@ dist
 # Docusaurus cache and generated files
 .docusaurus
 
+# Temporary files and debugging
+/temp/
+temp/
+**/temp/
+debug-*.js
+test-*.py
+analyze-*.sh
+*-debug.*
+*.debug
+*.bak
+*.tmp
+*.temp
+
+# Debug logs and session files
+*debug*.txt
+*session*.log
+*caveat*.txt
+
 # Serverless directories
 .serverless/
 
