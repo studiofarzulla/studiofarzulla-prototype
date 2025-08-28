@@ -155,6 +155,8 @@
     "loyalty_description": "Hər qalma ilə xal qazanın və eksklüziv üstünlüklər, otaq yüksəldilməsi və şəxsiləşdirilmiş xidmətlərdən həzz alın."
   },
   "rooms": {
+    "title": "Dəbdəbəli Otaqlar",
+    "subtitle": "200+ otaq arasından mükəmməl qalmanızı tapın",
     "page_title": "Dəbdəbəli Yaşayış",
     "page_subtitle": "9 möhtəşəm binada 200+ otaq, hər biri rahatlıq və zəriflik üçün dizayn edilib",
     "hero_title": "Mükəmməl Qalmanı Tapın",
@@ -363,6 +365,8 @@
     "spicy_dish": "Ədviyyatlı"
   },
   "amenities": {
+    "title": "Dünya Səviyyəli İmkanlar",
+    "subtitle": "Dəbdəbəli imkanlarımızı və obyektlərimizi kəşf edin",
     "page_title": "Dünya Səviyyəsində İmkanlar və Qurğular",
     "page_subtitle": "Son dərəcə rahatlıq və zövq üçün hazırlanmış lüks imkanları kəşf edin",
     "private_beach_title": "Şəxsi Xəzər Çimərliyı",
@@ -401,6 +405,8 @@
     "dj_nights": "DJ Gecələri və Əyləncə"
   },
   "conferences": {
+    "title": "Konfranslar və Tədbirlər",
+    "subtitle": "Uğurlu korporativ tədbirlər üçün müasir konfrans zalları",
     "page_title": "Peşəkar Konfrans və Korporativ Tədbir Qurğuları",
     "page_subtitle": "Uğurlu korporativ tədbirlər və iclaslar üçün ən müasır məkanlar",
     "grand_hall_title": "Böyük Konfrans Zalı",
