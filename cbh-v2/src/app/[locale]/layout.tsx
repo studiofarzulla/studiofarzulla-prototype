@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { locales } from '@/i18n';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import ChatWidget from '@/components/ChatWidget';
 import '@/styles/globals.css';
 
 type Props = {
@@ -29,6 +30,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
+          <ChatWidget />
         </NextIntlClientProvider>
       </body>
     </html>
