@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { IoPlay, IoChevronDown, IoStarSharp } from 'react-icons/io5';
 import { MdWifi, MdPool, MdRestaurant, MdSpa } from 'react-icons/md';
+import { useTranslations } from 'next-intl';
 import BookingWidget from './BookingWidget';
 
 interface HeroSlide {
@@ -58,6 +59,7 @@ const heroSlides: HeroSlide[] = [
 ];
 
 export default function HeroSection() {
+  const t = useTranslations();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -94,9 +96,9 @@ export default function HeroSection() {
                     backgroundImage: `url(${slide.src})`,
                   }}
                 />
-                {/* Azerbaijan Flag Inspired Gradient Overlay */}
-                <div className='absolute inset-0 bg-gradient-to-br from-[#00966F]/20 via-[#00B5E2]/10 to-[#E30A17]/15' />
-                <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent' />
+                {/* Enhanced Dark Overlay for Better Text Visibility */}
+                <div className='absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40' />
+                <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20' />
               </div>
             )
         )}
@@ -122,8 +124,8 @@ export default function HeroSection() {
             </div>
 
             {/* Main Title */}
-            <h1 className='text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-6 leading-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent drop-shadow-2xl'>
-              The Crescent Beach Hotel
+            <h1 className='text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-6 leading-tight text-white drop-shadow-2xl'>
+              {t('hero.title')}
             </h1>
 
             {/* Subtitle Section */}
@@ -158,8 +160,8 @@ export default function HeroSection() {
 
             {/* Call-to-Action Buttons */}
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mb-12'>
-              <button className='group relative px-8 py-4 bg-gradient-to-r from-[#00966F] to-[#00B5E2] hover:from-[#00B5E2] hover:to-[#00966F] text-white font-semibold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden'>
-                <span className='relative z-10'>Book Your Stay</span>
+              <button className='group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white font-semibold rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden'>
+                <span className='relative z-10'>{t('hero.cta_primary')}</span>
                 <div className='absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left' />
               </button>
               

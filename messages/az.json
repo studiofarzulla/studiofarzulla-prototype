@@ -35,7 +35,14 @@
     "language": "Dil",
     "english": "İngiliscə",
     "azerbaijani": "Azərbaycanca",
-    "russian": "Rusca"
+    "russian": "Rusca",
+    "rooms": "Otaqlar və Suitlər",
+    "dining": "Yemək",
+    "amenities": "İmkanlar",
+    "conferences": "Konfranslar",
+    "gallery": "Qalereya",
+    "contact": "Əlaqə",
+    "bookNow": "İndi Rezerv Et"
   },
   "hero": {
     "title": "Hilal Sahil Oteli",
@@ -401,6 +408,22 @@
     "phone": "+994 12 123 4567",
     "email": "info@crescentbeachhotel.com",
     "follow_us": "Bizi İzləyin",
-    "newsletter": "Eksklüziv təkliflər və yeniliklər üçün bülletenimizə abunə olun"
+    "newsletter": "Eksklüziv təkliflər və yeniliklər üçün bülletenimizə abunə olun",
+    "description": "Bakının ən nüfuzlu sahil oteli Hilal Sahil Otelində dəbdəbəni yaşayın.",
+    "quickLinks": "Sürətli Keçidlər",
+    "rooms": "Otaqlar",
+    "dining": "Yeməklər",
+    "amenities": "İmkanlar",
+    "gallery": "Qalereya",
+    "conferences": "Konfranslar",
+    "contact": "Əlaqə",
+    "reception": "Qeydiyyat",
+    "newsletterText": "Son təkliflər və xəbərlərlə tanış olun",
+    "emailPlaceholder": "E-poçtunuzu daxil edin",
+    "subscribe": "Abunə Ol",
+    "allRights": "Bütün Hüquqlar Qorunur",
+    "privacy": "Məxfilik Siyasəti",
+    "terms": "Şərtlər və Qaydalar",
+    "sitemap": "Sayt Xəritəsi"
   }
 }

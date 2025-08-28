@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import LocaleLink from '@/lib/locale-link';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from '@/lib/LocaleProvider';
+import { useTranslations } from 'next-intl';
 import { IoMenu, IoClose, IoCall } from 'react-icons/io5';
 import { NAVIGATION_ITEMS, SITE_CONFIG, CONTACT_INFO } from '@/constants';
 import { cn } from '@/lib/utils';

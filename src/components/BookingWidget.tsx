@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from '@/lib/LocaleProvider';
+import { useTranslations } from 'next-intl';
 import {
   IoCalendarOutline,
   IoPeopleOutline,
@@ -39,10 +39,10 @@ export default function BookingWidget() {
     <div className='bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 md:p-8 animate-fade-in-up'>
       <div className='text-center mb-6'>
         <h3 className='text-xl md:text-2xl font-semibold text-gray-900 mb-2'>
-          Book Your Perfect Stay
+          {t('booking.widget_title')}
         </h3>
         <p className='text-gray-600'>
-          Experience luxury at The Crescent Beach Hotel
+          {t('booking.widget_subtitle')}
         </p>
       </div>
 
@@ -147,7 +147,7 @@ export default function BookingWidget() {
         <div className='mt-6'>
           <button
             type='submit'
-            className='w-full bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl'
+            className='w-full bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl'
           >
             <IoSearchOutline className='w-5 h-5' />
             <span>Search Available Rooms</span>

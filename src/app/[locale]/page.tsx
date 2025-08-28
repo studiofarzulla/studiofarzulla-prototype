@@ -1,5 +1,5 @@
-import { getTranslations } from '@/lib/static-translations';
-import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
 import LocaleLink from '@/lib/locale-link';
 import {
   IoStar,
@@ -65,61 +65,55 @@ const getIconComponent = (iconName: string) => {
   return iconMap[iconName] || IoCheckmarkCircle;
 };
 
-export default function HomePage({ params }: PageProps) {
-  const t = getTranslations(params?.locale || 'en');
+export default async function HomePage({ params }: PageProps) {
+  const t = await getTranslations();
 
   // Premium Amenities
   const features = [
     {
       icon: 'water-outline',
-      title: 'Indoor & Outdoor Pools',
-      description:
-        'Multiple swimming pools including infinity pools with stunning Caspian Sea views and indoor pools for year-round enjoyment.',
+      title: t('features.pools_title'),
+      description: t('features.pools_description'),
       gradient: 'from-blue-100 to-blue-200',
     },
     {
       icon: 'fitness',
-      title: 'Wellness & Spa',
-      description:
-        'Complete wellness center with modern gym, steam and dry saunas, and rejuvenating spa treatments.',
+      title: t('features.wellness_title'),
+      description: t('features.wellness_description'),
       gradient: 'from-green-100 to-green-200',
     },
     {
       icon: 'water',
-      title: 'Private Beach Access',
-      description:
-        'Exclusive private beach with premium sunbeds and beachside service on the pristine Caspian Sea shore.',
+      title: t('features.beach_title'),
+      description: t('features.beach_description'),
       gradient: 'from-cyan-100 to-cyan-200',
     },
     {
       icon: 'game-controller',
-      title: "Children's Paradise",
-      description:
-        "Dedicated children's area with safe play zones, entertainment programs, and family-friendly activities.",
+      title: t('features.children_title'),
+      description: t('features.children_description'),
       gradient: 'from-purple-100 to-purple-200',
     },
     {
       icon: 'cafe',
-      title: 'Shade Bar',
-      description:
-        'Unique sail-structured bar offering refreshing beverages and light snacks with panoramic sea views.',
+      title: t('features.bar_title'),
+      description: t('features.bar_description'),
       gradient: 'from-orange-100 to-orange-200',
     },
     {
       icon: 'camera',
-      title: 'Entertainment Stage',
-      description:
-        'Professional entertainment venue hosting live performances, cultural shows, and special events.',
+      title: t('features.entertainment_title'),
+      description: t('features.entertainment_description'),
       gradient: 'from-pink-100 to-pink-200',
     },
   ];
 
   // Statistics
   const statistics = [
-    { icon: 'bed', value: 262, label: 'Luxury Rooms' },
-    { icon: 'home', value: 9, label: 'Buildings' },
-    { icon: 'restaurant', value: 2, label: 'Restaurants' },
-    { icon: 'globe', value: 50, label: 'Countries Served', suffix: '+' },
+    { icon: 'bed', value: 262, label: t('statistics.rooms') },
+    { icon: 'home', value: 9, label: t('statistics.buildings') },
+    { icon: 'restaurant', value: 2, label: t('statistics.restaurants') },
+    { icon: 'globe', value: 50, label: t('statistics.countries'), suffix: '+' },
   ];
 
   // Featured Rooms
@@ -226,27 +220,23 @@ export default function HomePage({ params }: PageProps) {
   const whyChooseUs = [
     {
       iconName: 'checkmark-circle',
-      title: 'Legacy of Excellence',
-      description:
-        'Decades of hospitality experience with a reputation for exceptional service and memorable experiences.',
+      title: t('why_choose.legacy_title'),
+      description: t('why_choose.legacy_description'),
     },
     {
       iconName: 'heart',
-      title: 'Personalized Service',
-      description:
-        '24/7 concierge service and personalized attention to ensure every guest feels special and cared for.',
+      title: t('why_choose.service_title'),
+      description: t('why_choose.service_description'),
     },
     {
       iconName: 'shield',
-      title: 'Safety & Security',
-      description:
-        'Comprehensive safety protocols and security measures ensuring peace of mind throughout your stay.',
+      title: t('why_choose.safety_title'),
+      description: t('why_choose.safety_description'),
     },
     {
       iconName: 'trending-up',
-      title: 'Modern Amenities',
-      description:
-        'Cutting-edge facilities and technology integrated seamlessly with traditional Azerbaijani hospitality.',
+      title: t('why_choose.amenities_title'),
+      description: t('why_choose.amenities_description'),
     },
   ];
 
@@ -263,21 +253,15 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='max-w-4xl mx-auto text-center'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              A Legacy of Luxury on the Caspian Shore
+              {t('homepage.legacy_title')}
             </h2>
 
             <p className='text-lg text-gray-600 mb-8 leading-relaxed'>
-              For decades, The Crescent Beach Hotel has stood as a beacon of
-              excellence on Azerbaijan's most prestigious beachfront. With
-              262 luxurious rooms and extensive leisure facilities, we offer
-              an unmatched blend of traditional Azerbaijani hospitality and
-              modern sophistication.
+              {t('homepage.legacy_description')}
             </p>
 
             <p className='text-base text-gray-500 mb-12'>
-              From hosting international sports teams to corporate leaders,
-              we've welcomed guests from over 50 countries, creating
-              unforgettable experiences on the shores of the Caspian Sea.
+              {t('homepage.legacy_note')}
             </p>
           </div>
         </div>
@@ -306,12 +290,10 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              World-Class Amenities
+              {t('homepage.amenities_title')}
             </h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
-              Every detail has been carefully crafted to provide you with the
-              ultimate luxury experience, from our private beach to our
-              world-class spa and entertainment facilities.
+              {t('homepage.amenities_description')}
             </p>
           </div>
 
@@ -335,12 +317,10 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              Luxurious Accommodations
+              {t('homepage.rooms_title')}
             </h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto mb-8'>
-              Choose from our collection of elegantly designed rooms and suites,
-              each offering stunning views and premium amenities for the perfect
-              stay.
+              {t('homepage.rooms_description')}
             </p>
           </div>
 
@@ -355,7 +335,7 @@ export default function HomePage({ params }: PageProps) {
               href={'/rooms' as any}
               className='btn-primary text-lg px-8 py-4 inline-flex items-center'
             >
-              View All Rooms
+              {t('common.view_all_rooms')}
               <IoArrowForward className='ml-2 w-5 h-5' />
             </LocaleLink>
           </div>
@@ -367,12 +347,10 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              Culinary Excellence
+              {t('homepage.dining_title')}
             </h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
-              Embark on a culinary journey at our distinctive restaurants, each
-              offering unique atmospheres and exceptional cuisine crafted by
-              world-renowned chefs.
+              {t('homepage.dining_description')}
             </p>
           </div>
 
@@ -393,11 +371,10 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-white mb-6'>
-              Why Choose The Crescent Beach Hotel
+              {t('homepage.why_choose_title')}
             </h2>
             <p className='text-lg text-primary-100 max-w-3xl mx-auto'>
-              Discover what makes us the premier choice for discerning travelers
-              seeking the ultimate beachfront luxury experience.
+              {t('homepage.why_choose_description')}
             </p>
           </div>
 
@@ -423,12 +400,10 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              What Our Guests Say
+              {t('homepage.testimonials_title')}
             </h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto'>
-              Read testimonials from our valued guests who have experienced the
-              exceptional hospitality and luxury that defines The Crescent Beach
-              Hotel.
+              {t('homepage.testimonials_description')}
             </p>
           </div>
 
@@ -449,12 +424,10 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              Trusted by International Organizations
+              {t('homepage.partnerships_title')}
             </h2>
             <p className='text-lg text-gray-600 max-w-3xl mx-auto mb-12'>
-              We proudly serve as the preferred destination for international
-              sports teams, corporate events, and prestigious organizations from
-              around the world.
+              {t('homepage.partnerships_description')}
             </p>
           </div>
 
@@ -506,7 +479,7 @@ export default function HomePage({ params }: PageProps) {
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl md:text-4xl font-serif font-light text-gray-900 mb-6'>
-              Exclusive Offers & Programs
+              {t('homepage.offers_title')}
             </h2>
           </div>
 
@@ -577,13 +550,11 @@ export default function HomePage({ params }: PageProps) {
       <section className='section-padding bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 text-white'>
         <div className='container mx-auto px-4 text-center'>
           <h2 className='text-3xl md:text-4xl font-serif font-light text-white mb-6'>
-            Begin Your Extraordinary Journey
+            {t('homepage.final_cta_title')}
           </h2>
 
           <p className='text-xl mb-8 max-w-3xl mx-auto text-primary-100'>
-            Experience the perfect blend of luxury, tradition, and modern
-            comfort at Azerbaijan's premier beachfront destination. Your
-            unforgettable stay awaits.
+            {t('homepage.final_cta_description')}
           </p>
 
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
@@ -591,7 +562,7 @@ export default function HomePage({ params }: PageProps) {
               href={'/rooms' as any}
               className='bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center shadow-lg hover:shadow-xl'
             >
-              Book Your Stay
+              {t('common.book_stay')}
               <IoArrowForward className='ml-2 w-5 h-5' />
             </LocaleLink>
 
@@ -599,7 +570,7 @@ export default function HomePage({ params }: PageProps) {
               href={'/contact' as any}
               className='border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200'
             >
-              Contact Us
+              {t('common.contact_us')}
             </LocaleLink>
           </div>
         </div>

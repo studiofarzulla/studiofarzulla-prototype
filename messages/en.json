@@ -35,7 +35,14 @@
     "language": "Language",
     "english": "English",
     "azerbaijani": "Azerbaijani",
-    "russian": "Russian"
+    "russian": "Russian",
+    "rooms": "Rooms & Suites",
+    "dining": "Dining",
+    "amenities": "Amenities",
+    "conferences": "Conferences",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "bookNow": "Book Now"
   },
   "hero": {
     "title": "The Crescent Beach Hotel",
@@ -45,6 +52,33 @@
     "cta_secondary": "Explore Gallery"
   },
   "homepage": {
+    "hero": {
+      "title": "The Crescent Beach Hotel",
+      "subtitle": "Where luxury meets the endless horizon",
+      "bookNow": "Book Now",
+      "explore": "Explore Gallery"
+    },
+    "features": {
+      "title": "World-Class Amenities",
+      "beachAccess": {
+        "title": "Private Beach",
+        "description": "800m of pristine Caspian coastline exclusively for our guests"
+      },
+      "dining": {
+        "title": "Fine Dining",
+        "description": "Four distinctive restaurants offering international and local cuisine"
+      },
+      "wellness": {
+        "title": "Spa & Wellness",
+        "description": "Complete wellness center with modern spa and fitness facilities"
+      }
+    },
+    "stats": {
+      "rooms": "Luxury Rooms",
+      "restaurants": "Restaurants",
+      "pools": "Swimming Pools",
+      "beach": "Private Beach"
+    },
     "legacy_title": "A Legacy of Luxury on the Caspian Shore",
     "legacy_description": "For decades, The Crescent Beach Hotel has stood as a beacon of excellence on Azerbaijan's most prestigious beachfront. With 262 luxurious rooms and extensive leisure facilities, we offer an unmatched blend of traditional Azerbaijani hospitality and modern sophistication.",
     "legacy_note": "From hosting international sports teams to corporate leaders, we've welcomed guests from over 50 countries, creating unforgettable experiences on the shores of the Caspian Sea.",
@@ -121,6 +155,8 @@
     "loyalty_description": "Earn points with every stay and enjoy exclusive benefits, room upgrades, and personalized services."
   },
   "rooms": {
+    "title": "Rooms & Suites",
+    "subtitle": "Choose from 262 luxurious rooms with stunning Caspian Sea views",
     "page_title": "Luxury Accommodations",
     "page_subtitle": "262 luxurious rooms, each designed for comfort and elegance",
     "hero_title": "Find Your Perfect Stay",
@@ -538,6 +574,22 @@
     "phone": "+994 12 123 4567",
     "email": "info@crescentbeachhotel.com",
     "follow_us": "Follow Us",
-    "newsletter": "Subscribe to our newsletter for exclusive offers and updates"
+    "newsletter": "Subscribe to our newsletter for exclusive offers and updates",
+    "description": "Experience luxury at The Crescent Beach Hotel, Baku's premier beachfront resort.",
+    "quickLinks": "Quick Links",
+    "rooms": "Rooms",
+    "dining": "Dining",
+    "amenities": "Amenities",
+    "gallery": "Gallery",
+    "conferences": "Conferences",
+    "contact": "Contact Info",
+    "reception": "Reception",
+    "newsletterText": "Stay updated with our latest offers and news",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "allRights": "All Rights Reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "sitemap": "Sitemap"
   }
 }

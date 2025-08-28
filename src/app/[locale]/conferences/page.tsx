@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getTranslations } from '@/lib/static-translations';
 import Image from 'next/image';
 import FacilityHero from '@/components/amenities/FacilityHero';

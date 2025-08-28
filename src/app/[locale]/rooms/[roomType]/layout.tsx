@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 // Generate static paths for all available rooms
 export async function generateStaticParams() {

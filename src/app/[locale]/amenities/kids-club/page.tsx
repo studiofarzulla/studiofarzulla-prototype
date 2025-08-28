@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getTranslations } from '@/lib/static-translations';
 
 // Force static generation for this page

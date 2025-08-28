@@ -49,7 +49,7 @@ export default function HomeSidebar() {
           Book 3 nights and get 20% off on spa treatments!
         </p>
         <LocaleLink
-          href="/rooms"
+          href={'/rooms' as any}
           className="inline-block bg-white text-primary-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors"
         >
           Book Now →

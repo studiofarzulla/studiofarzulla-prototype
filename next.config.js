@@ -2,10 +2,8 @@
 const withNextIntl = require('next-intl/plugin')('./src/i18n.ts');
 
 const nextConfig = {
-  // Enable experimental features for Vercel
-  experimental: {
-    typedRoutes: true,
-  },
+  // Enable typed routes
+  typedRoutes: true,
   
   // Enable production optimizations
   compiler: {
@@ -32,7 +30,6 @@ const nextConfig = {
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
-  swcMinify: true,
 
   // Environment variables
   env: {

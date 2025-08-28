@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { SITE_CONFIG } from '@/constants';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { LocaleProvider } from '@/lib/LocaleProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -89,23 +91,18 @@ export default async function LocaleLayout({
 }) {
   const locale = params?.locale || 'en';
   
-  // Load messages for static export
-  let messages;
-  try {
-    messages = (await import(`../../../messages/${locale}.json`)).default;
-  } catch (error) {
-    // Fallback to English messages
-    messages = (await import(`../../../messages/en.json`)).default;
-  }
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
 
   return (
-    <LocaleProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider messages={messages}>
       <div className='flex flex-col min-h-screen'>
         <Header />
         <main className='flex-1 pt-16 lg:pt-20'>{children}</main>
         <Footer />
         <WhatsAppButton />
       </div>
-    </LocaleProvider>
+    </NextIntlClientProvider>
   );
 }
