@@ -19,7 +19,8 @@ export const metadata: Metadata = {
     template: '%s | The Crescent Beach Hotel',
     default: 'The Crescent Beach Hotel - Luxury Beach Resort in Baku',
   },
-  description: 'Experience luxury at The Crescent Beach Hotel, Baku\'s premier beachfront resort offering world-class amenities, fine dining, and stunning Caspian Sea views.',
+  description:
+    "Experience luxury at The Crescent Beach Hotel, Baku's premier beachfront resort offering world-class amenities, fine dining, and stunning Caspian Sea views.",
   keywords: ['hotel', 'resort', 'Baku', 'Azerbaijan', 'luxury', 'beach', 'Caspian Sea'],
   authors: [{ name: 'The Crescent Beach Hotel' }],
   creator: 'Studio Farzulla',
@@ -69,14 +70,6 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html className={`${inter.variable} ${playfair.variable}`}>
-      {children}
-    </html>
-  );
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html className={`${inter.variable} ${playfair.variable}`}>{children}</html>;
 }

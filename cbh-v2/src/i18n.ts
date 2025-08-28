@@ -19,7 +19,7 @@ export const localeNames: Record<Locale, string> = {
 export default getRequestConfig(async ({ requestLocale }) => {
   // Await the requestLocale promise
   const locale = await requestLocale;
-  
+
   // Validate that the incoming `locale` parameter is valid
   if (!locale || !locales.includes(locale as Locale)) {
     notFound();

@@ -4,13 +4,13 @@ import { locales, defaultLocale } from './i18n';
 export default createMiddleware({
   // List of all supported locales
   locales,
-  
+
   // Default locale
   defaultLocale,
-  
+
   // Locale detection
   localeDetection: true,
-  
+
   // Always show locale in URL
   localePrefix: 'always',
 });

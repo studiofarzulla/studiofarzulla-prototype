@@ -74,12 +74,12 @@ const roomTypes = [
 ];
 
 const amenityIcons: { [key: string]: React.ReactNode } = {
-  wifi: <Wifi className="w-5 h-5" />,
-  tv: <Tv className="w-5 h-5" />,
-  ac: <Wind className="w-5 h-5" />,
-  coffee: <Coffee className="w-5 h-5" />,
-  bath: <Bath className="w-5 h-5" />,
-  parking: <Car className="w-5 h-5" />,
+  wifi: <Wifi className="h-5 w-5" />,
+  tv: <Tv className="h-5 w-5" />,
+  ac: <Wind className="h-5 w-5" />,
+  coffee: <Coffee className="h-5 w-5" />,
+  bath: <Bath className="h-5 w-5" />,
+  parking: <Car className="h-5 w-5" />,
 };
 
 export default async function RoomsPage() {
@@ -88,7 +88,7 @@ export default async function RoomsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative flex h-[60vh] items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920"
@@ -99,35 +99,29 @@ export default async function RoomsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
         </div>
-        
-        <div className="relative z-10 container text-center text-white">
-          <h1 className="heading-1 mb-4 drop-shadow-2xl">
-            {t('title')}
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-            {t('subtitle')}
-          </p>
+
+        <div className="container relative z-10 text-center text-white">
+          <h1 className="heading-1 mb-4 drop-shadow-2xl">{t('title')}</h1>
+          <p className="mx-auto max-w-3xl text-xl opacity-90 md:text-2xl">{t('subtitle')}</p>
         </div>
       </section>
 
       {/* Filter Bar */}
-      <section className="bg-white border-b sticky top-16 z-30">
+      <section className="sticky top-16 z-30 border-b bg-white">
         <div className="container py-4">
-          <div className="flex flex-wrap gap-4 items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex gap-2">
-              <button className="px-4 py-2 bg-primary-600 text-white rounded-lg">
-                All Rooms
-              </button>
-              <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+              <button className="rounded-lg bg-primary-600 px-4 py-2 text-white">All Rooms</button>
+              <button className="rounded-lg bg-gray-100 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-200">
                 Available Only
               </button>
-              <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+              <button className="rounded-lg bg-gray-100 px-4 py-2 text-gray-700 transition-colors hover:bg-gray-200">
                 Suites
               </button>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-600">Sort by:</span>
-              <select className="px-4 py-2 bg-gray-100 rounded-lg border-none focus:ring-2 focus:ring-primary-600">
+              <select className="rounded-lg border-none bg-gray-100 px-4 py-2 focus:ring-2 focus:ring-primary-600">
                 <option>Price: Low to High</option>
                 <option>Price: High to Low</option>
                 <option>Size</option>
@@ -141,11 +135,11 @@ export default async function RoomsPage() {
       {/* Rooms Grid */}
       <section className="section bg-gray-50">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {roomTypes.map((room, index) => (
               <div
                 key={room.id}
-                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 animate-in fade-in slide-in-up"
+                className="animate-in fade-in slide-in-up overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Image */}
@@ -154,16 +148,16 @@ export default async function RoomsPage() {
                     src={room.image}
                     alt={room.name}
                     fill
-                    className="object-cover hover:scale-110 transition-transform duration-700"
+                    className="object-cover transition-transform duration-700 hover:scale-110"
                   />
                   {!room.available && (
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                      <span className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium">
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                      <span className="rounded-lg bg-red-600 px-4 py-2 font-medium text-white">
                         Fully Booked
                       </span>
                     </div>
                   )}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-sm text-white rounded-lg">
+                  <div className="absolute right-4 top-4 rounded-lg bg-black/50 px-3 py-1 text-white backdrop-blur-sm">
                     <span className="text-2xl font-bold">${room.price}</span>
                     <span className="text-sm opacity-80">/night</span>
                   </div>
@@ -171,27 +165,27 @@ export default async function RoomsPage() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{room.name}</h3>
-                  <p className="text-gray-600 mb-4">{room.description}</p>
+                  <h3 className="mb-2 text-xl font-semibold">{room.name}</h3>
+                  <p className="mb-4 text-gray-600">{room.description}</p>
 
                   {/* Room Info */}
-                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                  <div className="mb-4 flex items-center gap-4 text-sm text-gray-500">
                     <div className="flex items-center gap-1">
-                      <Bed className="w-4 h-4" />
+                      <Bed className="h-4 w-4" />
                       <span>{room.size}m²</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
+                      <Users className="h-4 w-4" />
                       <span>Up to {room.capacity} guests</span>
                     </div>
                   </div>
 
                   {/* Amenities */}
-                  <div className="flex gap-3 mb-6">
+                  <div className="mb-6 flex gap-3">
                     {room.amenities.map((amenity) => (
                       <div
                         key={amenity}
-                        className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600"
+                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600"
                         title={amenity}
                       >
                         {amenityIcons[amenity]}
@@ -203,15 +197,15 @@ export default async function RoomsPage() {
                   <div className="flex gap-3">
                     <button
                       disabled={!room.available}
-                      className={`flex-1 py-2 px-4 rounded-lg font-medium transition-all ${
+                      className={`flex-1 rounded-lg px-4 py-2 font-medium transition-all ${
                         room.available
-                          ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:shadow-lg hover:scale-105'
-                          : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                          ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white hover:scale-105 hover:shadow-lg'
+                          : 'cursor-not-allowed bg-gray-200 text-gray-400'
                       }`}
                     >
                       {room.available ? 'Book Now' : 'Unavailable'}
                     </button>
-                    <button className="py-2 px-4 border-2 border-gray-200 rounded-lg font-medium hover:border-primary-600 hover:text-primary-600 transition-colors">
+                    <button className="rounded-lg border-2 border-gray-200 px-4 py-2 font-medium transition-colors hover:border-primary-600 hover:text-primary-600">
                       View Details
                     </button>
                   </div>
@@ -223,22 +217,22 @@ export default async function RoomsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+      <section className="bg-gradient-to-r from-primary-600 to-secondary-600 py-20 text-white">
         <div className="container text-center">
           <h2 className="heading-2 mb-6">Can't Find What You're Looking For?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <p className="mx-auto mb-8 max-w-2xl text-xl opacity-90">
             Contact our reservation team for personalized assistance and special offers
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex justify-center gap-4">
             <Link
               href="/contact"
-              className="px-8 py-3 bg-white text-primary-600 rounded-lg font-medium hover:shadow-lg transition-all hover:scale-105"
+              className="rounded-lg bg-white px-8 py-3 font-medium text-primary-600 transition-all hover:scale-105 hover:shadow-lg"
             >
               Contact Us
             </Link>
             <a
               href="tel:+994123456789"
-              className="px-8 py-3 border-2 border-white rounded-lg font-medium hover:bg-white hover:text-primary-600 transition-all"
+              className="rounded-lg border-2 border-white px-8 py-3 font-medium transition-all hover:bg-white hover:text-primary-600"
             >
               Call: +994 12 345 67 89
             </a>

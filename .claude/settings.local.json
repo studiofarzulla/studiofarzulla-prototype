@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(do sed -i \"s/import { Metadata } from ''next''/import type { Metadata } from ''next''/g\" \"$file\")"
+      "Bash(do sed -i \"s/import { Metadata } from ''next''/import type { Metadata } from ''next''/g\" \"$file\")",
+      "Bash(npx vercel:*)",
+      "Bash(npx prettier:*)"
     ],
     "additionalDirectories": [
       "C:\\c\\Users\\mizzy\\Documents\\GitHub"

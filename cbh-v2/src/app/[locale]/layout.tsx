@@ -11,12 +11,9 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: Props) {
+export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
-  
+
   // Ensure the locale is valid
   if (!locales.includes(locale as any)) {
     notFound();
@@ -30,9 +27,7 @@ export default async function LocaleLayout({
       <body className="font-sans antialiased">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
+          <main className="min-h-screen">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

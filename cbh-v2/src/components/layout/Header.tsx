@@ -13,7 +13,7 @@ export default function Header() {
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const pathname = usePathname();
   const t = useTranslations('navigation');
-  
+
   // Get current locale from pathname
   const currentLocale = pathname.split('/')[1] as keyof typeof localeNames;
 
@@ -42,9 +42,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
+            ? 'bg-white/95 py-2 shadow-lg backdrop-blur-md'
             : 'bg-gradient-to-b from-black/50 to-transparent py-4'
         }`}
       >
@@ -57,8 +57,8 @@ export default function Header() {
                 isScrolled ? 'text-primary-600' : 'text-white'
               }`}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">CB</span>
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary-600 to-secondary-600">
+                <span className="text-xl font-bold text-white">CB</span>
               </div>
               <div>
                 <h1 className="font-serif text-xl font-bold">Crescent Beach</h1>
@@ -67,7 +67,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden items-center space-x-8 lg:flex">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -86,11 +86,11 @@ export default function Header() {
               {/* Phone Number */}
               <a
                 href="tel:+994123456789"
-                className={`hidden md:flex items-center space-x-2 transition-colors ${
+                className={`hidden items-center space-x-2 transition-colors md:flex ${
                   isScrolled ? 'text-gray-700' : 'text-white'
                 }`}
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="h-4 w-4" />
                 <span className="text-sm">+994 12 345 67 89</span>
               </a>
 
@@ -98,24 +98,20 @@ export default function Header() {
               <div className="relative">
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all ${
-                    isScrolled
-                      ? 'text-gray-700 hover:bg-gray-100'
-                      : 'text-white hover:bg-white/20'
+                  className={`flex items-center space-x-2 rounded-lg px-3 py-2 transition-all ${
+                    isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/20'
                   }`}
                 >
-                  <Globe className="w-4 h-4" />
-                  <span className="text-sm font-medium">
-                    {localeNames[currentLocale]}
-                  </span>
-                  <ChevronDown className={`w-3 h-3 transition-transform ${
-                    isLangMenuOpen ? 'rotate-180' : ''
-                  }`} />
+                  <Globe className="h-4 w-4" />
+                  <span className="text-sm font-medium">{localeNames[currentLocale]}</span>
+                  <ChevronDown
+                    className={`h-3 w-3 transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
 
                 {/* Language Dropdown */}
                 {isLangMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl py-2 min-w-[150px]">
+                  <div className="absolute right-0 top-full mt-2 min-w-[150px] rounded-lg bg-white py-2 shadow-xl">
                     {locales.map((locale) => (
                       <button
                         key={locale}
@@ -123,9 +119,9 @@ export default function Header() {
                           switchLocale(locale);
                           setIsLangMenuOpen(false);
                         }}
-                        className={`w-full px-4 py-2 text-left hover:bg-gray-50 transition-colors ${
+                        className={`w-full px-4 py-2 text-left transition-colors hover:bg-gray-50 ${
                           locale === currentLocale
-                            ? 'text-primary-600 font-medium'
+                            ? 'font-medium text-primary-600'
                             : 'text-gray-700'
                         }`}
                       >
@@ -139,7 +135,7 @@ export default function Header() {
               {/* Book Now Button */}
               <Link
                 href="/rooms"
-                className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg font-medium hover:shadow-lg transition-all hover:scale-105"
+                className="hidden rounded-lg bg-gradient-to-r from-primary-600 to-secondary-600 px-6 py-2 font-medium text-white transition-all hover:scale-105 hover:shadow-lg md:block"
               >
                 {t('bookNow')}
               </Link>
@@ -147,17 +143,11 @@ export default function Header() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`lg:hidden p-2 rounded-lg transition-colors ${
-                  isScrolled
-                    ? 'text-gray-700 hover:bg-gray-100'
-                    : 'text-white hover:bg-white/20'
+                className={`rounded-lg p-2 transition-colors lg:hidden ${
+                  isScrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/20'
                 }`}
               >
-                {isMobileMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
           </div>
@@ -166,24 +156,22 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity ${
-          isMobileMenuOpen
-            ? 'opacity-100 pointer-events-auto'
-            : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden ${
+          isMobileMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white z-50 lg:hidden transform transition-transform ${
+        className={`fixed right-0 top-0 z-50 h-full w-80 transform bg-white transition-transform lg:hidden ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="p-6">
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-lg"
+            className="absolute right-6 top-6 rounded-lg p-2 hover:bg-gray-100"
           >
-            <X className="w-6 h-6" />
+            <X className="h-6 w-6" />
           </button>
 
           <div className="mt-16 space-y-4">
@@ -192,16 +180,16 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-3 text-lg font-medium text-gray-700 hover:text-primary-600 transition-colors"
+                className="block py-3 text-lg font-medium text-gray-700 transition-colors hover:text-primary-600"
               >
                 {item.label}
               </Link>
             ))}
-            
-            <div className="pt-6 border-t">
+
+            <div className="border-t pt-6">
               <Link
                 href="/rooms"
-                className="block w-full py-3 px-6 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-center rounded-lg font-medium"
+                className="block w-full rounded-lg bg-gradient-to-r from-primary-600 to-secondary-600 px-6 py-3 text-center font-medium text-white"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('bookNow')}

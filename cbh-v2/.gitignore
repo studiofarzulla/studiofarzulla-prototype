@@ -75,3 +75,4 @@ logs
 # Cache
 .cache
 .turbo
+.vercel
