@@ -1,12 +1,17 @@
 # The Crescent Beach Hotel 🏖️
 
-> A luxury beach resort website built with Next.js, TypeScript, and Tailwind CSS
+> A luxury beach resort website built with Next.js 15, TypeScript, and Tailwind CSS
+
+## 📁 Project Structure
+
+The main project is located in the `cbh-v2` directory. This is a complete rebuild with modern architecture and improved performance.
 
 [![Deployed on Vercel](https://vercel.com/button)](https://vercel.com)
 [![Deploy Status](https://img.shields.io/badge/Deployment-Vercel-black)](https://farzulla.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1-61DAFB?style=flat&logo=react&logoColor=white)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 ## 🌟 Features
 
@@ -58,7 +63,7 @@
 ```bash
 # Clone the repository
 git clone https://github.com/studiofarzulla/crescent-beach-hotel.git
-cd crescent-beach-hotel
+cd crescent-beach-hotel/cbh-v2
 
 # Install dependencies
 npm install
