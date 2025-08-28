@@ -18,45 +18,45 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Azerbaijani flag-inspired colors
+        // Sophisticated luxury hotel color palette
         primary: {
-          50: '#e6f5f1',
-          100: '#b3e2d8',
-          200: '#80cfbf',
-          300: '#4dbca6',
-          400: '#1aa88d',
-          500: '#00966F', // Main green
-          600: '#007a5a',
-          700: '#005e45',
-          800: '#004230',
-          900: '#00261b',
-          DEFAULT: '#00966F',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b', // Sophisticated slate
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          DEFAULT: '#334155',
         },
         secondary: {
-          50: '#e6f8fd',
-          100: '#b3ecfa',
-          200: '#80dff7',
-          300: '#4dd3f4',
-          400: '#1ac6f1',
-          500: '#00B5E2', // Main blue
-          600: '#0095b8',
-          700: '#00748e',
-          800: '#005364',
-          900: '#00323a',
-          DEFAULT: '#00B5E2',
+          50: '#fefce8',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#d97706', // Warm amber gold
+          600: '#b45309',
+          700: '#92400e',
+          800: '#78350f',
+          900: '#451a03',
+          DEFAULT: '#d97706',
         },
         accent: {
-          50: '#fce6e7',
-          100: '#f7b3b8',
-          200: '#f28088',
-          300: '#ed4d59',
-          400: '#e81a29',
-          500: '#E30A17', // Red (use sparingly)
-          600: '#b60813',
-          700: '#89060f',
-          800: '#5c040a',
-          900: '#2f0205',
-          DEFAULT: '#E30A17',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6', // Modern blue
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+          DEFAULT: '#2563eb',
         },
         // Neutral colors for text and backgrounds
         neutral: {

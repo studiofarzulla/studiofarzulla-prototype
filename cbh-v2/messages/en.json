@@ -109,18 +109,18 @@
     }
   },
   "features": {
-    "pools_title": "Indoor & Outdoor Pools",
-    "pools_description": "Multiple swimming pools including infinity pools with stunning Caspian Sea views and indoor pools for year-round enjoyment.",
-    "wellness_title": "Wellness & Spa",
-    "wellness_description": "Complete wellness center with modern gym, steam and dry saunas, and rejuvenating spa treatments.",
-    "beach_title": "Private Beach Access",
-    "beach_description": "Exclusive private beach with premium sunbeds and beachside service on the pristine Caspian Sea shore.",
-    "children_title": "Children's Paradise",
-    "children_description": "Dedicated children's area with safe play zones, entertainment programs, and family-friendly activities.",
-    "bar_title": "Shade Bar",
-    "bar_description": "Unique sail-structured bar offering refreshing beverages and light snacks with panoramic sea views.",
-    "entertainment_title": "Entertainment Stage",
-    "entertainment_description": "Professional entertainment venue hosting live performances, cultural shows, and special events."
+    "pools_title": "Indoor Swimming Pool",
+    "pools_description": "20-meter indoor heated pool with depths from 1.2m to 2.2m, perfect for year-round swimming and aqua fitness.",
+    "wellness_title": "State-of-the-Art Fitness Center",
+    "wellness_description": "Modern gym equipment, professional squash court, steam and dry sauna facilities for complete wellness.",
+    "beach_title": "Private Beach & Play Area",
+    "beach_description": "Exclusive beach access with dedicated children's play area, premium sunbeds, and beachside service.",
+    "sports_title": "Sports Facilities",
+    "sports_description": "Full-size football pitch and squash court for active guests and team sports enthusiasts.",
+    "lounge_title": "Poolside Lounge & Dining",
+    "lounge_description": "Elegant dining area with floor-to-ceiling windows overlooking the pool, featuring live performances.",
+    "entertainment_title": "Performance Stage",
+    "entertainment_description": "Professional stage for live entertainment, cultural shows, and special events in the lounge area."
   },
   "statistics": {
     "rooms": "Luxury Rooms",
@@ -147,12 +147,12 @@
     "teams_description": "Host to handball teams and sports delegations from across Europe and beyond."
   },
   "offers": {
-    "enterprise_title": "Enterprise Packages",
-    "enterprise_description": "Special corporate rates and comprehensive packages for business travelers and conference groups.",
+    "enterprise_title": "Enterprise Solutions",
+    "enterprise_description": "Complete corporate packages with bulk room rentals, buffet dining service, city transportation, and dedicated support for companies.",
     "membership_title": "Summer Membership",
     "membership_description": "Exclusive seasonal membership with beach access, dining privileges, and special event invitations.",
-    "loyalty_title": "Loyalty Rewards",
-    "loyalty_description": "Earn points with every stay and enjoy exclusive benefits, room upgrades, and personalized services."
+    "loyalty_title": "Corporate Loyalty Program",
+    "loyalty_description": "Special loyalty packages for businesses with volume discounts, priority bookings, and customized services."
   },
   "rooms": {
     "title": "Luxurious Accommodations",
